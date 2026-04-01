@@ -1,0 +1,87 @@
+<view class="vehicle-card">
+  <view class="vehicle-card__hero">
+    <view class="vehicle-card__hero-word">{{heroWord}}</view>
+
+    <view class="vehicle-card__illustration">
+      <view class="vehicle-card__shadow"></view>
+      <view class="vehicle-card__wheel vehicle-card__wheel--left"></view>
+      <view class="vehicle-card__wheel vehicle-card__wheel--right"></view>
+      <view class="vehicle-card__body"></view>
+      <view class="vehicle-card__front"></view>
+      <view class="vehicle-card__seat"></view>
+      <view class="vehicle-card__footrest"></view>
+      <view class="vehicle-card__box"></view>
+      <view class="vehicle-card__box-line"></view>
+      <view class="vehicle-card__handle"></view>
+      <view class="vehicle-card__rider-head"></view>
+      <view class="vehicle-card__helmet"></view>
+      <view class="vehicle-card__rider-body"></view>
+      <view class="vehicle-card__rider-arm"></view>
+      <view class="vehicle-card__rider-leg"></view>
+    </view>
+
+    <view class="vehicle-card__hero-badge">
+      <text class="vehicle-card__hero-badge-label">最大</text>
+      <text class="vehicle-card__hero-badge-value">{{heroBadge}}</text>
+    </view>
+  </view>
+
+  <view class="vehicle-card__groups">
+    <block wx:for="{{groups}}" wx:key="key">
+      <view
+        class="vehicle-card__group {{item.key === activeGroupKey ? 'is-active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onGroupTap"
+      >
+        {{item.label}}
+      </view>
+    </block>
+  </view>
+
+  <view class="vehicle-card__rows">
+    <block wx:for="{{rows}}" wx:key="index" wx:for-item="row">
+      <view class="vehicle-card__row">
+        <block wx:for="{{row}}" wx:key="key" wx:for-item="option">
+          <view
+            class="vehicle-card__option {{option.variant === 'brand' ? 'vehicle-card__option--brand' : ''}} {{option.variant === 'cold' ? 'vehicle-card__option--cold' : ''}}"
+          >
+            <block wx:if="{{option.variant === 'brand'}}">
+              <text class="vehicle-card__brand-mark">多拉</text>
+              <text>{{option.label}}</text>
+            </block>
+
+            <block wx:elif="{{option.variant === 'cold'}}">
+              <view class="vehicle-card__snowflake">
+                <view class="vehicle-card__snowflake-line vehicle-card__snowflake-line--vertical"></view>
+                <view class="vehicle-card__snowflake-line vehicle-card__snowflake-line--cross-one"></view>
+                <view class="vehicle-card__snowflake-line vehicle-card__snowflake-line--cross-two"></view>
+              </view>
+              <text>{{option.label}}</text>
+              <view wx:if="{{option.hasArrow}}" class="vehicle-card__arrow">
+                <van-icon name="arrow-down" size="18rpx" color="#111827" />
+              </view>
+            </block>
+
+            <block wx:else>
+              <text>{{option.label}}</text>
+              <view wx:if="{{option.hasArrow}}" class="vehicle-card__arrow">
+                <van-icon name="arrow-down" size="18rpx" color="#111827" />
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <view class="vehicle-card__more-label">{{moreTransportLabel}}</view>
+
+  <view class="vehicle-card__tags">
+    <block wx:for="{{transportTags}}" wx:key="key">
+      <view class="vehicle-card__tag" data-key="{{item.key}}" bindtap="onTagTap">
+        <view class="vehicle-card__tag-mark">拼</view>
+        <text>{{item.label}}</text>
+      </view>
+    </block>
+  </view>
+</view>

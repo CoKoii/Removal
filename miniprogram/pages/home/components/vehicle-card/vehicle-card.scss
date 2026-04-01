@@ -1,0 +1,352 @@
+.vehicle-card {
+  overflow: hidden;
+  border-radius: 36rpx;
+  background: #ffffff;
+  padding: 26rpx 22rpx 32rpx;
+  box-shadow: 0 14rpx 48rpx rgba(20, 26, 45, 0.08);
+}
+
+.vehicle-card__hero {
+  position: relative;
+  height: 286rpx;
+  overflow: hidden;
+}
+
+.vehicle-card__hero-word {
+  position: absolute;
+  top: 56rpx;
+  left: 110rpx;
+  color: rgba(17, 24, 39, 0.08);
+  font-size: 108rpx;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 6rpx;
+}
+
+.vehicle-card__illustration {
+  position: absolute;
+  left: 255rpx;
+  top: 42rpx;
+  width: 268rpx;
+  height: 190rpx;
+}
+
+.vehicle-card__shadow {
+  position: absolute;
+  bottom: 6rpx;
+  left: 28rpx;
+  width: 176rpx;
+  height: 18rpx;
+  border-radius: 999rpx;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.vehicle-card__wheel {
+  position: absolute;
+  bottom: 14rpx;
+  width: 42rpx;
+  height: 42rpx;
+  border: 6rpx solid #323232;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.vehicle-card__wheel--left {
+  left: 48rpx;
+}
+
+.vehicle-card__wheel--right {
+  left: 164rpx;
+}
+
+.vehicle-card__body {
+  position: absolute;
+  bottom: 34rpx;
+  left: 62rpx;
+  width: 132rpx;
+  height: 54rpx;
+  border-radius: 44rpx 48rpx 26rpx 30rpx;
+  background: linear-gradient(180deg, #ff9932, #f66c0f);
+  transform: skewX(-8deg);
+}
+
+.vehicle-card__front {
+  position: absolute;
+  bottom: 56rpx;
+  left: 178rpx;
+  width: 48rpx;
+  height: 72rpx;
+  border-top: 10rpx solid #ff7b12;
+  border-right: 10rpx solid #ff7b12;
+  border-radius: 0 28rpx 0 0;
+  transform: skewX(-12deg);
+}
+
+.vehicle-card__seat {
+  position: absolute;
+  left: 122rpx;
+  bottom: 92rpx;
+  width: 56rpx;
+  height: 16rpx;
+  border-radius: 14rpx;
+  background: #1f2937;
+}
+
+.vehicle-card__footrest {
+  position: absolute;
+  left: 114rpx;
+  bottom: 54rpx;
+  width: 66rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  background: #475569;
+}
+
+.vehicle-card__box {
+  position: absolute;
+  right: 2rpx;
+  bottom: 86rpx;
+  width: 66rpx;
+  height: 50rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(180deg, #2d3748, #111827);
+  border: 4rpx solid #ff8d20;
+}
+
+.vehicle-card__box-line {
+  position: absolute;
+  right: 16rpx;
+  bottom: 108rpx;
+  width: 36rpx;
+  height: 4rpx;
+  background: #fcd34d;
+  border-radius: 999rpx;
+}
+
+.vehicle-card__handle {
+  position: absolute;
+  right: 74rpx;
+  bottom: 114rpx;
+  width: 24rpx;
+  height: 44rpx;
+  border-top: 6rpx solid #334155;
+  border-left: 6rpx solid #334155;
+  border-radius: 20rpx 0 0 0;
+  transform: skewX(-8deg);
+}
+
+.vehicle-card__rider-head {
+  position: absolute;
+  right: 108rpx;
+  bottom: 134rpx;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  background: #ff8b21;
+}
+
+.vehicle-card__helmet {
+  position: absolute;
+  right: 100rpx;
+  bottom: 144rpx;
+  width: 30rpx;
+  height: 16rpx;
+  border-radius: 16rpx 16rpx 4rpx 4rpx;
+  background: linear-gradient(180deg, #fff3e6, #ffd6b0);
+  transform: rotate(-8deg);
+}
+
+.vehicle-card__rider-body {
+  position: absolute;
+  right: 106rpx;
+  bottom: 98rpx;
+  width: 40rpx;
+  height: 44rpx;
+  border-radius: 16rpx 16rpx 18rpx 18rpx;
+  background: linear-gradient(180deg, #ff8d22, #f46d0f);
+  transform: rotate(10deg);
+}
+
+.vehicle-card__rider-arm {
+  position: absolute;
+  right: 86rpx;
+  bottom: 108rpx;
+  width: 42rpx;
+  height: 12rpx;
+  border-radius: 999rpx;
+  background: #ff8d22;
+  transform: rotate(-16deg);
+}
+
+.vehicle-card__rider-leg {
+  position: absolute;
+  right: 100rpx;
+  bottom: 68rpx;
+  width: 54rpx;
+  height: 18rpx;
+  border-radius: 999rpx;
+  background: #1f2937;
+  transform: rotate(20deg);
+}
+
+.vehicle-card__hero-badge {
+  position: absolute;
+  top: 54rpx;
+  right: 34rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff7d6, #ffe9a3);
+  color: #2d241a;
+}
+
+.vehicle-card__hero-badge-label {
+  font-size: 22rpx;
+  line-height: 1;
+}
+
+.vehicle-card__hero-badge-value {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.vehicle-card__groups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30rpx;
+  padding: 8rpx 4rpx 0;
+}
+
+.vehicle-card__group {
+  padding: 10rpx 0;
+  color: #121212;
+  font-size: 34rpx;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.vehicle-card__group.is-active {
+  padding: 12rpx 22rpx;
+  border: 2rpx solid #f0c6a5;
+  border-radius: 999rpx;
+  background: #fff8f2;
+  color: #f38a1f;
+}
+
+.vehicle-card__rows {
+  margin-top: 8rpx;
+}
+
+.vehicle-card__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 34rpx;
+  row-gap: 14rpx;
+  margin-top: 28rpx;
+}
+
+.vehicle-card__option {
+  display: flex;
+  align-items: center;
+  color: #121212;
+  font-size: 30rpx;
+  line-height: 1.2;
+}
+
+.vehicle-card__option--brand {
+  font-weight: 600;
+}
+
+.vehicle-card__brand-mark {
+  margin-right: 6rpx;
+  color: #ff5a45;
+  font-weight: 700;
+}
+
+.vehicle-card__option--cold {
+  font-weight: 500;
+}
+
+.vehicle-card__snowflake {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 8rpx;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #67afff, #4083ff);
+}
+
+.vehicle-card__snowflake-line {
+  position: absolute;
+  width: 4rpx;
+  height: 20rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+}
+
+.vehicle-card__snowflake-line--vertical {
+  transform: rotate(0deg);
+}
+
+.vehicle-card__snowflake-line--cross-one {
+  transform: rotate(60deg);
+}
+
+.vehicle-card__snowflake-line--cross-two {
+  transform: rotate(120deg);
+}
+
+.vehicle-card__arrow {
+  margin-left: 8rpx;
+  display: flex;
+  align-items: center;
+}
+
+.vehicle-card__more-label {
+  margin-top: 34rpx;
+  color: #7b7f86;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.vehicle-card__tags {
+  margin-top: 18rpx;
+}
+
+.vehicle-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 10rpx 24rpx 10rpx 14rpx;
+  border: 2rpx solid #ececf2;
+  border-radius: 999rpx;
+  background: #ffffff;
+  box-shadow: 0 8rpx 18rpx rgba(17, 24, 39, 0.05);
+  color: #4b5563;
+  font-size: 24rpx;
+}
+
+.vehicle-card__tag-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  border-radius: 14rpx;
+  background: linear-gradient(180deg, #ff9a2a, #ff6e0d);
+  color: #ffffff;
+  font-size: 24rpx;
+  font-weight: 700;
+}

@@ -1,0 +1,68 @@
+<view class="shortcut-grid">
+  <view class="shortcut-grid__row">
+    <block wx:for="{{items}}" wx:key="key">
+      <view
+        class="shortcut-grid__item"
+        data-key="{{item.key}}"
+        data-label="{{item.label}}"
+        bindtap="onItemTap"
+      >
+        <view class="shortcut-grid__icon-shell">
+          <block wx:if="{{item.icon === 'enterprise'}}">
+            <view class="icon-enterprise">
+              <view class="icon-enterprise__roof"></view>
+              <view class="icon-enterprise__body"></view>
+              <view class="icon-enterprise__accent"></view>
+            </view>
+          </block>
+
+          <block wx:elif="{{item.icon === 'logistics'}}">
+            <view class="icon-logistics">
+              <view class="icon-logistics__pole"></view>
+              <view class="icon-logistics__handle"></view>
+              <view class="icon-logistics__base"></view>
+              <view class="icon-logistics__box"></view>
+              <view class="icon-logistics__wheel icon-logistics__wheel--left"></view>
+              <view class="icon-logistics__wheel icon-logistics__wheel--right"></view>
+            </view>
+          </block>
+
+          <block wx:elif="{{item.icon === 'bulky'}}">
+            <view class="icon-bulky">
+              <view class="icon-bulky__head icon-bulky__head--left"></view>
+              <view class="icon-bulky__head icon-bulky__head--right"></view>
+              <view class="icon-bulky__arm icon-bulky__arm--left"></view>
+              <view class="icon-bulky__arm icon-bulky__arm--right"></view>
+              <view class="icon-bulky__box"></view>
+            </view>
+          </block>
+
+          <block wx:elif="{{item.icon === 'driver'}}">
+            <view class="icon-driver">
+              <view class="icon-driver__head"></view>
+              <view class="icon-driver__body"></view>
+              <view class="icon-driver__wheel"></view>
+              <view class="icon-driver__wheel-core"></view>
+            </view>
+          </block>
+
+          <block wx:else>
+            <view class="icon-fuel">
+              <view class="icon-fuel__pump"></view>
+              <view class="icon-fuel__screen"></view>
+              <view class="icon-fuel__hose"></view>
+              <view class="icon-fuel__accent"></view>
+            </view>
+          </block>
+        </view>
+
+        <view class="shortcut-grid__label">{{item.label}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="shortcut-grid__dots">
+    <view class="shortcut-grid__dot shortcut-grid__dot--active"></view>
+    <view class="shortcut-grid__dot"></view>
+  </view>
+</view>

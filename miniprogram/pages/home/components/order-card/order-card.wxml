@@ -1,0 +1,36 @@
+<view class="order-card">
+  <view class="order-card__pickup" bindtap="onPickupTap">
+    <view class="order-card__pickup-badge">{{pickupBadge}}</view>
+    <view class="order-card__pickup-title">{{pickupTitle}}</view>
+    <view class="order-card__pickup-arrow">
+      <van-icon name="arrow" size="18px" color="#b2b9c5" />
+    </view>
+  </view>
+
+  <view class="order-card__entry">
+    <view class="order-card__timeline">
+      <view class="order-card__node order-card__node--switch">
+        <van-icon name="exchange" size="20px" color="#111827" />
+      </view>
+      <view class="order-card__line"></view>
+      <view class="order-card__node order-card__node--drop">卸</view>
+    </view>
+
+    <view class="order-card__input-wrap" bindtap="onEntryTap">
+      <view class="order-card__discount">{{discountText}}</view>
+      <view class="order-card__input-shell">
+        <view class="order-card__input-core">
+          <text class="order-card__input-primary">{{dropoffPrimaryText}}</text>
+          <text class="order-card__input-secondary">{{dropoffSecondaryText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="order-card__via" bindtap="onViaTap">
+      <view class="order-card__via-plus">
+        <van-icon name="plus" size="18px" color="#a6acb8" />
+      </view>
+      <view class="order-card__via-label">{{viaPointLabel}}</view>
+    </view>
+  </view>
+</view>

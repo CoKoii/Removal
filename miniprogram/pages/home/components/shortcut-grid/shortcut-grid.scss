@@ -1,0 +1,278 @@
+.shortcut-grid {
+  border-radius: 36rpx;
+  background: #ffffff;
+  padding: 26rpx 10rpx 14rpx;
+  box-shadow: 0 14rpx 48rpx rgba(20, 26, 45, 0.08);
+}
+
+.shortcut-grid__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shortcut-grid__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shortcut-grid__icon-shell {
+  position: relative;
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.shortcut-grid__label {
+  margin-top: 16rpx;
+  color: #111827;
+  font-size: 28rpx;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.shortcut-grid__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  margin-top: 16rpx;
+}
+
+.shortcut-grid__dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #d6dce6;
+}
+
+.shortcut-grid__dot--active {
+  width: 12rpx;
+  height: 12rpx;
+  background: #ff7a18;
+}
+
+.icon-enterprise,
+.icon-logistics,
+.icon-bulky,
+.icon-driver,
+.icon-fuel {
+  position: relative;
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.icon-enterprise__roof {
+  position: absolute;
+  top: 10rpx;
+  left: 22rpx;
+  width: 42rpx;
+  height: 42rpx;
+  border-top: 6rpx solid #1f2937;
+  border-left: 6rpx solid #1f2937;
+  transform: rotate(45deg);
+  border-radius: 8rpx 0 0 0;
+}
+
+.icon-enterprise__body {
+  position: absolute;
+  left: 18rpx;
+  bottom: 14rpx;
+  width: 50rpx;
+  height: 36rpx;
+  border: 6rpx solid #1f2937;
+  border-top: none;
+  border-radius: 0 0 10rpx 10rpx;
+}
+
+.icon-enterprise__accent {
+  position: absolute;
+  left: 38rpx;
+  bottom: 20rpx;
+  width: 16rpx;
+  height: 18rpx;
+  border: 6rpx solid #ff7a18;
+  border-radius: 6rpx;
+}
+
+.icon-logistics__pole {
+  position: absolute;
+  left: 28rpx;
+  top: 10rpx;
+  width: 0;
+  height: 54rpx;
+  border-left: 6rpx solid #1f2937;
+}
+
+.icon-logistics__handle {
+  position: absolute;
+  left: 28rpx;
+  top: 10rpx;
+  width: 26rpx;
+  height: 0;
+  border-top: 6rpx solid #1f2937;
+}
+
+.icon-logistics__base {
+  position: absolute;
+  left: 24rpx;
+  bottom: 16rpx;
+  width: 34rpx;
+  height: 0;
+  border-top: 6rpx solid #1f2937;
+}
+
+.icon-logistics__box {
+  position: absolute;
+  left: 44rpx;
+  top: 26rpx;
+  width: 28rpx;
+  height: 34rpx;
+  border: 6rpx solid #1f2937;
+  border-radius: 6rpx;
+}
+
+.icon-logistics__wheel {
+  position: absolute;
+  bottom: 10rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #ff7a18;
+}
+
+.icon-logistics__wheel--left {
+  left: 22rpx;
+}
+
+.icon-logistics__wheel--right {
+  left: 48rpx;
+}
+
+.icon-bulky__head {
+  position: absolute;
+  top: 16rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border: 6rpx solid #1f2937;
+  border-radius: 50%;
+}
+
+.icon-bulky__head--left {
+  left: 14rpx;
+}
+
+.icon-bulky__head--right {
+  right: 14rpx;
+}
+
+.icon-bulky__arm {
+  position: absolute;
+  top: 36rpx;
+  width: 18rpx;
+  height: 0;
+  border-top: 6rpx solid #1f2937;
+}
+
+.icon-bulky__arm--left {
+  left: 26rpx;
+  transform: rotate(20deg);
+}
+
+.icon-bulky__arm--right {
+  right: 26rpx;
+  transform: rotate(-20deg);
+}
+
+.icon-bulky__box {
+  position: absolute;
+  left: 30rpx;
+  top: 36rpx;
+  width: 28rpx;
+  height: 28rpx;
+  border: 6rpx solid #ff7a18;
+  border-radius: 8rpx;
+}
+
+.icon-driver__head {
+  position: absolute;
+  top: 12rpx;
+  left: 30rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border: 6rpx solid #1f2937;
+  border-radius: 50%;
+}
+
+.icon-driver__body {
+  position: absolute;
+  top: 40rpx;
+  left: 20rpx;
+  width: 40rpx;
+  height: 20rpx;
+  border: 6rpx solid #1f2937;
+  border-top-left-radius: 18rpx;
+  border-top-right-radius: 18rpx;
+  border-bottom: none;
+}
+
+.icon-driver__wheel {
+  position: absolute;
+  left: 26rpx;
+  bottom: 10rpx;
+  width: 34rpx;
+  height: 34rpx;
+  border: 6rpx solid #1f2937;
+  border-radius: 50%;
+}
+
+.icon-driver__wheel-core {
+  position: absolute;
+  left: 34rpx;
+  bottom: 18rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: #ff7a18;
+}
+
+.icon-fuel__pump {
+  position: absolute;
+  top: 18rpx;
+  left: 26rpx;
+  width: 30rpx;
+  height: 42rpx;
+  border: 6rpx solid #1f2937;
+  border-radius: 8rpx;
+}
+
+.icon-fuel__screen {
+  position: absolute;
+  top: 28rpx;
+  left: 34rpx;
+  width: 14rpx;
+  height: 10rpx;
+  border: 4rpx solid #ff7a18;
+  border-radius: 4rpx;
+}
+
+.icon-fuel__hose {
+  position: absolute;
+  top: 24rpx;
+  right: 20rpx;
+  width: 22rpx;
+  height: 30rpx;
+  border-top: 6rpx solid #1f2937;
+  border-right: 6rpx solid #1f2937;
+  border-radius: 0 12rpx 0 0;
+}
+
+.icon-fuel__accent {
+  position: absolute;
+  right: 18rpx;
+  bottom: 14rpx;
+  width: 12rpx;
+  height: 18rpx;
+  border-radius: 4rpx;
+  background: #ff7a18;
+}

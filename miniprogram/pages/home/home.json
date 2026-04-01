@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "home-top-banner": "./components/top-banner/top-banner",
+    "home-vehicle-card": "./components/vehicle-card/vehicle-card",
+    "home-order-card": "./components/order-card/order-card",
+    "home-shortcut-grid": "./components/shortcut-grid/shortcut-grid",
+    "home-promo-row": "./components/promo-row/promo-row",
+    "home-bottom-nav": "./components/bottom-nav/bottom-nav"
+  }
+}

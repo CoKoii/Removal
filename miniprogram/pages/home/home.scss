@@ -1,0 +1,33 @@
+page {
+  background: linear-gradient(180deg, #fff4eb 0%, #fff8f3 280rpx, #f5f7fb 920rpx, #f5f7fb 100%);
+}
+
+.home-page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home {
+  height: 100vh;
+}
+
+.home__content {
+  padding: 8rpx 24rpx 300rpx;
+}
+
+.home__section {
+  margin-top: 22rpx;
+}
+
+.home__section--promo {
+  padding-bottom: 32rpx;
+}
+
+.home__bottom-nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}

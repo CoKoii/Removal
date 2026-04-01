@@ -4,7 +4,6 @@
   "compileType": "miniprogram",
   "setting": {
     "useCompilerPlugins": [
-      "typescript",
       "sass"
     ],
     "babelSetting": {

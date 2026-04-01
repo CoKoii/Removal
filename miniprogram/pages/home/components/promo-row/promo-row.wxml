@@ -1,0 +1,25 @@
+<view class="promo-row">
+  <block wx:for="{{cards}}" wx:key="key">
+    <view
+      class="promo-row__card promo-row__card--{{item.theme}}"
+      data-key="{{item.key}}"
+      data-title="{{item.title}}"
+      bindtap="onCardTap"
+    >
+      <block wx:if="{{item.theme === 'mint'}}">
+        <view class="promo-row__mint-decor"></view>
+        <view class="promo-row__mint-title">{{item.title}}</view>
+        <view class="promo-row__mint-highlight">{{item.highlight}}</view>
+      </block>
+
+      <block wx:else>
+        <view class="promo-row__warm-title">{{item.title}}</view>
+        <view class="promo-row__warm-highlight">{{item.highlight}}</view>
+        <view class="promo-row__gift promo-row__gift--large"></view>
+        <view class="promo-row__gift promo-row__gift--small"></view>
+        <view class="promo-row__coin promo-row__coin--one"></view>
+        <view class="promo-row__coin promo-row__coin--two"></view>
+      </block>
+    </view>
+  </block>
+</view>

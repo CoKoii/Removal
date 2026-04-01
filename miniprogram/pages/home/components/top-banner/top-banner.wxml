@@ -1,0 +1,33 @@
+<view class="top-banner" style="padding-top: {{safeTop}}px;">
+  <view class="top-banner__glow top-banner__glow--left"></view>
+  <view class="top-banner__glow top-banner__glow--center"></view>
+  <view class="top-banner__glow top-banner__glow--right"></view>
+
+  <view class="top-banner__head" style="min-height: {{capsuleHeight}}px;">
+    <view class="top-banner__city">
+      <text>{{city}}</text>
+      <view class="top-banner__city-arrow">
+        <van-icon name="arrow-down" size="20rpx" color="#8f7a71" />
+      </view>
+    </view>
+    <view
+      class="top-banner__capsule-space"
+      style="width: {{capsuleSpaceWidth}}px; height: {{capsuleHeight}}px;"
+    ></view>
+  </view>
+
+  <view class="top-banner__tabs">
+    <block wx:for="{{tabs}}" wx:key="key">
+      <view class="top-banner__tab-shell">
+        <view wx:if="{{item.badge}}" class="top-banner__badge">{{item.badge}}</view>
+        <view
+          class="top-banner__tab {{item.key === activeTabKey ? 'is-active' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="onTabTap"
+        >
+          {{item.label}}
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

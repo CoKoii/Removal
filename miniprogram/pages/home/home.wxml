@@ -1,0 +1,59 @@
+<view class="home-page">
+  <scroll-view class="home" scroll-y enhanced show-scrollbar="{{false}}">
+    <home-top-banner
+      city="{{city}}"
+      tabs="{{serviceTabs}}"
+      activeTabKey="{{activeServiceKey}}"
+      safeTop="{{headerSafeTop}}"
+      capsuleHeight="{{capsuleHeight}}"
+      capsuleSpaceWidth="{{capsuleSpaceWidth}}"
+      bind:tabchange="onServiceChange"
+    />
+
+    <view class="home__content">
+      <view class="home__section">
+        <home-vehicle-card
+          heroWord="{{heroWord}}"
+          heroBadge="{{heroBadge}}"
+          groups="{{vehicleGroups}}"
+          activeGroupKey="{{activeVehicleGroupKey}}"
+          rows="{{vehicleRows}}"
+          moreTransportLabel="{{moreTransportLabel}}"
+          transportTags="{{transportTags}}"
+          bind:groupchange="onVehicleGroupChange"
+          bind:tagtap="onTransportTagTap"
+        />
+      </view>
+
+      <view class="home__section">
+        <home-order-card
+          pickupBadge="{{pickupBadge}}"
+          pickupTitle="{{pickupTitle}}"
+          discountText="{{discountText}}"
+          dropoffPrimaryText="{{dropoffPrimaryText}}"
+          dropoffSecondaryText="{{dropoffSecondaryText}}"
+          viaPointLabel="{{viaPointLabel}}"
+          bind:pickuptap="onPickupTap"
+          bind:entrytap="onOrderEntryTap"
+          bind:viatap="onViaPointTap"
+        />
+      </view>
+
+      <view class="home__section">
+        <home-shortcut-grid items="{{quickActions}}" bind:itemtap="onShortcutTap" />
+      </view>
+
+      <view class="home__section home__section--promo">
+        <home-promo-row cards="{{promoCards}}" bind:cardtap="onPromoTap" />
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="home__bottom-nav">
+    <home-bottom-nav
+      items="{{bottomNavItems}}"
+      activeKey="home"
+      bind:itemtap="onBottomNavTap"
+    />
+  </view>
+</view>
