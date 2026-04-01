@@ -4,6 +4,10 @@ Component({
       type: String,
       value: '装',
     },
+    dropoffBadge: {
+      type: String,
+      value: '卸',
+    },
     pickupTitle: {
       type: String,
       value: '',
@@ -20,23 +24,24 @@ Component({
       type: String,
       value: '',
     },
-    viaPointLabel: {
-      type: String,
-      value: '',
-    },
+  },
+
+  data: {
+    isSwapped: false,
   },
 
   methods: {
-    onPickupTap: function () {
-      this.triggerEvent('pickuptap')
+    onSwapTap: function () {
+      this.setData({
+        isSwapped: !this.data.isSwapped,
+      })
     },
 
-    onEntryTap: function () {
-      this.triggerEvent('entrytap')
-    },
+    onAddressTap: function (event) {
+      var role = event.currentTarget.dataset.role || 'pickup'
+      var eventName = role === 'entry' ? 'entrytap' : 'pickuptap'
 
-    onViaTap: function () {
-      this.triggerEvent('viatap')
+      this.triggerEvent(eventName)
     },
   },
 })

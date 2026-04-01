@@ -1,167 +1,206 @@
 .order-card {
-  border-radius: 36rpx;
+  border-radius: 32rpx;
   background: #ffffff;
-  padding: 28rpx 26rpx 30rpx;
-  box-shadow: 0 14rpx 48rpx rgba(20, 26, 45, 0.08);
+  padding: 24rpx;
+  box-shadow: 0 12rpx 36rpx rgba(20, 26, 45, 0.08);
 }
 
-.order-card__pickup {
-  display: flex;
-  align-items: center;
-}
-
-.order-card__pickup-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 54rpx;
-  height: 54rpx;
-  border-radius: 50%;
-  background: #111827;
-  color: #ffffff;
-  font-size: 28rpx;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.order-card__pickup-title {
-  flex: 1;
-  margin-left: 18rpx;
-  overflow: hidden;
-  color: #111827;
-  font-size: 30rpx;
-  font-weight: 600;
-  line-height: 1.3;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.order-card__pickup-arrow {
-  margin-left: 16rpx;
-  display: flex;
-  align-items: center;
-}
-
-.order-card__entry {
+.order-card__layout {
   display: flex;
   align-items: flex-start;
-  margin-top: 24rpx;
 }
 
-.order-card__timeline {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 54rpx;
-  margin-right: 16rpx;
-  padding-top: 18rpx;
+.order-card__marker-track {
+  position: relative;
+  width: 56rpx;
+  height: 210rpx;
+  margin-right: 18rpx;
   flex-shrink: 0;
 }
 
-.order-card__node {
+.order-card__marker {
+  position: absolute;
+  top: 26rpx;
+  left: 7rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46rpx;
-  height: 46rpx;
-  border-radius: 50%;
+  width: 42rpx;
+  height: 42rpx;
   font-size: 24rpx;
   font-weight: 700;
 }
 
-.order-card__node--switch {
-  border: 2rpx solid #e7ebf2;
-  background: #ffffff;
-  color: #111827;
+.order-card__marker.is-top {
+  transform: translateY(0);
 }
 
-.order-card__node--drop {
-  background: linear-gradient(180deg, #ff8f1e, #ff6b00);
+.order-card__marker.is-bottom {
+  transform: translateY(114rpx);
+}
+
+.order-card__marker--pickup {
+  border-radius: 50%;
+  background: #1f2430;
   color: #ffffff;
 }
 
-.order-card__line {
-  width: 4rpx;
-  height: 46rpx;
-  margin: 8rpx 0;
-  border-radius: 999rpx;
-  background: #edf1f6;
+.order-card__marker--drop {
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ff8f1e, #ff6b00);
+  color: #ffffff;
+  box-shadow: 0 8rpx 16rpx rgba(255, 123, 17, 0.22);
 }
 
-.order-card__input-wrap {
+.order-card__swap {
+  position: absolute;
+  left: 8rpx;
+  top: 86rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 14rpx;
+  background: #f5f7fb;
+  box-shadow: inset 0 0 0 2rpx #edf0f5;
+}
+
+.order-card__swap-icon {
+  transform: rotate(90deg);
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.order-card__swap-icon.is-swapped {
+  transform: rotate(270deg);
+}
+
+.order-card__address-track {
   position: relative;
   flex: 1;
-  padding-top: 14rpx;
+  min-width: 0;
+  height: 210rpx;
+}
+
+.order-card__address-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+}
+
+.order-card__address-item.is-top {
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.order-card__address-item.is-bottom {
+  transform: translateY(114rpx);
+  z-index: 2;
 }
 
 .order-card__discount {
   position: absolute;
-  left: 22rpx;
-  top: 0;
-  z-index: 2;
-  padding: 8rpx 18rpx;
-  border-radius: 18rpx 18rpx 18rpx 8rpx;
+  left: 0;
+  top: 98rpx;
+  z-index: 4;
+  padding: 8rpx 18rpx 10rpx;
+  border-radius: 14rpx 14rpx 14rpx 8rpx;
   background: linear-gradient(90deg, #ffbc3c, #ff7f25);
   color: #ffffff;
-  font-size: 24rpx;
+  box-shadow: 0 8rpx 16rpx rgba(255, 145, 35, 0.18);
+  font-size: 22rpx;
   font-weight: 700;
   line-height: 1;
 }
 
-.order-card__input-shell {
-  padding: 4rpx;
-  border-radius: 34rpx;
-  background: linear-gradient(90deg, #ffa22e, #f14b90);
-}
-
-.order-card__input-core {
+.order-card__pickup-arrow {
+  position: absolute;
+  top: 36rpx;
+  right: 26rpx;
+  z-index: 4;
   display: flex;
   align-items: center;
-  min-height: 112rpx;
-  padding: 34rpx 28rpx 24rpx;
-  border-radius: 30rpx;
+  justify-content: center;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.order-card__address-shell {
+  height: 96rpx;
+  padding: 4rpx;
+  box-sizing: border-box;
+  border-radius: 28rpx;
+  transition:
+    background 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.order-card__address-core {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 26rpx 0 30rpx;
+  box-sizing: border-box;
+  border-radius: 24rpx;
+  transition:
+    background 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.order-card__address-item.is-top .order-card__address-shell {
+  background: transparent;
+}
+
+.order-card__address-item.is-top .order-card__address-core {
+  background: transparent;
+  padding-left: 12rpx;
+  padding-right: 56rpx;
+}
+
+.order-card__address-item.is-bottom .order-card__address-shell {
+  background: linear-gradient(90deg, #ff9a21 0%, #ff5d89 100%);
+}
+
+.order-card__address-item.is-bottom .order-card__address-core {
   background: #ffffff;
 }
 
-.order-card__input-primary {
-  color: #111827;
-  font-size: 30rpx;
+.order-card__pickup-text {
+  overflow: hidden;
+  color: #212632;
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card__drop-text {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.order-card__drop-primary {
+  flex-shrink: 0;
+  color: #202532;
+  font-size: 32rpx;
   font-weight: 700;
   line-height: 1.3;
 }
 
-.order-card__input-secondary {
-  color: #9098a4;
-  font-size: 26rpx;
+.order-card__drop-secondary {
+  margin-left: 8rpx;
+  overflow: hidden;
+  color: #9aa1ab;
+  font-size: 30rpx;
+  font-weight: 500;
   line-height: 1.3;
-}
-
-.order-card__via {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 96rpx;
-  margin-left: 14rpx;
-  padding-top: 22rpx;
-  flex-shrink: 0;
-}
-
-.order-card__via-plus {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48rpx;
-  height: 48rpx;
-  border-radius: 50%;
-  border: 2rpx solid #e8ecf3;
-  background: #ffffff;
-  box-shadow: 0 8rpx 20rpx rgba(17, 24, 39, 0.04);
-}
-
-.order-card__via-label {
-  margin-top: 12rpx;
-  color: #4b5563;
-  font-size: 24rpx;
-  line-height: 1.3;
-  text-align: center;
+  text-overflow: ellipsis;
 }

@@ -29,10 +29,8 @@
             discountText="{{cargo.orderCard.discountText}}"
             dropoffPrimaryText="{{cargo.orderCard.dropoffPrimaryText}}"
             dropoffSecondaryText="{{cargo.orderCard.dropoffSecondaryText}}"
-            viaPointLabel="{{cargo.orderCard.viaPointLabel}}"
             bind:pickuptap="onPickupTap"
             bind:entrytap="onOrderEntryTap"
-            bind:viatap="onViaPointTap"
           />
         </view>
 

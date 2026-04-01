@@ -42,7 +42,6 @@ var homeMock = {
       discountText: '立享8.5折',
       dropoffPrimaryText: '输入卸货地下单',
       dropoffSecondaryText: '（可选跨城）',
-      viaPointLabel: '加途经点',
     },
     quickActions: [
       { key: 'business', label: '企业用车', icon: 'enterprise' },
@@ -128,10 +127,6 @@ Page({
 
   onOrderEntryTap: function () {
     showToast('选择卸货地')
-  },
-
-  onViaPointTap: function () {
-    showToast('添加途经点')
   },
 
   onShortcutTap: function (event) {

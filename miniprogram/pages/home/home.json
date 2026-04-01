@@ -1,5 +1,6 @@
 {
   "navigationStyle": "custom",
+  "disableScroll": true,
   "usingComponents": {
     "home-top-banner": "./components/top-banner/top-banner",
     "home-vehicle-card": "./components/vehicle-card/vehicle-card",
