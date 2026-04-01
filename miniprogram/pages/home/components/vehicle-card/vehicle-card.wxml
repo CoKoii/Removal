@@ -1,6 +1,6 @@
 <view class="vehicle-card">
   <view class="vehicle-card__hero">
-    <view class="vehicle-card__hero-word">{{heroWord}}</view>
+    <view class="vehicle-card__hero-word">拉货</view>
 
     <view class="vehicle-card__illustration">
       <view class="vehicle-card__shadow"></view>
@@ -22,32 +22,18 @@
 
     <view class="vehicle-card__hero-badge">
       <text class="vehicle-card__hero-badge-label">最大</text>
-      <text class="vehicle-card__hero-badge-value">{{heroBadge}}</text>
+      <text class="vehicle-card__hero-badge-value">17米5</text>
     </view>
   </view>
 
-  <view class="vehicle-card__rows">
-    <block wx:for="{{rows}}" wx:key="index" wx:for-item="row">
-      <view class="vehicle-card__row">
-        <block wx:for="{{row}}" wx:key="key" wx:for-item="option">
-          <view class="vehicle-card__option">
-            <text>{{option.label}}</text>
-            <view wx:if="{{option.hasArrow}}" class="vehicle-card__arrow">
-              <van-icon name="arrow-down" size="18rpx" color="#111827" />
-            </view>
-          </view>
-        </block>
-      </view>
-    </block>
-  </view>
-
-  <view wx:if="{{moreTransportLabel}}" class="vehicle-card__more-label">{{moreTransportLabel}}</view>
-
-  <view wx:if="{{transportTags.length}}" class="vehicle-card__tags">
-    <block wx:for="{{transportTags}}" wx:key="key">
-      <view class="vehicle-card__tag" data-key="{{item.key}}" bindtap="onTagTap">
-        <view class="vehicle-card__tag-mark">拼</view>
-        <text>{{item.label}}</text>
+  <view class="vehicle-card__options">
+    <block wx:for="{{items}}" wx:key="key">
+      <view
+        class="vehicle-card__option {{item.key === activeOptionKey ? 'vehicle-card__option--active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onOptionTap"
+      >
+        {{item.label}}
       </view>
     </block>
   </view>

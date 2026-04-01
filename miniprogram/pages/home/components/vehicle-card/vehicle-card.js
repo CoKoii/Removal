@@ -1,31 +1,20 @@
 Component({
   properties: {
-    heroWord: {
-      type: String,
-      value: '跑腿',
-    },
-    heroBadge: {
-      type: String,
-      value: '20公斤',
-    },
-    rows: {
+    items: {
       type: Array,
       value: [],
     },
-    moreTransportLabel: {
+    activeOptionKey: {
       type: String,
       value: '',
-    },
-    transportTags: {
-      type: Array,
-      value: [],
     },
   },
 
   methods: {
-    onTagTap: function (event) {
+    onOptionTap: function (event) {
       var key = event.currentTarget.dataset.key || ''
-      this.triggerEvent('tagtap', { key: key })
+
+      this.triggerEvent('optiontap', { key: key })
     },
   },
 })

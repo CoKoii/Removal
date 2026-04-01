@@ -7,19 +7,24 @@ page {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background: linear-gradient(180deg, #fff4eb 0%, #fff8f3 280rpx, #f5f7fb 920rpx, #f5f7fb 100%);
 }
 
 .home__header {
   flex-shrink: 0;
+  background: transparent;
 }
 
 .home__scroll {
   flex: 1;
   min-height: 0;
+  background: linear-gradient(180deg, #fff8f3 0%, #f5f7fb 720rpx, #f5f7fb 100%);
 }
 
 .home__content {
+  min-height: 100%;
   padding: 8rpx 24rpx 120rpx;
+  box-sizing: border-box;
 }
 
 .home__section {

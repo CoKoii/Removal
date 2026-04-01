@@ -18,15 +18,13 @@
 
   <view class="top-banner__tabs">
     <block wx:for="{{tabs}}" wx:key="key">
-      <view class="top-banner__tab-shell">
-        <view wx:if="{{item.badge}}" class="top-banner__badge">{{item.badge}}</view>
-        <view
-          class="top-banner__tab {{item.key === activeTabKey ? 'is-active' : ''}}"
-          data-key="{{item.key}}"
-          bindtap="onTabTap"
-        >
-          {{item.label}}
-        </view>
+      <view
+        class="top-banner__tab {{item.key === activeTabKey ? 'is-active' : ''}}"
+        data-key="{{item.key}}"
+        data-label="{{item.label}}"
+        bindtap="onTabTap"
+      >
+        {{item.label}}
       </view>
     </block>
   </view>

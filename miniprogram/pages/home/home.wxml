@@ -11,27 +11,25 @@
     />
   </view>
 
-  <scroll-view class="home__scroll" scroll-y enhanced show-scrollbar="{{false}}">
+  <scroll-view class="home__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
     <view class="home__content">
       <block wx:if="{{activeServiceKey === 'cargo'}}">
         <view class="home__section">
           <home-vehicle-card
-            heroWord="{{heroWord}}"
-            heroBadge="{{heroBadge}}"
-            rows="{{vehicleRows}}"
-            moreTransportLabel="{{moreTransportLabel}}"
-            transportTags="{{transportTags}}"
+            items="{{cargo.vehicleOptions}}"
+            activeOptionKey="{{activeCargoOptionKey}}"
+            bind:optiontap="onCargoOptionTap"
           />
         </view>
 
         <view class="home__section">
           <home-order-card
-            pickupBadge="{{pickupBadge}}"
-            pickupTitle="{{pickupTitle}}"
-            discountText="{{discountText}}"
-            dropoffPrimaryText="{{dropoffPrimaryText}}"
-            dropoffSecondaryText="{{dropoffSecondaryText}}"
-            viaPointLabel="{{viaPointLabel}}"
+            pickupBadge="{{cargo.orderCard.pickupBadge}}"
+            pickupTitle="{{cargo.orderCard.pickupTitle}}"
+            discountText="{{cargo.orderCard.discountText}}"
+            dropoffPrimaryText="{{cargo.orderCard.dropoffPrimaryText}}"
+            dropoffSecondaryText="{{cargo.orderCard.dropoffSecondaryText}}"
+            viaPointLabel="{{cargo.orderCard.viaPointLabel}}"
             bind:pickuptap="onPickupTap"
             bind:entrytap="onOrderEntryTap"
             bind:viatap="onViaPointTap"
@@ -39,11 +37,11 @@
         </view>
 
         <view class="home__section">
-          <home-shortcut-grid items="{{quickActions}}" bind:itemtap="onShortcutTap" />
+          <home-shortcut-grid items="{{cargo.quickActions}}" bind:itemtap="onShortcutTap" />
         </view>
 
         <view class="home__section home__section--promo">
-          <home-promo-row cards="{{promoCards}}" bind:cardtap="onPromoTap" />
+          <home-promo-row cards="{{cargo.promoCards}}" bind:cardtap="onPromoTap" />
         </view>
       </block>
 

@@ -29,7 +29,12 @@ Component({
   methods: {
     onTabTap: function (event) {
       var key = event.currentTarget.dataset.key || ''
-      this.triggerEvent('tabchange', { key: key })
+      var label = event.currentTarget.dataset.label || ''
+
+      this.triggerEvent('tabchange', {
+        key: key,
+        label: label,
+      })
     },
   },
 })
