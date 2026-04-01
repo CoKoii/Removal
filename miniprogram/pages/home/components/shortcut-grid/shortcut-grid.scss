@@ -1,33 +1,42 @@
+@use "../../../../styles/variables/index" as *;
+
 .shortcut-grid {
-  border-radius: 36rpx;
-  background: #ffffff;
-  padding: 26rpx 10rpx 14rpx;
-  box-shadow: 0 14rpx 48rpx rgba(20, 26, 45, 0.08);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $padding-card-relaxed $space-10 $space-14;
+  box-shadow: $shadow-card-lg;
 }
 
 .shortcut-grid__row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: $space-4;
+  row-gap: $gap-option;
+  align-items: start;
 }
 
 .shortcut-grid__item {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
+  gap: $gap-stack-regular;
 }
 
 .shortcut-grid__icon-shell {
   position: relative;
-  width: 88rpx;
-  height: 88rpx;
+  width: $size-icon-shortcut;
+  height: $size-icon-shortcut;
 }
 
 .shortcut-grid__label {
-  margin-top: 16rpx;
-  color: #111827;
-  font-size: 28rpx;
-  line-height: 1.2;
+  width: 100%;
+  overflow: hidden;
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  line-height: $line-height-snug;
+  text-align: center;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -35,21 +44,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10rpx;
-  margin-top: 16rpx;
+  gap: $space-10;
+  margin-top: $space-16;
 }
 
 .shortcut-grid__dot {
-  width: 10rpx;
-  height: 10rpx;
-  border-radius: 50%;
-  background: #d6dce6;
+  width: $size-dot;
+  height: $size-dot;
+  border-radius: $radius-round;
+  background: $color-surface-dot;
 }
 
 .shortcut-grid__dot--active {
-  width: 12rpx;
-  height: 12rpx;
-  background: #ff7a18;
+  width: $size-dot-active;
+  height: $size-dot-active;
+  background: $color-surface-accent-strong;
 }
 
 .icon-enterprise,
@@ -58,20 +67,20 @@
 .icon-driver,
 .icon-fuel {
   position: relative;
-  width: 88rpx;
-  height: 88rpx;
+  width: $size-icon-shortcut;
+  height: $size-icon-shortcut;
 }
 
 .icon-enterprise__roof {
   position: absolute;
-  top: 10rpx;
+  top: $space-10;
   left: 22rpx;
   width: 42rpx;
   height: 42rpx;
-  border-top: 6rpx solid #1f2937;
-  border-left: 6rpx solid #1f2937;
+  border-top: $border-width-medium solid $color-surface-dark-strong;
+  border-left: $border-width-medium solid $color-surface-dark-strong;
   transform: rotate(45deg);
-  border-radius: 8rpx 0 0 0;
+  border-radius: $radius-md 0 0 0;
 }
 
 .icon-enterprise__body {
@@ -80,9 +89,9 @@
   bottom: 14rpx;
   width: 50rpx;
   height: 36rpx;
-  border: 6rpx solid #1f2937;
+  border: $border-width-medium solid $color-surface-dark-strong;
   border-top: none;
-  border-radius: 0 0 10rpx 10rpx;
+  border-radius: 0 0 $radius-lg $radius-lg;
 }
 
 .icon-enterprise__accent {
@@ -91,8 +100,8 @@
   bottom: 20rpx;
   width: 16rpx;
   height: 18rpx;
-  border: 6rpx solid #ff7a18;
-  border-radius: 6rpx;
+  border: $border-width-medium solid $color-surface-accent-strong;
+  border-radius: $radius-sm;
 }
 
 .icon-logistics__pole {
@@ -101,7 +110,7 @@
   top: 10rpx;
   width: 0;
   height: 54rpx;
-  border-left: 6rpx solid #1f2937;
+  border-left: $border-width-medium solid $color-surface-dark-strong;
 }
 
 .icon-logistics__handle {
@@ -110,7 +119,7 @@
   top: 10rpx;
   width: 26rpx;
   height: 0;
-  border-top: 6rpx solid #1f2937;
+  border-top: $border-width-medium solid $color-surface-dark-strong;
 }
 
 .icon-logistics__base {
@@ -119,7 +128,7 @@
   bottom: 16rpx;
   width: 34rpx;
   height: 0;
-  border-top: 6rpx solid #1f2937;
+  border-top: $border-width-medium solid $color-surface-dark-strong;
 }
 
 .icon-logistics__box {
@@ -128,8 +137,8 @@
   top: 26rpx;
   width: 28rpx;
   height: 34rpx;
-  border: 6rpx solid #1f2937;
-  border-radius: 6rpx;
+  border: $border-width-medium solid $color-surface-dark-strong;
+  border-radius: $radius-sm;
 }
 
 .icon-logistics__wheel {
@@ -137,8 +146,8 @@
   bottom: 10rpx;
   width: 12rpx;
   height: 12rpx;
-  border-radius: 50%;
-  background: #ff7a18;
+  border-radius: $radius-round;
+  background: $color-surface-accent-strong;
 }
 
 .icon-logistics__wheel--left {
@@ -154,8 +163,8 @@
   top: 16rpx;
   width: 18rpx;
   height: 18rpx;
-  border: 6rpx solid #1f2937;
-  border-radius: 50%;
+  border: $border-width-medium solid $color-surface-dark-strong;
+  border-radius: $radius-round;
 }
 
 .icon-bulky__head--left {
@@ -171,7 +180,7 @@
   top: 36rpx;
   width: 18rpx;
   height: 0;
-  border-top: 6rpx solid #1f2937;
+  border-top: $border-width-medium solid $color-surface-dark-strong;
 }
 
 .icon-bulky__arm--left {
@@ -190,8 +199,8 @@
   top: 36rpx;
   width: 28rpx;
   height: 28rpx;
-  border: 6rpx solid #ff7a18;
-  border-radius: 8rpx;
+  border: $border-width-medium solid $color-surface-accent-strong;
+  border-radius: $radius-md;
 }
 
 .icon-driver__head {
@@ -200,8 +209,8 @@
   left: 30rpx;
   width: 20rpx;
   height: 20rpx;
-  border: 6rpx solid #1f2937;
-  border-radius: 50%;
+  border: $border-width-medium solid $color-surface-dark-strong;
+  border-radius: $radius-round;
 }
 
 .icon-driver__body {
@@ -210,7 +219,7 @@
   left: 20rpx;
   width: 40rpx;
   height: 20rpx;
-  border: 6rpx solid #1f2937;
+  border: $border-width-medium solid $color-surface-dark-strong;
   border-top-left-radius: 18rpx;
   border-top-right-radius: 18rpx;
   border-bottom: none;
@@ -222,8 +231,8 @@
   bottom: 10rpx;
   width: 34rpx;
   height: 34rpx;
-  border: 6rpx solid #1f2937;
-  border-radius: 50%;
+  border: $border-width-medium solid $color-surface-dark-strong;
+  border-radius: $radius-round;
 }
 
 .icon-driver__wheel-core {
@@ -232,8 +241,8 @@
   bottom: 18rpx;
   width: 18rpx;
   height: 18rpx;
-  border-radius: 50%;
-  background: #ff7a18;
+  border-radius: $radius-round;
+  background: $color-surface-accent-strong;
 }
 
 .icon-fuel__pump {
@@ -242,8 +251,8 @@
   left: 26rpx;
   width: 30rpx;
   height: 42rpx;
-  border: 6rpx solid #1f2937;
-  border-radius: 8rpx;
+  border: $border-width-medium solid $color-surface-dark-strong;
+  border-radius: $radius-md;
 }
 
 .icon-fuel__screen {
@@ -252,8 +261,8 @@
   left: 34rpx;
   width: 14rpx;
   height: 10rpx;
-  border: 4rpx solid #ff7a18;
-  border-radius: 4rpx;
+  border: $border-width-regular solid $color-surface-accent-strong;
+  border-radius: $radius-xs;
 }
 
 .icon-fuel__hose {
@@ -262,9 +271,9 @@
   right: 20rpx;
   width: 22rpx;
   height: 30rpx;
-  border-top: 6rpx solid #1f2937;
-  border-right: 6rpx solid #1f2937;
-  border-radius: 0 12rpx 0 0;
+  border-top: $border-width-medium solid $color-surface-dark-strong;
+  border-right: $border-width-medium solid $color-surface-dark-strong;
+  border-radius: 0 $radius-xl 0 0;
 }
 
 .icon-fuel__accent {
@@ -273,6 +282,6 @@
   bottom: 14rpx;
   width: 12rpx;
   height: 18rpx;
-  border-radius: 4rpx;
-  background: #ff7a18;
+  border-radius: $radius-xs;
+  background: $color-surface-accent-strong;
 }

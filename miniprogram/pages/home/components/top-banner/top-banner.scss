@@ -1,38 +1,41 @@
+@use "../../../../styles/variables/index" as *;
+
 .top-banner {
   position: relative;
   overflow: hidden;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
+  padding-right: $padding-banner-x;
+  padding-bottom: $space-8;
+  padding-left: $padding-banner-x;
 }
 
 .top-banner__glow {
   position: absolute;
-  border-radius: 999rpx;
+  border-radius: $radius-pill;
   opacity: 0.85;
 }
 
 .top-banner__glow--left {
-  top: 20rpx;
-  left: -40rpx;
-  width: 320rpx;
-  height: 220rpx;
-  background: rgba(255, 230, 214, 0.95);
+  top: $offset-banner-glow-left-top;
+  left: $offset-banner-glow-left-inline;
+  width: $size-banner-glow-lg-width;
+  height: $size-banner-glow-lg-height;
+  background: $color-glow-left;
 }
 
 .top-banner__glow--center {
   top: 0;
-  left: 240rpx;
-  width: 260rpx;
-  height: 220rpx;
-  background: rgba(255, 243, 221, 0.92);
+  left: $offset-banner-glow-center-left;
+  width: $size-banner-glow-md-width;
+  height: $size-banner-glow-md-height;
+  background: $color-glow-center;
 }
 
 .top-banner__glow--right {
-  top: 44rpx;
-  right: -40rpx;
-  width: 260rpx;
-  height: 180rpx;
-  background: rgba(255, 235, 221, 0.9);
+  top: $offset-banner-glow-right-top;
+  right: $offset-banner-glow-right-inline;
+  width: $size-banner-glow-md-width;
+  height: $size-banner-glow-sm-height;
+  background: $color-glow-right;
 }
 
 .top-banner__head {
@@ -41,25 +44,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: $gap-card;
 }
 
 .top-banner__city {
   display: inline-flex;
   align-items: center;
-  color: #4b342a;
+  min-width: 0;
+  color: $color-text-banner;
 }
 
 .top-banner__city-text {
-  font-size: 30rpx;
-  font-weight: 400;
-  line-height: 1.2;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-snug;
 }
 
 .top-banner__city-arrow {
-  margin-left: 8rpx;
+  margin-left: $space-8;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .top-banner__capsule-space {
@@ -69,27 +75,33 @@
 .top-banner__tabs {
   position: relative;
   z-index: 1;
-  display: flex;
+  margin-top: $space-22;
+  white-space: nowrap;
+}
+
+.top-banner__tabs-track {
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 22rpx;
+  min-width: 100%;
 }
 
 .top-banner__tab {
-  display: flex;
+  display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  padding: 20rpx 25rpx;
-  border-radius: 36rpx;
-  color: #151515;
-  font-size: 30rpx;
-  font-weight: 900;
-  line-height: 1;
+  min-height: $size-banner-tab-min-height;
+  padding: $padding-tab-y $padding-tab-x;
+  border-radius: $radius-card-lg;
+  color: $color-text-primary-strong;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-black;
+  line-height: $line-height-display;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .top-banner__tab.is-active {
-  background: #ff7a00;
-  color: #ffffff;
+  background: $color-surface-accent;
+  color: $color-text-inverse;
 }

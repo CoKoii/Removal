@@ -1,7 +1,9 @@
+@use "./styles/variables/index" as *;
+
 page {
-  background: #f7f8fa;
-  color: #111827;
-  font-family: "PingFang SC", "Helvetica Neue", sans-serif;
+  background: $color-surface-page;
+  color: $color-text-primary;
+  font-family: $font-family-base;
 }
 
 view,

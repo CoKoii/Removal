@@ -1,49 +1,54 @@
+@use "../../styles/variables/index" as *;
+
 page {
-  height: 100vh;
+  height: $size-screen-height;
   overflow: hidden;
-  background: linear-gradient(180deg, #fff4eb 0%, #fff8f3 280rpx, #f5f7fb 920rpx, #f5f7fb 100%);
+  background: $gradient-page;
 }
 
 .home-page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: $size-screen-height;
   overflow: hidden;
-  background: linear-gradient(180deg, #fff4eb 0%, #fff8f3 280rpx, #f5f7fb 920rpx, #f5f7fb 100%);
+  background: $gradient-page;
 }
 
 .home__header {
-  flex-shrink: 0;
+  flex: 0 0 auto;
   background: transparent;
 }
 
 .home__scroll {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
-  background: linear-gradient(180deg, #fff8f3 0%, #f5f7fb 720rpx, #f5f7fb 100%);
+  background: $gradient-home-scroll;
 }
 
 .home__content {
   min-height: 100%;
-  padding: 8rpx 24rpx 120rpx;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-section;
+  padding: $space-8 $padding-page-x $padding-page-bottom;
   box-sizing: border-box;
 }
 
 .home__section {
-  margin-top: 22rpx;
+  min-width: 0;
 }
 
 .home__section--promo {
-  padding-bottom: 32rpx;
+  padding-bottom: $space-32;
 }
 
 .home__placeholder {
-  padding: 40rpx 8rpx 0;
+  padding: $space-40 $space-8 0;
 }
 
 .home__placeholder-title {
-  color: #111827;
-  font-size: 42rpx;
-  font-weight: 500;
-  line-height: 1.2;
+  color: $color-text-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
 }

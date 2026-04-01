@@ -1,58 +1,71 @@
+@use "../../../../styles/variables/index" as *;
+
 .vehicle-card {
   overflow: hidden;
-  border-radius: 36rpx;
-  background: #ffffff;
-  padding: 26rpx 22rpx 32rpx;
-  box-shadow: 0 14rpx 48rpx rgba(20, 26, 45, 0.08);
+  display: flex;
+  flex-direction: column;
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $padding-card-relaxed $padding-card-tight $padding-card-bottom-relaxed;
+  box-shadow: $shadow-card-lg;
 }
 
 .vehicle-card__hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $gap-card;
+  min-height: $size-vehicle-hero-height;
+}
+
+.vehicle-card__hero-main {
   position: relative;
-  height: 286rpx;
-  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+  min-height: $size-vehicle-hero-height;
 }
 
 .vehicle-card__hero-word {
   position: absolute;
-  top: 56rpx;
-  left: 110rpx;
-  color: rgba(17, 24, 39, 0.08);
-  font-size: 108rpx;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 6rpx;
+  top: $offset-vehicle-word-top;
+  left: $offset-vehicle-word-left;
+  color: $color-overlay-text-decor;
+  font-size: $font-size-display;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+  letter-spacing: $letter-spacing-wide;
 }
 
 .vehicle-card__illustration {
   position: absolute;
-  left: 255rpx;
-  top: 42rpx;
-  width: 268rpx;
-  height: 190rpx;
+  right: 0;
+  bottom: $space-4;
+  width: $size-vehicle-illustration-width;
+  height: $size-vehicle-illustration-height;
 }
 
 .vehicle-card__shadow {
   position: absolute;
-  bottom: 6rpx;
-  left: 28rpx;
+  bottom: $space-6;
+  left: $space-28;
   width: 176rpx;
   height: 18rpx;
-  border-radius: 999rpx;
-  background: rgba(0, 0, 0, 0.12);
+  border-radius: $radius-pill;
+  background: $color-overlay-soft;
 }
 
 .vehicle-card__wheel {
   position: absolute;
-  bottom: 14rpx;
+  bottom: $space-14;
   width: 42rpx;
   height: 42rpx;
-  border: 6rpx solid #323232;
-  border-radius: 50%;
-  background: #ffffff;
+  border: $border-width-medium solid $color-surface-dark-mid;
+  border-radius: $radius-round;
+  background: $color-surface-card;
 }
 
 .vehicle-card__wheel--left {
-  left: 48rpx;
+  left: $space-48;
 }
 
 .vehicle-card__wheel--right {
@@ -61,23 +74,23 @@
 
 .vehicle-card__body {
   position: absolute;
-  bottom: 34rpx;
+  bottom: $space-34;
   left: 62rpx;
   width: 132rpx;
   height: 54rpx;
   border-radius: 44rpx 48rpx 26rpx 30rpx;
-  background: linear-gradient(180deg, #ff9932, #f66c0f);
+  background: $gradient-vehicle-body;
   transform: skewX(-8deg);
 }
 
 .vehicle-card__front {
   position: absolute;
-  bottom: 56rpx;
+  bottom: $space-56;
   left: 178rpx;
   width: 48rpx;
   height: 72rpx;
-  border-top: 10rpx solid #ff7b12;
-  border-right: 10rpx solid #ff7b12;
+  border-top: $border-width-bold solid $color-surface-accent-strong;
+  border-right: $border-width-bold solid $color-surface-accent-strong;
   border-radius: 0 28rpx 0 0;
   transform: skewX(-12deg);
 }
@@ -88,8 +101,8 @@
   bottom: 92rpx;
   width: 56rpx;
   height: 16rpx;
-  border-radius: 14rpx;
-  background: #1f2937;
+  border-radius: $radius-2xl;
+  background: $color-surface-dark-strong;
 }
 
 .vehicle-card__footrest {
@@ -98,8 +111,8 @@
   bottom: 54rpx;
   width: 66rpx;
   height: 10rpx;
-  border-radius: 10rpx;
-  background: #475569;
+  border-radius: $radius-lg;
+  background: $color-surface-neutral;
 }
 
 .vehicle-card__box {
@@ -108,9 +121,9 @@
   bottom: 86rpx;
   width: 66rpx;
   height: 50rpx;
-  border-radius: 10rpx;
-  background: linear-gradient(180deg, #2d3748, #111827);
-  border: 4rpx solid #ff8d20;
+  border: $border-width-regular solid $color-surface-accent-alt;
+  border-radius: $radius-lg;
+  background: $gradient-vehicle-box;
 }
 
 .vehicle-card__box-line {
@@ -119,8 +132,8 @@
   bottom: 108rpx;
   width: 36rpx;
   height: 4rpx;
-  background: #fcd34d;
-  border-radius: 999rpx;
+  border-radius: $radius-pill;
+  background: $color-surface-gold;
 }
 
 .vehicle-card__handle {
@@ -129,8 +142,8 @@
   bottom: 114rpx;
   width: 24rpx;
   height: 44rpx;
-  border-top: 6rpx solid #334155;
-  border-left: 6rpx solid #334155;
+  border-top: $border-width-medium solid $color-surface-dark-slate;
+  border-left: $border-width-medium solid $color-surface-dark-slate;
   border-radius: 20rpx 0 0 0;
   transform: skewX(-8deg);
 }
@@ -141,8 +154,8 @@
   bottom: 134rpx;
   width: 28rpx;
   height: 28rpx;
-  border-radius: 50%;
-  background: #ff8b21;
+  border-radius: $radius-round;
+  background: $color-surface-accent-bright;
 }
 
 .vehicle-card__helmet {
@@ -151,8 +164,8 @@
   bottom: 144rpx;
   width: 30rpx;
   height: 16rpx;
-  border-radius: 16rpx 16rpx 4rpx 4rpx;
-  background: linear-gradient(180deg, #fff3e6, #ffd6b0);
+  border-radius: $radius-3xl $radius-3xl $radius-xs $radius-xs;
+  background: $gradient-vehicle-helmet;
   transform: rotate(-8deg);
 }
 
@@ -163,7 +176,7 @@
   width: 40rpx;
   height: 44rpx;
   border-radius: 16rpx 16rpx 18rpx 18rpx;
-  background: linear-gradient(180deg, #ff8d22, #f46d0f);
+  background: $gradient-vehicle-rider;
   transform: rotate(10deg);
 }
 
@@ -173,8 +186,8 @@
   bottom: 108rpx;
   width: 42rpx;
   height: 12rpx;
-  border-radius: 999rpx;
-  background: #ff8d22;
+  border-radius: $radius-pill;
+  background: $color-surface-accent-rider;
   transform: rotate(-16deg);
 }
 
@@ -184,36 +197,35 @@
   bottom: 68rpx;
   width: 54rpx;
   height: 18rpx;
-  border-radius: 999rpx;
-  background: #1f2937;
+  border-radius: $radius-pill;
+  background: $color-surface-dark-strong;
   transform: rotate(20deg);
 }
 
 .vehicle-card__hero-badge {
-  position: absolute;
-  top: 54rpx;
-  right: 34rpx;
   display: flex;
+  flex: 0 0 $size-vehicle-badge;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 124rpx;
-  height: 124rpx;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #fff7d6, #ffe9a3);
-  color: #2d241a;
+  width: $size-vehicle-badge;
+  height: $size-vehicle-badge;
+  margin-top: $offset-vehicle-badge-top;
+  border-radius: $radius-round;
+  background: $gradient-badge;
+  color: $color-text-badge;
 }
 
 .vehicle-card__hero-badge-label {
-  font-size: 22rpx;
-  line-height: 1;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
 }
 
 .vehicle-card__hero-badge-value {
-  margin-top: 10rpx;
-  font-size: 28rpx;
-  font-weight: 700;
-  line-height: 1.15;
+  margin-top: $space-10;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-compact;
   text-align: center;
 }
 
@@ -221,27 +233,27 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  row-gap: 12rpx;
+  row-gap: $gap-option;
 }
 
 .vehicle-card__option {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 56rpx;
-  padding: 8rpx 14rpx;
-  border: 2rpx solid transparent;
-  border-radius: 999rpx;
+  min-height: $size-vehicle-option-min-height;
+  padding: $padding-chip-y $padding-chip-x;
+  border: $border-width-hairline solid transparent;
+  border-radius: $radius-pill;
   box-sizing: border-box;
   background: transparent;
-  color: #121212;
-  font-size: 28rpx;
-  line-height: 1.25;
-  font-weight: 400;
+  color: $color-text-neutral-strong;
+  font-size: $font-size-md;
+  line-height: $line-height-regular;
+  font-weight: $font-weight-regular;
 }
 
 .vehicle-card__option--active {
-  border-color: #f6d3b4;
-  background: #fff7f0;
-  color: #f07b1a;
+  border-color: $color-border-accent-soft;
+  background: $color-surface-card-soft;
+  color: $color-text-accent;
 }

@@ -1,23 +1,25 @@
 <view class="vehicle-card">
   <view class="vehicle-card__hero">
-    <view class="vehicle-card__hero-word">拉货</view>
+    <view class="vehicle-card__hero-main">
+      <view class="vehicle-card__hero-word">拉货</view>
 
-    <view class="vehicle-card__illustration">
-      <view class="vehicle-card__shadow"></view>
-      <view class="vehicle-card__wheel vehicle-card__wheel--left"></view>
-      <view class="vehicle-card__wheel vehicle-card__wheel--right"></view>
-      <view class="vehicle-card__body"></view>
-      <view class="vehicle-card__front"></view>
-      <view class="vehicle-card__seat"></view>
-      <view class="vehicle-card__footrest"></view>
-      <view class="vehicle-card__box"></view>
-      <view class="vehicle-card__box-line"></view>
-      <view class="vehicle-card__handle"></view>
-      <view class="vehicle-card__rider-head"></view>
-      <view class="vehicle-card__helmet"></view>
-      <view class="vehicle-card__rider-body"></view>
-      <view class="vehicle-card__rider-arm"></view>
-      <view class="vehicle-card__rider-leg"></view>
+      <view class="vehicle-card__illustration">
+        <view class="vehicle-card__shadow"></view>
+        <view class="vehicle-card__wheel vehicle-card__wheel--left"></view>
+        <view class="vehicle-card__wheel vehicle-card__wheel--right"></view>
+        <view class="vehicle-card__body"></view>
+        <view class="vehicle-card__front"></view>
+        <view class="vehicle-card__seat"></view>
+        <view class="vehicle-card__footrest"></view>
+        <view class="vehicle-card__box"></view>
+        <view class="vehicle-card__box-line"></view>
+        <view class="vehicle-card__handle"></view>
+        <view class="vehicle-card__rider-head"></view>
+        <view class="vehicle-card__helmet"></view>
+        <view class="vehicle-card__rider-body"></view>
+        <view class="vehicle-card__rider-arm"></view>
+        <view class="vehicle-card__rider-leg"></view>
+      </view>
     </view>
 
     <view class="vehicle-card__hero-badge">
