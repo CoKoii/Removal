@@ -5,7 +5,7 @@
 
   <view class="top-banner__head" style="min-height: {{capsuleHeight}}px;">
     <view class="top-banner__city">
-      <text>{{city}}</text>
+      <text class="top-banner__city-text">{{city}}</text>
       <view class="top-banner__city-arrow">
         <van-icon name="arrow-down" size="20rpx" color="#8f7a71" />
       </view>

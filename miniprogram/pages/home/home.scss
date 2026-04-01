@@ -3,17 +3,23 @@ page {
 }
 
 .home-page {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
 
-.home {
-  height: 100vh;
+.home__header {
+  flex-shrink: 0;
+}
+
+.home__scroll {
+  flex: 1;
+  min-height: 0;
 }
 
 .home__content {
-  padding: 8rpx 24rpx 300rpx;
+  padding: 8rpx 24rpx 120rpx;
 }
 
 .home__section {
@@ -24,10 +30,13 @@ page {
   padding-bottom: 32rpx;
 }
 
-.home__bottom-nav {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
+.home__placeholder {
+  padding: 40rpx 8rpx 0;
+}
+
+.home__placeholder-title {
+  color: #111827;
+  font-size: 42rpx;
+  font-weight: 500;
+  line-height: 1.2;
 }
