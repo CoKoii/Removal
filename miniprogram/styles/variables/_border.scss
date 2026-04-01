@@ -1,25 +1,14 @@
-$border-width-hairline: 2rpx;
-$border-width-regular: 4rpx;
-$border-width-medium: 6rpx;
-$border-width-bold: 10rpx;
+$border-thin: 2rpx;
+$border-base: 4rpx;
+$border-strong: 6rpx;
+$border-heavy: 10rpx;
 
 $radius-xs: 4rpx;
-$radius-sm: 6rpx;
-$radius-md: 8rpx;
-$radius-lg: 10rpx;
-$radius-xl: 12rpx;
-$radius-2xl: 14rpx;
-$radius-3xl: 16rpx;
-$radius-4xl: 18rpx;
-$radius-5xl: 20rpx;
-$radius-6xl: 24rpx;
-$radius-7xl: 28rpx;
-$radius-8xl: 30rpx;
-$radius-9xl: 32rpx;
-$radius-10xl: 36rpx;
+$radius-sm: 8rpx;
+$radius-md: 12rpx;
+$radius-lg: 16rpx;
+$radius-card-sm: 30rpx;
+$radius-card-md: 32rpx;
+$radius-card-lg: 36rpx;
 $radius-pill: 999rpx;
 $radius-round: 50%;
-
-$radius-card-lg: $radius-10xl;
-$radius-card-md: $radius-9xl;
-$radius-card-sm: $radius-8xl;

@@ -6,7 +6,7 @@
   flex-direction: column;
   border-radius: $radius-card-lg;
   background: $color-surface-card;
-  padding: $padding-card-relaxed $padding-card-tight $padding-card-bottom-relaxed;
+  padding: $space-26 $space-22 $space-32;
   box-shadow: $shadow-card-lg;
 }
 
@@ -14,22 +14,22 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: $gap-card;
-  min-height: $size-vehicle-hero-height;
+  gap: $space-18;
+  min-height: 286rpx;
 }
 
 .vehicle-card__hero-main {
   position: relative;
   flex: 1;
   min-width: 0;
-  min-height: $size-vehicle-hero-height;
+  min-height: 286rpx;
 }
 
 .vehicle-card__hero-word {
   position: absolute;
-  top: $offset-vehicle-word-top;
-  left: $offset-vehicle-word-left;
-  color: $color-overlay-text-decor;
+  top: 56rpx;
+  left: 110rpx;
+  color: rgba(17, 24, 39, 0.08);
   font-size: $font-size-display;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -40,32 +40,32 @@
   position: absolute;
   right: 0;
   bottom: $space-4;
-  width: $size-vehicle-illustration-width;
-  height: $size-vehicle-illustration-height;
+  width: 268rpx;
+  height: 190rpx;
 }
 
 .vehicle-card__shadow {
   position: absolute;
-  bottom: $space-6;
-  left: $space-28;
+  bottom: 6rpx;
+  left: 28rpx;
   width: 176rpx;
   height: 18rpx;
   border-radius: $radius-pill;
-  background: $color-overlay-soft;
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .vehicle-card__wheel {
   position: absolute;
-  bottom: $space-14;
+  bottom: 14rpx;
   width: 42rpx;
   height: 42rpx;
-  border: $border-width-medium solid $color-surface-dark-mid;
+  border: $border-strong solid #323232;
   border-radius: $radius-round;
   background: $color-surface-card;
 }
 
 .vehicle-card__wheel--left {
-  left: $space-48;
+  left: 48rpx;
 }
 
 .vehicle-card__wheel--right {
@@ -74,23 +74,23 @@
 
 .vehicle-card__body {
   position: absolute;
-  bottom: $space-34;
+  bottom: 34rpx;
   left: 62rpx;
   width: 132rpx;
   height: 54rpx;
   border-radius: 44rpx 48rpx 26rpx 30rpx;
-  background: $gradient-vehicle-body;
+  background: linear-gradient(180deg, #ff9932, #f66c0f);
   transform: skewX(-8deg);
 }
 
 .vehicle-card__front {
   position: absolute;
-  bottom: $space-56;
+  bottom: 56rpx;
   left: 178rpx;
   width: 48rpx;
   height: 72rpx;
-  border-top: $border-width-bold solid $color-surface-accent-strong;
-  border-right: $border-width-bold solid $color-surface-accent-strong;
+  border-top: $border-heavy solid $color-surface-accent;
+  border-right: $border-heavy solid $color-surface-accent;
   border-radius: 0 28rpx 0 0;
   transform: skewX(-12deg);
 }
@@ -101,8 +101,8 @@
   bottom: 92rpx;
   width: 56rpx;
   height: 16rpx;
-  border-radius: $radius-2xl;
-  background: $color-surface-dark-strong;
+  border-radius: 14rpx;
+  background: $color-surface-dark;
 }
 
 .vehicle-card__footrest {
@@ -111,8 +111,8 @@
   bottom: 54rpx;
   width: 66rpx;
   height: 10rpx;
-  border-radius: $radius-lg;
-  background: $color-surface-neutral;
+  border-radius: 10rpx;
+  background: #475569;
 }
 
 .vehicle-card__box {
@@ -121,9 +121,9 @@
   bottom: 86rpx;
   width: 66rpx;
   height: 50rpx;
-  border: $border-width-regular solid $color-surface-accent-alt;
-  border-radius: $radius-lg;
-  background: $gradient-vehicle-box;
+  border: $border-base solid #ff8d20;
+  border-radius: 10rpx;
+  background: linear-gradient(180deg, #2d3748, #111827);
 }
 
 .vehicle-card__box-line {
@@ -133,7 +133,7 @@
   width: 36rpx;
   height: 4rpx;
   border-radius: $radius-pill;
-  background: $color-surface-gold;
+  background: #fcd34d;
 }
 
 .vehicle-card__handle {
@@ -142,8 +142,8 @@
   bottom: 114rpx;
   width: 24rpx;
   height: 44rpx;
-  border-top: $border-width-medium solid $color-surface-dark-slate;
-  border-left: $border-width-medium solid $color-surface-dark-slate;
+  border-top: $border-strong solid #334155;
+  border-left: $border-strong solid #334155;
   border-radius: 20rpx 0 0 0;
   transform: skewX(-8deg);
 }
@@ -155,7 +155,7 @@
   width: 28rpx;
   height: 28rpx;
   border-radius: $radius-round;
-  background: $color-surface-accent-bright;
+  background: #ff8b21;
 }
 
 .vehicle-card__helmet {
@@ -164,8 +164,8 @@
   bottom: 144rpx;
   width: 30rpx;
   height: 16rpx;
-  border-radius: $radius-3xl $radius-3xl $radius-xs $radius-xs;
-  background: $gradient-vehicle-helmet;
+  border-radius: $radius-lg $radius-lg $radius-xs $radius-xs;
+  background: linear-gradient(180deg, #fff3e6, #ffd6b0);
   transform: rotate(-8deg);
 }
 
@@ -176,7 +176,7 @@
   width: 40rpx;
   height: 44rpx;
   border-radius: 16rpx 16rpx 18rpx 18rpx;
-  background: $gradient-vehicle-rider;
+  background: linear-gradient(180deg, #ff8d22, #f46d0f);
   transform: rotate(10deg);
 }
 
@@ -187,7 +187,7 @@
   width: 42rpx;
   height: 12rpx;
   border-radius: $radius-pill;
-  background: $color-surface-accent-rider;
+  background: #ff8d22;
   transform: rotate(-16deg);
 }
 
@@ -198,22 +198,22 @@
   width: 54rpx;
   height: 18rpx;
   border-radius: $radius-pill;
-  background: $color-surface-dark-strong;
+  background: $color-surface-dark;
   transform: rotate(20deg);
 }
 
 .vehicle-card__hero-badge {
   display: flex;
-  flex: 0 0 $size-vehicle-badge;
+  flex: 0 0 124rpx;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: $size-vehicle-badge;
-  height: $size-vehicle-badge;
-  margin-top: $offset-vehicle-badge-top;
+  width: 124rpx;
+  height: 124rpx;
+  margin-top: 54rpx;
   border-radius: $radius-round;
-  background: $gradient-badge;
-  color: $color-text-badge;
+  background: linear-gradient(180deg, #fff7d6, #ffe9a3);
+  color: $color-text-banner;
 }
 
 .vehicle-card__hero-badge-label {
@@ -233,27 +233,27 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  row-gap: $gap-option;
+  row-gap: $space-12;
 }
 
 .vehicle-card__option {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: $size-vehicle-option-min-height;
-  padding: $padding-chip-y $padding-chip-x;
-  border: $border-width-hairline solid transparent;
+  min-height: 56rpx;
+  padding: $space-8 $space-14;
+  border: $border-thin solid transparent;
   border-radius: $radius-pill;
   box-sizing: border-box;
   background: transparent;
-  color: $color-text-neutral-strong;
+  color: $color-text-primary;
   font-size: $font-size-md;
   line-height: $line-height-regular;
   font-weight: $font-weight-regular;
 }
 
 .vehicle-card__option--active {
-  border-color: $color-border-accent-soft;
+  border-color: $color-surface-accent-soft;
   background: $color-surface-card-soft;
   color: $color-text-accent;
 }

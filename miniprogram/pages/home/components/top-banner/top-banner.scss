@@ -3,9 +3,9 @@
 .top-banner {
   position: relative;
   overflow: hidden;
-  padding-right: $padding-banner-x;
+  padding-right: $space-30;
   padding-bottom: $space-8;
-  padding-left: $padding-banner-x;
+  padding-left: $space-30;
 }
 
 .top-banner__glow {
@@ -15,27 +15,27 @@
 }
 
 .top-banner__glow--left {
-  top: $offset-banner-glow-left-top;
-  left: $offset-banner-glow-left-inline;
-  width: $size-banner-glow-lg-width;
-  height: $size-banner-glow-lg-height;
-  background: $color-glow-left;
+  top: 20rpx;
+  left: -40rpx;
+  width: 320rpx;
+  height: 220rpx;
+  background: rgba(255, 230, 214, 0.95);
 }
 
 .top-banner__glow--center {
   top: 0;
-  left: $offset-banner-glow-center-left;
-  width: $size-banner-glow-md-width;
-  height: $size-banner-glow-md-height;
-  background: $color-glow-center;
+  left: 240rpx;
+  width: 260rpx;
+  height: 220rpx;
+  background: rgba(255, 243, 221, 0.92);
 }
 
 .top-banner__glow--right {
-  top: $offset-banner-glow-right-top;
-  right: $offset-banner-glow-right-inline;
-  width: $size-banner-glow-md-width;
-  height: $size-banner-glow-sm-height;
-  background: $color-glow-right;
+  top: 44rpx;
+  right: -40rpx;
+  width: 260rpx;
+  height: 180rpx;
+  background: rgba(255, 235, 221, 0.9);
 }
 
 .top-banner__head {
@@ -44,7 +44,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $gap-card;
+  gap: $space-18;
 }
 
 .top-banner__city {
@@ -82,7 +82,9 @@
 .top-banner__tabs-track {
   display: inline-flex;
   align-items: center;
+  gap: $space-8;
   min-width: 100%;
+  padding-right: $space-24;
 }
 
 .top-banner__tab {
@@ -90,10 +92,10 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  min-height: $size-banner-tab-min-height;
-  padding: $padding-tab-y $padding-tab-x;
+  min-height: 70rpx;
+  padding: $space-20 $space-24;
   border-radius: $radius-card-lg;
-  color: $color-text-primary-strong;
+  color: $color-text-primary;
   font-size: $font-size-lg;
   font-weight: $font-weight-black;
   line-height: $line-height-display;

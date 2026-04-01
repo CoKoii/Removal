@@ -3,7 +3,7 @@
 .order-card {
   border-radius: $radius-card-md;
   background: $color-surface-card;
-  padding: $padding-card;
+  padding: $space-24;
   box-shadow: $shadow-card-md;
 }
 
@@ -11,25 +11,25 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: flex-start;
-  column-gap: $gap-inline-loose;
+  column-gap: $space-18;
 }
 
 .order-card__marker-track {
   position: relative;
-  width: $size-order-marker-track-width;
-  height: $size-order-track-height;
+  width: 56rpx;
+  height: 210rpx;
   flex-shrink: 0;
 }
 
 .order-card__marker {
   position: absolute;
-  top: $offset-order-marker-top;
-  left: $space-7;
+  top: 26rpx;
+  left: 7rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $size-order-marker;
-  height: $size-order-marker;
+  width: 42rpx;
+  height: 42rpx;
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
 }
@@ -39,7 +39,7 @@
 }
 
 .order-card__marker.is-bottom {
-  transform: translateY($offset-order-stack);
+  transform: translateY(114rpx);
 }
 
 .order-card__marker--pickup {
@@ -50,22 +50,22 @@
 
 .order-card__marker--drop {
   border-radius: $radius-round;
-  background: $gradient-drop-marker;
+  background: linear-gradient(180deg, #ff8f1e, #ff6b00);
   color: $color-text-inverse;
-  box-shadow: $shadow-accent-md;
+  box-shadow: $shadow-accent;
 }
 
 .order-card__swap {
   position: absolute;
-  top: $offset-order-swap-top;
+  top: 86rpx;
   left: $space-8;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $size-order-swap;
-  height: $size-order-swap;
-  border-radius: $radius-2xl;
-  background: $color-surface-card-muted;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 14rpx;
+  background: $color-surface-muted;
   box-shadow: $shadow-inset-card;
 }
 
@@ -82,7 +82,7 @@
   position: relative;
   flex: 1;
   min-width: 0;
-  height: $size-order-track-height;
+  height: 210rpx;
 }
 
 .order-card__address-item {
@@ -101,20 +101,20 @@
 }
 
 .order-card__address-item.is-bottom {
-  transform: translateY($offset-order-stack);
+  transform: translateY(114rpx);
   z-index: 2;
 }
 
 .order-card__discount {
   position: absolute;
   left: 0;
-  top: $offset-order-discount-top;
+  top: 98rpx;
   z-index: 4;
   padding: $space-8 $space-18 $space-10;
-  border-radius: $radius-2xl $radius-2xl $radius-2xl $radius-sm;
-  background: $gradient-discount;
+  border-radius: 14rpx 14rpx 14rpx $radius-sm;
+  background: linear-gradient(90deg, #ffbc3c, #ff7f25);
   color: $color-text-inverse;
-  box-shadow: $shadow-accent-sm;
+  box-shadow: $shadow-accent-soft;
   font-size: $font-size-2xs;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -122,21 +122,21 @@
 
 .order-card__pickup-arrow {
   position: absolute;
-  top: $offset-order-arrow-top;
-  right: $offset-order-arrow-right;
+  top: 36rpx;
+  right: 26rpx;
   z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $size-order-arrow;
-  height: $size-order-arrow;
+  width: 24rpx;
+  height: 24rpx;
 }
 
 .order-card__address-shell {
-  height: $size-order-address;
+  height: 96rpx;
   padding: $space-4;
   box-sizing: border-box;
-  border-radius: $radius-7xl;
+  border-radius: 28rpx;
   transition:
     background $duration-base $easing-emphasized,
     border-radius $duration-base $easing-emphasized;
@@ -148,7 +148,7 @@
   height: 100%;
   padding: 0 $space-26 0 $space-30;
   box-sizing: border-box;
-  border-radius: $radius-6xl;
+  border-radius: 24rpx;
   transition:
     background $duration-base $easing-emphasized,
     padding $duration-base $easing-emphasized;
@@ -161,11 +161,11 @@
 .order-card__address-item.is-top .order-card__address-core {
   background: transparent;
   padding-left: $space-12;
-  padding-right: $size-order-marker-track-width;
+  padding-right: 56rpx;
 }
 
 .order-card__address-item.is-bottom .order-card__address-shell {
-  background: $gradient-address-shell;
+  background: linear-gradient(90deg, #ff9a21 0%, #ff5d89 100%);
 }
 
 .order-card__address-item.is-bottom .order-card__address-core {
@@ -174,7 +174,7 @@
 
 .order-card__pickup-text {
   overflow: hidden;
-  color: $color-text-secondary;
+  color: $color-text-primary;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
   line-height: $line-height-regular;
@@ -185,7 +185,7 @@
 .order-card__drop-text {
   display: flex;
   align-items: baseline;
-  gap: $gap-inline-tight;
+  gap: $space-8;
   min-width: 0;
   overflow: hidden;
   white-space: nowrap;
@@ -194,7 +194,7 @@
 .order-card__drop-primary {
   min-width: 0;
   overflow: hidden;
-  color: $color-text-tertiary;
+  color: $color-text-primary;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
   line-height: $line-height-relaxed;

@@ -3,7 +3,7 @@
 .shortcut-grid {
   border-radius: $radius-card-lg;
   background: $color-surface-card;
-  padding: $padding-card-relaxed $space-10 $space-14;
+  padding: $space-26 $space-10 $space-14;
   box-shadow: $shadow-card-lg;
 }
 
@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   column-gap: $space-4;
-  row-gap: $gap-option;
+  row-gap: $space-12;
   align-items: start;
 }
 
@@ -20,13 +20,13 @@
   flex-direction: column;
   align-items: center;
   min-width: 0;
-  gap: $gap-stack-regular;
+  gap: $space-16;
 }
 
 .shortcut-grid__icon-shell {
   position: relative;
-  width: $size-icon-shortcut;
-  height: $size-icon-shortcut;
+  width: $size-icon-lg;
+  height: $size-icon-lg;
 }
 
 .shortcut-grid__label {
@@ -58,7 +58,7 @@
 .shortcut-grid__dot--active {
   width: $size-dot-active;
   height: $size-dot-active;
-  background: $color-surface-accent-strong;
+  background: $color-surface-accent;
 }
 
 .icon-enterprise,
@@ -67,8 +67,8 @@
 .icon-driver,
 .icon-fuel {
   position: relative;
-  width: $size-icon-shortcut;
-  height: $size-icon-shortcut;
+  width: $size-icon-lg;
+  height: $size-icon-lg;
 }
 
 .icon-enterprise__roof {
@@ -77,10 +77,10 @@
   left: 22rpx;
   width: 42rpx;
   height: 42rpx;
-  border-top: $border-width-medium solid $color-surface-dark-strong;
-  border-left: $border-width-medium solid $color-surface-dark-strong;
+  border-top: $border-strong solid $color-surface-dark;
+  border-left: $border-strong solid $color-surface-dark;
   transform: rotate(45deg);
-  border-radius: $radius-md 0 0 0;
+  border-radius: 8rpx 0 0 0;
 }
 
 .icon-enterprise__body {
@@ -89,9 +89,9 @@
   bottom: 14rpx;
   width: 50rpx;
   height: 36rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
+  border: $border-strong solid $color-surface-dark;
   border-top: none;
-  border-radius: 0 0 $radius-lg $radius-lg;
+  border-radius: 0 0 10rpx 10rpx;
 }
 
 .icon-enterprise__accent {
@@ -100,8 +100,8 @@
   bottom: 20rpx;
   width: 16rpx;
   height: 18rpx;
-  border: $border-width-medium solid $color-surface-accent-strong;
-  border-radius: $radius-sm;
+  border: $border-strong solid $color-surface-accent;
+  border-radius: 6rpx;
 }
 
 .icon-logistics__pole {
@@ -110,7 +110,7 @@
   top: 10rpx;
   width: 0;
   height: 54rpx;
-  border-left: $border-width-medium solid $color-surface-dark-strong;
+  border-left: $border-strong solid $color-surface-dark;
 }
 
 .icon-logistics__handle {
@@ -119,7 +119,7 @@
   top: 10rpx;
   width: 26rpx;
   height: 0;
-  border-top: $border-width-medium solid $color-surface-dark-strong;
+  border-top: $border-strong solid $color-surface-dark;
 }
 
 .icon-logistics__base {
@@ -128,7 +128,7 @@
   bottom: 16rpx;
   width: 34rpx;
   height: 0;
-  border-top: $border-width-medium solid $color-surface-dark-strong;
+  border-top: $border-strong solid $color-surface-dark;
 }
 
 .icon-logistics__box {
@@ -137,8 +137,8 @@
   top: 26rpx;
   width: 28rpx;
   height: 34rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
-  border-radius: $radius-sm;
+  border: $border-strong solid $color-surface-dark;
+  border-radius: 6rpx;
 }
 
 .icon-logistics__wheel {
@@ -147,7 +147,7 @@
   width: 12rpx;
   height: 12rpx;
   border-radius: $radius-round;
-  background: $color-surface-accent-strong;
+  background: $color-surface-accent;
 }
 
 .icon-logistics__wheel--left {
@@ -163,7 +163,7 @@
   top: 16rpx;
   width: 18rpx;
   height: 18rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
+  border: $border-strong solid $color-surface-dark;
   border-radius: $radius-round;
 }
 
@@ -180,7 +180,7 @@
   top: 36rpx;
   width: 18rpx;
   height: 0;
-  border-top: $border-width-medium solid $color-surface-dark-strong;
+  border-top: $border-strong solid $color-surface-dark;
 }
 
 .icon-bulky__arm--left {
@@ -199,8 +199,8 @@
   top: 36rpx;
   width: 28rpx;
   height: 28rpx;
-  border: $border-width-medium solid $color-surface-accent-strong;
-  border-radius: $radius-md;
+  border: $border-strong solid $color-surface-accent;
+  border-radius: 8rpx;
 }
 
 .icon-driver__head {
@@ -209,7 +209,7 @@
   left: 30rpx;
   width: 20rpx;
   height: 20rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
+  border: $border-strong solid $color-surface-dark;
   border-radius: $radius-round;
 }
 
@@ -219,7 +219,7 @@
   left: 20rpx;
   width: 40rpx;
   height: 20rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
+  border: $border-strong solid $color-surface-dark;
   border-top-left-radius: 18rpx;
   border-top-right-radius: 18rpx;
   border-bottom: none;
@@ -231,7 +231,7 @@
   bottom: 10rpx;
   width: 34rpx;
   height: 34rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
+  border: $border-strong solid $color-surface-dark;
   border-radius: $radius-round;
 }
 
@@ -242,7 +242,7 @@
   width: 18rpx;
   height: 18rpx;
   border-radius: $radius-round;
-  background: $color-surface-accent-strong;
+  background: $color-surface-accent;
 }
 
 .icon-fuel__pump {
@@ -251,8 +251,8 @@
   left: 26rpx;
   width: 30rpx;
   height: 42rpx;
-  border: $border-width-medium solid $color-surface-dark-strong;
-  border-radius: $radius-md;
+  border: $border-strong solid $color-surface-dark;
+  border-radius: 8rpx;
 }
 
 .icon-fuel__screen {
@@ -261,7 +261,7 @@
   left: 34rpx;
   width: 14rpx;
   height: 10rpx;
-  border: $border-width-regular solid $color-surface-accent-strong;
+  border: $border-base solid $color-surface-accent;
   border-radius: $radius-xs;
 }
 
@@ -271,9 +271,9 @@
   right: 20rpx;
   width: 22rpx;
   height: 30rpx;
-  border-top: $border-width-medium solid $color-surface-dark-strong;
-  border-right: $border-width-medium solid $color-surface-dark-strong;
-  border-radius: 0 $radius-xl 0 0;
+  border-top: $border-strong solid $color-surface-dark;
+  border-right: $border-strong solid $color-surface-dark;
+  border-radius: 0 12rpx 0 0;
 }
 
 .icon-fuel__accent {
@@ -283,5 +283,5 @@
   width: 12rpx;
   height: 18rpx;
   border-radius: $radius-xs;
-  background: $color-surface-accent-strong;
+  background: $color-surface-accent;
 }

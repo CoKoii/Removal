@@ -3,7 +3,7 @@
 .promo-row {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  gap: $gap-card;
+  gap: $space-18;
   align-items: stretch;
 }
 
@@ -11,28 +11,28 @@
   position: relative;
   overflow: hidden;
   min-width: 0;
-  min-height: $size-promo-card-min-height;
-  padding: $space-22 $padding-card;
+  min-height: 154rpx;
+  padding: $space-22 $space-24;
   border-radius: $radius-card-sm;
   box-shadow: $shadow-card-sm;
 }
 
 .promo-row__card--mint {
-  background: $gradient-promo-mint;
+  background: linear-gradient(90deg, #effbf4 0%, #dbf7ea 56%, #daf5e6 100%);
 }
 
 .promo-row__card--warm {
-  background: $gradient-promo-warm;
+  background: linear-gradient(135deg, #fffaf1 0%, #fff1dd 100%);
 }
 
 .promo-row__mint-decor {
   position: absolute;
   left: -34rpx;
   bottom: -26rpx;
-  width: $size-promo-mint-decor;
-  height: $size-promo-mint-decor;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: $radius-round;
-  background: $color-overlay-card-decor;
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .promo-row__mint-title {
@@ -48,7 +48,7 @@
   position: relative;
   z-index: 1;
   margin-top: $space-10;
-  color: $color-text-accent-strong;
+  color: $color-text-accent;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -67,16 +67,16 @@
   position: relative;
   z-index: 1;
   margin-top: $space-10;
-  color: $color-text-accent-warm;
+  color: $color-text-warning;
   font-size: $font-size-xs;
   line-height: $line-height-display;
 }
 
 .promo-row__gift {
   position: absolute;
-  border-radius: $radius-2xl;
-  background: $gradient-gift;
-  box-shadow: $shadow-accent-lg;
+  border-radius: 14rpx;
+  background: linear-gradient(180deg, #ff8c28, #ff6a00);
+  box-shadow: 0 10rpx 24rpx rgba(255, 122, 24, 0.22);
 }
 
 .promo-row__gift--large {
@@ -96,7 +96,7 @@
 .promo-row__coin {
   position: absolute;
   border-radius: $radius-round;
-  background: $gradient-coin;
+  background: linear-gradient(180deg, #ffd56a, #ffb21c);
 }
 
 .promo-row__coin--one {
