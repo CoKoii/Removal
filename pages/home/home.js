@@ -39,9 +39,8 @@ var homeMock = {
     orderCard: {
       pickupBadge: '装',
       pickupTitle: '苏州大学应用技术学院学生公寓-...',
-      discountText: '立享8.5折',
-      dropoffPrimaryText: '输入卸货地下单',
-      dropoffSecondaryText: '（可选跨城）',
+      discountText: '2选1',
+      dropoffOptions: ['昆山资源利用中心', '花桥分处置中心'],
     },
     quickActions: [
       { key: 'business', label: '企业用车', icon: 'enterprise' },
@@ -113,20 +112,12 @@ Page({
     })
   },
 
-  onPickupTap: function () {
-    showToast('起点信息')
-  },
-
   onCargoOptionTap: function (event) {
     var key = event.detail.key || defaultCargoOptionKey
 
     this.setData({
       activeCargoOptionKey: key,
     })
-  },
-
-  onOrderEntryTap: function () {
-    showToast('选择卸货地')
   },
 
   onShortcutTap: function (event) {

@@ -20,9 +20,20 @@
   flex-shrink: 0;
 }
 
+.order-card__marker-track::after {
+  content: "";
+  position: absolute;
+  top: 80rpx;
+  left: 31rpx;
+  width: $border-thin;
+  height: 54rpx;
+  border-radius: $radius-pill;
+  background: $color-surface-dot;
+  transform: translateX(-50%);
+}
+
 .order-card__marker {
   position: absolute;
-  top: 26rpx;
   left: 7rpx;
   display: flex;
   align-items: center;
@@ -33,12 +44,12 @@
   font-weight: $font-weight-semibold;
 }
 
-.order-card__marker.is-top {
-  transform: translateY(0);
+.order-card__marker--top {
+  top: 26rpx;
 }
 
-.order-card__marker.is-bottom {
-  transform: translateY(114rpx);
+.order-card__marker--bottom {
+  top: 140rpx;
 }
 
 .order-card__marker--pickup {
@@ -53,31 +64,8 @@
   color: $color-text-inverse;
 }
 
-.order-card__swap {
-  position: absolute;
-  top: 86rpx;
-  left: $space-8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 14rpx;
-  background: $color-surface-muted;
-}
-
-.order-card__swap-icon {
-  transform: rotate(90deg);
-  transition: transform $duration-base $easing-emphasized;
-}
-
-.order-card__swap-icon.is-swapped {
-  transform: rotate(270deg);
-}
-
 .order-card__address-track {
   position: relative;
-  flex: 1;
   min-width: 0;
   height: 210rpx;
 }
@@ -86,27 +74,30 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
-  transition:
-    transform $duration-base $easing-emphasized,
-    opacity $duration-fast ease;
+  min-width: 0;
 }
 
-.order-card__address-item.is-top {
-  transform: translateY(0);
+.order-card__address-item--top {
+  top: 0;
   z-index: 1;
 }
 
-.order-card__address-item.is-bottom {
-  transform: translateY(114rpx);
+.order-card__address-item--bottom {
+  top: 114rpx;
   z-index: 2;
+}
+
+.order-card__picker {
+  display: block;
+  width: 100%;
+  height: 96rpx;
 }
 
 .order-card__discount {
   position: absolute;
   left: 0;
   top: 98rpx;
-  z-index: 4;
+  z-index: 3;
   padding: $space-8 $space-18 $space-10;
   border-radius: 14rpx 14rpx 14rpx $radius-sm;
   background: $color-bg-accent;
@@ -116,26 +107,11 @@
   line-height: $line-height-display;
 }
 
-.order-card__pickup-arrow {
-  position: absolute;
-  top: 36rpx;
-  right: 26rpx;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24rpx;
-  height: 24rpx;
-}
-
 .order-card__address-shell {
   height: 96rpx;
   padding: $space-4;
   box-sizing: border-box;
   border-radius: 28rpx;
-  transition:
-    background $duration-base $easing-emphasized,
-    border-radius $duration-base $easing-emphasized;
 }
 
 .order-card__address-core {
@@ -145,26 +121,21 @@
   padding: 0 $space-26 0 $space-30;
   box-sizing: border-box;
   border-radius: 24rpx;
-  transition:
-    background $duration-base $easing-emphasized,
-    padding $duration-base $easing-emphasized;
-}
-
-.order-card__address-item.is-top .order-card__address-shell {
   background: transparent;
 }
 
-.order-card__address-item.is-top .order-card__address-core {
-  background: transparent;
+.order-card__address-core--pickup {
   padding-left: $space-12;
-  padding-right: 56rpx;
+  padding-right: $space-26;
 }
 
-.order-card__address-item.is-bottom .order-card__address-shell {
+.order-card__address-shell--drop {
   background: $color-surface-accent;
 }
 
-.order-card__address-item.is-bottom .order-card__address-core {
+.order-card__address-core--drop {
+  align-items: center;
+  justify-content: space-between;
   background: $color-surface-card;
 }
 
@@ -178,31 +149,34 @@
   white-space: nowrap;
 }
 
-.order-card__drop-text {
+.order-card__drop-value {
   display: flex;
-  align-items: baseline;
-  gap: $space-8;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.order-card__drop-label {
+  display: block;
   min-width: 0;
   overflow: hidden;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-regular;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.order-card__drop-primary {
-  min-width: 0;
-  overflow: hidden;
+.order-card__drop-label--selected {
   color: $color-text-primary;
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
-  line-height: $line-height-relaxed;
-  text-overflow: ellipsis;
 }
 
-.order-card__drop-secondary {
-  min-width: 0;
-  overflow: hidden;
+.order-card__drop-label--placeholder {
   color: $color-text-secondary;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-relaxed;
-  text-overflow: ellipsis;
+}
+
+.order-card__drop-arrow {
+  flex: 0 0 auto;
+  margin-left: $space-16;
 }

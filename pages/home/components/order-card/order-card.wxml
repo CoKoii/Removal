@@ -1,53 +1,46 @@
 <view class="order-card">
   <view class="order-card__layout">
     <view class="order-card__marker-track">
-      <view class="order-card__marker order-card__marker--pickup is-top">
+      <view class="order-card__marker order-card__marker--pickup order-card__marker--top">
         {{pickupBadge}}
       </view>
-      <view class="order-card__swap" catchtap="onSwapTap">
-        <van-icon
-          class="order-card__swap-icon {{isSwapped ? 'is-swapped' : ''}}"
-          name="exchange"
-          size="16px"
-          color="#666666"
-        />
-      </view>
-      <view class="order-card__marker order-card__marker--drop is-bottom">
+      <view class="order-card__marker order-card__marker--drop order-card__marker--bottom">
         {{dropoffBadge}}
       </view>
     </view>
 
     <view class="order-card__address-track">
-      <view wx:if="{{discountText}}" class="order-card__discount">{{discountText}}</view>
-      <view class="order-card__pickup-arrow" data-role="pickup" bindtap="onAddressTap">
-        <van-icon name="arrow" size="14px" color="#7cc84a" />
-      </view>
-
-      <view
-        class="order-card__address-item {{isSwapped ? 'is-bottom' : 'is-top'}}"
-        data-role="{{isSwapped ? 'entry' : 'pickup'}}"
-        bindtap="onAddressTap"
-      >
+      <view class="order-card__address-item order-card__address-item--top">
         <view class="order-card__address-shell">
-          <view class="order-card__address-core">
+          <view class="order-card__address-core order-card__address-core--pickup">
             <text class="order-card__pickup-text">{{pickupTitle}}</text>
           </view>
         </view>
       </view>
 
-      <view
-        class="order-card__address-item {{isSwapped ? 'is-top' : 'is-bottom'}}"
-        data-role="{{isSwapped ? 'pickup' : 'entry'}}"
-        bindtap="onAddressTap"
-      >
-        <view class="order-card__address-shell">
-          <view class="order-card__address-core">
-            <view class="order-card__drop-text">
-              <text class="order-card__drop-primary">{{dropoffPrimaryText}}</text>
-              <text class="order-card__drop-secondary">{{dropoffSecondaryText}}</text>
+      <view wx:if="{{discountText}}" class="order-card__discount">{{discountText}}</view>
+
+      <view class="order-card__address-item order-card__address-item--bottom">
+        <picker
+          class="order-card__picker"
+          mode="selector"
+          range="{{dropoffOptions}}"
+          value="{{pickerValue}}"
+          bindchange="onDropoffChange"
+        >
+          <view class="order-card__address-shell order-card__address-shell--drop">
+            <view class="order-card__address-core order-card__address-core--drop">
+              <view class="order-card__drop-value">
+                <view
+                  class="order-card__drop-label {{selectedDropoffLabel ? 'order-card__drop-label--selected' : 'order-card__drop-label--placeholder'}}"
+                >
+                  {{selectedDropoffLabel || '选择卸货地址'}}
+                </view>
+              </view>
+              <van-icon class="order-card__drop-arrow" name="arrow-down" size="14px" color="#7cc84a" />
             </view>
           </view>
-        </view>
+        </picker>
       </view>
     </view>
   </view>

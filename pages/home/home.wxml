@@ -27,10 +27,7 @@
             pickupBadge="{{cargo.orderCard.pickupBadge}}"
             pickupTitle="{{cargo.orderCard.pickupTitle}}"
             discountText="{{cargo.orderCard.discountText}}"
-            dropoffPrimaryText="{{cargo.orderCard.dropoffPrimaryText}}"
-            dropoffSecondaryText="{{cargo.orderCard.dropoffSecondaryText}}"
-            bind:pickuptap="onPickupTap"
-            bind:entrytap="onOrderEntryTap"
+            dropoffOptions="{{cargo.orderCard.dropoffOptions}}"
           />
         </view>
 

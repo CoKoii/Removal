@@ -16,32 +16,35 @@ Component({
       type: String,
       value: '',
     },
-    dropoffPrimaryText: {
-      type: String,
-      value: '',
-    },
-    dropoffSecondaryText: {
-      type: String,
-      value: '',
+    dropoffOptions: {
+      type: Array,
+      value: [],
     },
   },
 
   data: {
-    isSwapped: false,
+    pickerValue: 0,
+    selectedDropoffLabel: '',
+  },
+
+  observers: {
+    dropoffOptions: function () {
+      this.setData({
+        pickerValue: 0,
+        selectedDropoffLabel: '',
+      })
+    },
   },
 
   methods: {
-    onSwapTap: function () {
+    onDropoffChange: function (event) {
+      var index = Number(event.detail.value || 0)
+      var dropoffOptions = this.properties.dropoffOptions || []
+
       this.setData({
-        isSwapped: !this.data.isSwapped,
+        pickerValue: index,
+        selectedDropoffLabel: dropoffOptions[index] || '',
       })
-    },
-
-    onAddressTap: function (event) {
-      var role = event.currentTarget.dataset.role || 'pickup'
-      var eventName = role === 'entry' ? 'entrytap' : 'pickuptap'
-
-      this.triggerEvent(eventName)
     },
   },
 })
