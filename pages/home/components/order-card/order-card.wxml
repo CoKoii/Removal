@@ -9,7 +9,7 @@
           class="order-card__swap-icon {{isSwapped ? 'is-swapped' : ''}}"
           name="exchange"
           size="16px"
-          color="#7c8662"
+          color="#666666"
         />
       </view>
       <view class="order-card__marker order-card__marker--drop is-bottom">
@@ -20,7 +20,7 @@
     <view class="order-card__address-track">
       <view wx:if="{{discountText}}" class="order-card__discount">{{discountText}}</view>
       <view class="order-card__pickup-arrow" data-role="pickup" bindtap="onAddressTap">
-        <van-icon name="arrow" size="14px" color="#b6c28f" />
+        <van-icon name="arrow" size="14px" color="#7cc84a" />
       </view>
 
       <view

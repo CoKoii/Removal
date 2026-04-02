@@ -17,11 +17,11 @@
 }
 
 .promo-row__card--blue {
-  background: linear-gradient(135deg, #f5faff 0%, #e6f1ff 58%, #dbe9ff 100%);
+  background: #eef4ff;
 }
 
 .promo-row__card--red {
-  background: linear-gradient(135deg, #fff8f7 0%, #ffe9e5 58%, #ffdcd7 100%);
+  background: #fff3ef;
 }
 
 .promo-row__mint-decor {
@@ -74,7 +74,7 @@
 .promo-row__gift {
   position: absolute;
   border-radius: 14rpx;
-  background: linear-gradient(180deg, #ff8c7d 0%, #ef5d50 100%);
+  background: #ef6f60;
 }
 
 .promo-row__gift--large {
@@ -94,7 +94,7 @@
 .promo-row__coin {
   position: absolute;
   border-radius: $radius-round;
-  background: linear-gradient(180deg, #ffd8a0 0%, #ffb85b 100%);
+  background: #ffbf66;
 }
 
 .promo-row__coin--one {

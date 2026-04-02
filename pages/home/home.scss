@@ -3,7 +3,7 @@
 page {
   height: $size-screen-height;
   overflow: hidden;
-  background: $gradient-page;
+  background: $color-surface-page;
 }
 
 .home-page {
@@ -11,7 +11,7 @@ page {
   flex-direction: column;
   height: $size-screen-height;
   overflow: hidden;
-  background: $gradient-page;
+  background: $color-surface-page;
 }
 
 .home__header {

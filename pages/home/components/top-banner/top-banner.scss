@@ -3,7 +3,7 @@
 .top-banner {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #d9f49f 0%, #eef8d1 72%, #f8fce9 100%);
+  background: $color-surface-page-soft;
   padding-right: $space-30;
   padding-bottom: $space-20;
   padding-left: $space-30;
@@ -12,7 +12,7 @@
 .top-banner__glow {
   position: absolute;
   border-radius: $radius-pill;
-  opacity: 0.85;
+  opacity: 0.55;
 }
 
 .top-banner__glow--left {
@@ -20,7 +20,7 @@
   left: -40rpx;
   width: 320rpx;
   height: 220rpx;
-  background: rgba(226, 249, 177, 0.95);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .top-banner__glow--center {
@@ -28,7 +28,7 @@
   left: 240rpx;
   width: 260rpx;
   height: 220rpx;
-  background: rgba(243, 252, 207, 0.92);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .top-banner__glow--right {
@@ -36,7 +36,7 @@
   right: -40rpx;
   width: 260rpx;
   height: 180rpx;
-  background: rgba(234, 247, 185, 0.9);
+  background: rgba(237, 247, 221, 0.88);
 }
 
 .top-banner__head {
@@ -96,9 +96,9 @@
   min-height: 70rpx;
   padding: $space-20 $space-24;
   border-radius: $radius-card-lg;
-  color: $color-text-primary;
+  color: $color-text-secondary;
   font-size: $font-size-lg;
-  font-weight: $font-weight-black;
+  font-weight: $font-weight-semibold;
   line-height: $line-height-display;
   white-space: nowrap;
   flex-shrink: 0;

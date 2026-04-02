@@ -19,19 +19,24 @@
   flex-direction: column;
   align-items: center;
   min-width: 0;
-  gap: $space-16;
+  gap: $space-14;
 }
 
 .shortcut-grid__icon-shell {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: $size-icon-lg;
   height: $size-icon-lg;
+  border-radius: 24rpx;
+  background: $color-surface-muted;
 }
 
 .shortcut-grid__label {
   width: 100%;
   overflow: hidden;
-  color: $color-text-primary;
+  color: $color-text-secondary;
   font-size: $font-size-md;
   line-height: $line-height-snug;
   text-align: center;
