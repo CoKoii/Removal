@@ -1,6 +1,3 @@
 .DS_Store
 node_modules
 miniprogram_npm
-miniprogram/miniprogram_npm
-miniprogram/project.config.json
-miniprogram/project.private.config.json
