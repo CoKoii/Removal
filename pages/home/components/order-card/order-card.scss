@@ -4,7 +4,6 @@
   border-radius: $radius-card-md;
   background: $color-surface-card;
   padding: $space-24;
-  box-shadow: $shadow-card-md;
 }
 
 .order-card__layout {
@@ -50,9 +49,8 @@
 
 .order-card__marker--drop {
   border-radius: $radius-round;
-  background: linear-gradient(180deg, #ff8f1e, #ff6b00);
-  color: $color-text-inverse;
-  box-shadow: $shadow-accent;
+  background: $gradient-accent;
+  color: $color-text-on-accent;
 }
 
 .order-card__swap {
@@ -66,7 +64,6 @@
   height: 40rpx;
   border-radius: 14rpx;
   background: $color-surface-muted;
-  box-shadow: $shadow-inset-card;
 }
 
 .order-card__swap-icon {
@@ -112,9 +109,8 @@
   z-index: 4;
   padding: $space-8 $space-18 $space-10;
   border-radius: 14rpx 14rpx 14rpx $radius-sm;
-  background: linear-gradient(90deg, #ffbc3c, #ff7f25);
-  color: $color-text-inverse;
-  box-shadow: $shadow-accent-soft;
+  background: $gradient-accent-soft;
+  color: $color-text-on-accent;
   font-size: $font-size-2xs;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -165,7 +161,7 @@
 }
 
 .order-card__address-item.is-bottom .order-card__address-shell {
-  background: linear-gradient(90deg, #ff9a21 0%, #ff5d89 100%);
+  background: $gradient-accent-vivid;
 }
 
 .order-card__address-item.is-bottom .order-card__address-core {

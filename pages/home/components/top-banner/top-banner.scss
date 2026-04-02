@@ -3,8 +3,9 @@
 .top-banner {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #d9f49f 0%, #eef8d1 72%, #f8fce9 100%);
   padding-right: $space-30;
-  padding-bottom: $space-8;
+  padding-bottom: $space-20;
   padding-left: $space-30;
 }
 
@@ -19,7 +20,7 @@
   left: -40rpx;
   width: 320rpx;
   height: 220rpx;
-  background: rgba(255, 230, 214, 0.95);
+  background: rgba(226, 249, 177, 0.95);
 }
 
 .top-banner__glow--center {
@@ -27,7 +28,7 @@
   left: 240rpx;
   width: 260rpx;
   height: 220rpx;
-  background: rgba(255, 243, 221, 0.92);
+  background: rgba(243, 252, 207, 0.92);
 }
 
 .top-banner__glow--right {
@@ -35,7 +36,7 @@
   right: -40rpx;
   width: 260rpx;
   height: 180rpx;
-  background: rgba(255, 235, 221, 0.9);
+  background: rgba(234, 247, 185, 0.9);
 }
 
 .top-banner__head {
@@ -105,5 +106,5 @@
 
 .top-banner__tab.is-active {
   background: $color-surface-accent;
-  color: $color-text-inverse;
+  color: $color-text-on-accent;
 }

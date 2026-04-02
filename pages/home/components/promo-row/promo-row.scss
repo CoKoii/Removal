@@ -14,15 +14,14 @@
   min-height: 154rpx;
   padding: $space-22 $space-24;
   border-radius: $radius-card-sm;
-  box-shadow: $shadow-card-sm;
 }
 
-.promo-row__card--mint {
-  background: linear-gradient(90deg, #effbf4 0%, #dbf7ea 56%, #daf5e6 100%);
+.promo-row__card--blue {
+  background: linear-gradient(135deg, #f5faff 0%, #e6f1ff 58%, #dbe9ff 100%);
 }
 
-.promo-row__card--warm {
-  background: linear-gradient(135deg, #fffaf1 0%, #fff1dd 100%);
+.promo-row__card--red {
+  background: linear-gradient(135deg, #fff8f7 0%, #ffe9e5 58%, #ffdcd7 100%);
 }
 
 .promo-row__mint-decor {
@@ -48,7 +47,7 @@
   position: relative;
   z-index: 1;
   margin-top: $space-10;
-  color: $color-text-accent;
+  color: #4d76c9;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -67,7 +66,7 @@
   position: relative;
   z-index: 1;
   margin-top: $space-10;
-  color: $color-text-warning;
+  color: #d85a4c;
   font-size: $font-size-xs;
   line-height: $line-height-display;
 }
@@ -75,8 +74,7 @@
 .promo-row__gift {
   position: absolute;
   border-radius: 14rpx;
-  background: linear-gradient(180deg, #ff8c28, #ff6a00);
-  box-shadow: 0 10rpx 24rpx rgba(255, 122, 24, 0.22);
+  background: linear-gradient(180deg, #ff8c7d 0%, #ef5d50 100%);
 }
 
 .promo-row__gift--large {
@@ -96,7 +94,7 @@
 .promo-row__coin {
   position: absolute;
   border-radius: $radius-round;
-  background: linear-gradient(180deg, #ffd56a, #ffb21c);
+  background: linear-gradient(180deg, #ffd8a0 0%, #ffb85b 100%);
 }
 
 .promo-row__coin--one {

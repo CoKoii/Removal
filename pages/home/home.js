@@ -51,8 +51,8 @@ var homeMock = {
       { key: 'fuel', label: '加油充电', icon: 'fuel' },
     ],
     promoCards: [
-      { key: 'cross-logistics', title: '跨城货物', highlight: '物流', theme: 'mint' },
-      { key: 'task-center', title: '任务中心', highlight: '领券赚红包', theme: 'warm' },
+      { key: 'cross-logistics', title: '跨城货物', highlight: '物流', theme: 'blue' },
+      { key: 'task-center', title: '任务中心', highlight: '领券赚红包', theme: 'red' },
     ],
   },
 }

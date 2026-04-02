@@ -22,7 +22,7 @@ page {
 .home__scroll {
   flex: 1 1 auto;
   min-height: 0;
-  background: $gradient-page-content;
+  background: $color-surface-page;
 }
 
 .home__content {
@@ -30,7 +30,7 @@ page {
   display: flex;
   flex-direction: column;
   gap: $space-22;
-  padding: $space-8 $space-24 $space-120;
+  padding: $space-22 $space-24 $space-120;
   box-sizing: border-box;
 }
 

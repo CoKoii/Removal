@@ -6,19 +6,25 @@
       data-title="{{item.title}}"
       bindtap="onCardTap"
     >
-      <block wx:if="{{item.theme === 'mint'}}">
+      <block wx:if="{{item.theme === 'blue'}}">
         <view class="promo-row__mint-decor"></view>
         <view class="promo-row__mint-title">{{item.title}}</view>
         <view class="promo-row__mint-highlight">{{item.highlight}}</view>
       </block>
 
-      <block wx:else>
+      <block wx:elif="{{item.theme === 'red'}}">
         <view class="promo-row__warm-title">{{item.title}}</view>
         <view class="promo-row__warm-highlight">{{item.highlight}}</view>
         <view class="promo-row__gift promo-row__gift--large"></view>
         <view class="promo-row__gift promo-row__gift--small"></view>
         <view class="promo-row__coin promo-row__coin--one"></view>
         <view class="promo-row__coin promo-row__coin--two"></view>
+      </block>
+
+      <block wx:else>
+        <view class="promo-row__mint-decor"></view>
+        <view class="promo-row__mint-title">{{item.title}}</view>
+        <view class="promo-row__mint-highlight">{{item.highlight}}</view>
       </block>
     </view>
   </block>

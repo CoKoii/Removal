@@ -7,7 +7,6 @@
   border-radius: $radius-card-lg;
   background: $color-surface-card;
   padding: $space-26 $space-22 $space-32;
-  box-shadow: $shadow-card-lg;
 }
 
 .vehicle-card__hero {
@@ -29,7 +28,7 @@
   position: absolute;
   top: 56rpx;
   left: 110rpx;
-  color: rgba(17, 24, 39, 0.08);
+  color: rgba(22, 50, 39, 0.08);
   font-size: $font-size-display;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -59,7 +58,7 @@
   bottom: 14rpx;
   width: 42rpx;
   height: 42rpx;
-  border: $border-strong solid #323232;
+  border: $border-strong solid $color-illustration-line;
   border-radius: $radius-round;
   background: $color-surface-card;
 }
@@ -79,7 +78,7 @@
   width: 132rpx;
   height: 54rpx;
   border-radius: 44rpx 48rpx 26rpx 30rpx;
-  background: linear-gradient(180deg, #ff9932, #f66c0f);
+  background: $gradient-vehicle-body;
   transform: skewX(-8deg);
 }
 
@@ -112,7 +111,7 @@
   width: 66rpx;
   height: 10rpx;
   border-radius: 10rpx;
-  background: #475569;
+  background: $color-illustration-metal;
 }
 
 .vehicle-card__box {
@@ -121,7 +120,7 @@
   bottom: 86rpx;
   width: 66rpx;
   height: 50rpx;
-  border: $border-base solid #ff8d20;
+  border: $border-base solid $color-surface-accent;
   border-radius: 10rpx;
   background: linear-gradient(180deg, #2d3748, #111827);
 }
@@ -133,7 +132,7 @@
   width: 36rpx;
   height: 4rpx;
   border-radius: $radius-pill;
-  background: #fcd34d;
+  background: $color-highlight-lime;
 }
 
 .vehicle-card__handle {
@@ -142,8 +141,8 @@
   bottom: 114rpx;
   width: 24rpx;
   height: 44rpx;
-  border-top: $border-strong solid #334155;
-  border-left: $border-strong solid #334155;
+  border-top: $border-strong solid $color-illustration-line;
+  border-left: $border-strong solid $color-illustration-line;
   border-radius: 20rpx 0 0 0;
   transform: skewX(-8deg);
 }
@@ -155,7 +154,7 @@
   width: 28rpx;
   height: 28rpx;
   border-radius: $radius-round;
-  background: #ff8b21;
+  background: $color-illustration-skin;
 }
 
 .vehicle-card__helmet {
@@ -165,7 +164,7 @@
   width: 30rpx;
   height: 16rpx;
   border-radius: $radius-lg $radius-lg $radius-xs $radius-xs;
-  background: linear-gradient(180deg, #fff3e6, #ffd6b0);
+  background: $gradient-helmet;
   transform: rotate(-8deg);
 }
 
@@ -176,7 +175,7 @@
   width: 40rpx;
   height: 44rpx;
   border-radius: 16rpx 16rpx 18rpx 18rpx;
-  background: linear-gradient(180deg, #ff8d22, #f46d0f);
+  background: $gradient-rider-body;
   transform: rotate(10deg);
 }
 
@@ -187,7 +186,7 @@
   width: 42rpx;
   height: 12rpx;
   border-radius: $radius-pill;
-  background: #ff8d22;
+  background: $color-illustration-skin;
   transform: rotate(-16deg);
 }
 
@@ -212,7 +211,7 @@
   height: 124rpx;
   margin-top: 54rpx;
   border-radius: $radius-round;
-  background: linear-gradient(180deg, #fff7d6, #ffe9a3);
+  background: $gradient-hero-badge;
   color: $color-text-banner;
 }
 
