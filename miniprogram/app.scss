@@ -1,4 +1,4 @@
-@use "./styles/variables/index" as *;
+@import "./styles/variables/index";
 
 page {
   background: $color-surface-page;
