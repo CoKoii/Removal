@@ -5,7 +5,6 @@
   overflow: hidden;
   background: $color-surface-page-soft;
   padding-right: $space-30;
-  padding-bottom: $space-20;
   padding-left: $space-30;
 }
 
@@ -73,37 +72,22 @@
   flex-shrink: 0;
 }
 
-.top-banner__tabs {
+.top-banner__service {
   position: relative;
   z-index: 1;
-  margin-top: $space-22;
-  white-space: nowrap;
+  margin-top: $space-18;
 }
 
-.top-banner__tabs-track {
+.top-banner__service-pill {
   display: inline-flex;
-  align-items: center;
-  gap: $space-8;
-  min-width: 100%;
-  padding-right: $space-24;
-}
-
-.top-banner__tab {
-  display: inline-flex;
-  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  min-height: 70rpx;
-  padding: $space-20 $space-24;
+  padding: $space-16 $space-20;
   border-radius: $radius-card-lg;
-  font-size: $font-size-lg;
+  background: $color-surface-accent;
+  color: $color-text-on-accent;
+  font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
   white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.top-banner__tab.is-active {
-  background: $color-surface-accent;
-  color: $color-text-on-accent;
 }

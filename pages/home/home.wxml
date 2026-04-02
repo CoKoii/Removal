@@ -2,46 +2,29 @@
   <view class="home__header">
     <home-top-banner
       city="{{city}}"
-      tabs="{{serviceTabs}}"
-      activeTabKey="{{activeServiceKey}}"
+      serviceLabel="{{service.label}}"
       safeTop="{{headerSafeTop}}"
       capsuleHeight="{{capsuleHeight}}"
       capsuleSpaceWidth="{{capsuleSpaceWidth}}"
-      bind:tabchange="onServiceChange"
     />
   </view>
 
   <scroll-view class="home__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
     <view class="home__content">
-      <block wx:if="{{activeServiceKey === 'cargo'}}">
-        <view class="home__section">
-          <home-vehicle-card
-            items="{{cargo.vehicleOptions}}"
-            activeOptionKey="{{activeCargoOptionKey}}"
-            bind:optiontap="onCargoOptionTap"
-          />
-        </view>
+      <view class="home__section">
+        <home-vehicle-card vehicleTypes="{{service.vehicleTypes}}" />
+      </view>
 
-        <view class="home__section">
-          <home-order-card
-            pickupBadge="{{cargo.orderCard.pickupBadge}}"
-            pickupTitle="{{cargo.orderCard.pickupTitle}}"
-            discountText="{{cargo.orderCard.discountText}}"
-            dropoffOptions="{{cargo.orderCard.dropoffOptions}}"
-          />
-        </view>
+      <view class="home__section">
+        <home-order-card order="{{service.orderCard}}" />
+      </view>
 
-        <view class="home__section">
-          <home-shortcut-grid items="{{cargo.quickActions}}" bind:itemtap="onShortcutTap" />
-        </view>
+      <view class="home__section">
+        <home-shortcut-grid items="{{service.quickActions}}" bind:itemtap="onShortcutTap" />
+      </view>
 
-        <view class="home__section home__section--promo">
-          <home-promo-row cards="{{cargo.promoCards}}" bind:cardtap="onPromoTap" />
-        </view>
-      </block>
-
-      <view wx:else class="home__placeholder">
-        <view class="home__placeholder-title">{{activeServiceLabel}}</view>
+      <view class="home__section home__section--promo">
+        <home-promo-row cards="{{service.promoCards}}" bind:cardtap="onPromoTap" />
       </view>
     </view>
   </scroll-view>

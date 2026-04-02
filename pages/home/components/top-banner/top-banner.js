@@ -4,11 +4,7 @@ Component({
       type: String,
       value: '',
     },
-    tabs: {
-      type: Array,
-      value: [],
-    },
-    activeTabKey: {
+    serviceLabel: {
       type: String,
       value: '',
     },
@@ -23,18 +19,6 @@ Component({
     capsuleSpaceWidth: {
       type: Number,
       value: 116,
-    },
-  },
-
-  methods: {
-    onTabTap: function (event) {
-      var key = event.currentTarget.dataset.key || ''
-      var label = event.currentTarget.dataset.label || ''
-
-      this.triggerEvent('tabchange', {
-        key: key,
-        label: label,
-      })
     },
   },
 })

@@ -1,42 +1,90 @@
 <view class="vehicle-card">
-  <view class="vehicle-card__hero">
-    <view class="vehicle-card__hero-main">
-      <view class="vehicle-card__hero-word">拉货</view>
+  <view wx:if="{{selectedType}}" class="vehicle-card__hero">
+    <view class="vehicle-card__hero-glow vehicle-card__hero-glow--left"></view>
+    <view class="vehicle-card__hero-glow vehicle-card__hero-glow--right"></view>
+    <view class="vehicle-card__hero-watermark">清运</view>
 
-      <view class="vehicle-card__illustration">
-        <view class="vehicle-card__shadow"></view>
-        <view class="vehicle-card__wheel vehicle-card__wheel--left"></view>
-        <view class="vehicle-card__wheel vehicle-card__wheel--right"></view>
-        <view class="vehicle-card__body"></view>
-        <view class="vehicle-card__front"></view>
-        <view class="vehicle-card__seat"></view>
-        <view class="vehicle-card__footrest"></view>
-        <view class="vehicle-card__box"></view>
-        <view class="vehicle-card__box-line"></view>
-        <view class="vehicle-card__handle"></view>
-        <view class="vehicle-card__rider-head"></view>
-        <view class="vehicle-card__helmet"></view>
-        <view class="vehicle-card__rider-body"></view>
-        <view class="vehicle-card__rider-arm"></view>
-        <view class="vehicle-card__rider-leg"></view>
+    <view class="vehicle-card__hero-copy">
+      <view class="vehicle-card__hero-kicker">清运车型</view>
+      <view class="vehicle-card__hero-title">{{selectedType.name}}</view>
+    </view>
+
+    <view class="vehicle-card__illustration vehicle-card__illustration--{{heroVariant}}">
+      <view class="vehicle-card__shadow"></view>
+      <view class="vehicle-card__truck">
+        <view class="vehicle-card__truck-cargo"></view>
+        <view class="vehicle-card__truck-bucket"></view>
+        <view class="vehicle-card__truck-frame"></view>
+        <view class="vehicle-card__truck-cabin"></view>
+        <view class="vehicle-card__truck-window"></view>
+        <view class="vehicle-card__truck-bumper"></view>
+        <view class="vehicle-card__truck-hook"></view>
+        <view class="vehicle-card__wheel vehicle-card__wheel--front"></view>
+        <view class="vehicle-card__wheel vehicle-card__wheel--middle"></view>
+        <view class="vehicle-card__wheel vehicle-card__wheel--rear"></view>
       </view>
     </view>
 
-    <view class="vehicle-card__hero-badge">
-      <text class="vehicle-card__hero-badge-label">最大</text>
-      <text class="vehicle-card__hero-badge-value">17米5</text>
+    <view class="vehicle-card__hero-panel">
+      <block wx:if="{{selectedModel}}">
+        <view class="vehicle-card__hero-metric vehicle-card__hero-metric--volume">
+          <text class="vehicle-card__hero-metric-label">容积</text>
+          <text class="vehicle-card__hero-metric-value">{{selectedModel.volume}}</text>
+        </view>
+        <view class="vehicle-card__hero-metric vehicle-card__hero-metric--size">
+          <text class="vehicle-card__hero-metric-label">尺寸</text>
+          <text class="vehicle-card__hero-metric-value vehicle-card__hero-metric-value--size">{{selectedModel.size}}</text>
+        </view>
+        <view class="vehicle-card__hero-metric vehicle-card__hero-metric--price">
+          <text class="vehicle-card__hero-metric-label">价格</text>
+          <view class="vehicle-card__hero-price">
+            <text class="vehicle-card__hero-price-value">{{selectedModel.price}}</text>
+            <text class="vehicle-card__hero-price-unit">{{selectedModel.unit}}</text>
+          </view>
+        </view>
+      </block>
+      <view wx:else class="vehicle-card__hero-desc">{{selectedType.desc}}</view>
     </view>
   </view>
 
-  <view class="vehicle-card__options">
-    <block wx:for="{{items}}" wx:key="key">
-      <view
-        class="vehicle-card__option {{item.key === activeOptionKey ? 'vehicle-card__option--active' : ''}}"
-        data-key="{{item.key}}"
-        bindtap="onOptionTap"
-      >
-        {{item.label}}
+  <view wx:else class="vehicle-card__empty">暂无可选车型</view>
+
+  <view class="vehicle-card__section">
+    <view class="vehicle-card__section-head">
+      <text class="vehicle-card__section-label">车型</text>
+      <text class="vehicle-card__section-tip">{{vehicleTypes.length}}类</text>
+    </view>
+    <view class="vehicle-card__types">
+      <block wx:for="{{vehicleTypes}}" wx:key="name">
+        <view
+          class="vehicle-card__type {{index === activeTypeIndex ? 'vehicle-card__type--active' : ''}}"
+          data-index="{{index}}"
+          bindtap="onTypeTap"
+        >
+          {{item.name}}
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="vehicle-card__section vehicle-card__section--models">
+    <view class="vehicle-card__section-head">
+      <text class="vehicle-card__section-label">规格</text>
+      <text class="vehicle-card__section-tip">{{selectedModels.length}}种</text>
+    </view>
+    <scroll-view class="vehicle-card__models" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="vehicle-card__models-track">
+        <block wx:for="{{selectedModels}}" wx:key="name">
+          <view
+            class="vehicle-card__model-tab {{index === activeModelIndex ? 'vehicle-card__model-tab--active' : ''}}"
+            data-index="{{index}}"
+            bindtap="onModelTap"
+          >
+            <text class="vehicle-card__model-name">{{item.name}}</text>
+            <text class="vehicle-card__model-meta">{{item.capacity}}</text>
+          </view>
+        </block>
       </view>
-    </block>
+    </scroll-view>
   </view>
 </view>

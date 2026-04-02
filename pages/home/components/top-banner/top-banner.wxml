@@ -16,18 +16,7 @@
     ></view>
   </view>
 
-  <scroll-view class="top-banner__tabs" scroll-x enhanced enable-flex show-scrollbar="{{false}}">
-    <view class="top-banner__tabs-track">
-      <block wx:for="{{tabs}}" wx:key="key">
-        <view
-          class="top-banner__tab {{item.key === activeTabKey ? 'is-active' : ''}}"
-          data-key="{{item.key}}"
-          data-label="{{item.label}}"
-          bindtap="onTabTap"
-        >
-          {{item.label}}
-        </view>
-      </block>
-    </view>
-  </scroll-view>
+  <view class="top-banner__service">
+    <view class="top-banner__service-pill">{{serviceLabel}}</view>
+  </view>
 </view>

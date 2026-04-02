@@ -1,35 +1,41 @@
+var defaultOrder = {
+  pickupBadge: '装',
+  dropoffBadge: '卸',
+  pickupTitle: '',
+  discountText: '',
+  dropoffOptions: [],
+}
+
+function normalizeOrder(order) {
+  var data = order || {}
+
+  return {
+    pickupBadge: data.pickupBadge || defaultOrder.pickupBadge,
+    dropoffBadge: data.dropoffBadge || defaultOrder.dropoffBadge,
+    pickupTitle: data.pickupTitle || defaultOrder.pickupTitle,
+    discountText: data.discountText || defaultOrder.discountText,
+    dropoffOptions: Array.isArray(data.dropoffOptions) ? data.dropoffOptions : [],
+  }
+}
+
 Component({
   properties: {
-    pickupBadge: {
-      type: String,
-      value: '装',
-    },
-    dropoffBadge: {
-      type: String,
-      value: '卸',
-    },
-    pickupTitle: {
-      type: String,
-      value: '',
-    },
-    discountText: {
-      type: String,
-      value: '',
-    },
-    dropoffOptions: {
-      type: Array,
-      value: [],
+    order: {
+      type: Object,
+      value: null,
     },
   },
 
   data: {
+    orderData: normalizeOrder(),
     pickerValue: 0,
     selectedDropoffLabel: '',
   },
 
   observers: {
-    dropoffOptions: function () {
+    order: function (order) {
       this.setData({
+        orderData: normalizeOrder(order),
         pickerValue: 0,
         selectedDropoffLabel: '',
       })
@@ -39,7 +45,7 @@ Component({
   methods: {
     onDropoffChange: function (event) {
       var index = Number(event.detail.value || 0)
-      var dropoffOptions = this.properties.dropoffOptions || []
+      var dropoffOptions = this.data.orderData.dropoffOptions || []
 
       this.setData({
         pickerValue: index,
