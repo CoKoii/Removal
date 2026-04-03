@@ -10,12 +10,14 @@
   align-items: center;
   gap: $space-18;
   min-height: 140rpx;
+  box-sizing: border-box;
+  border: $border-thin solid transparent;
   border-radius: $radius-card-md;
   padding: $space-18 $space-20;
 }
 
 .service-options__item--active {
-  border: $border-thin solid $color-border-accent;
+  border-color: $color-border-accent;
   background: $color-surface-accent-faint;
 }
 
