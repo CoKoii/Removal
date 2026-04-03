@@ -1,24 +1,18 @@
 @import "../../styles/variables/index";
 
 page {
-  height: $size-screen-height;
-  overflow: hidden;
-  background: $color-surface-page;
+  @include layout-page-frame();
 }
 
 .payment-page {
-  display: flex;
-  flex-direction: column;
-  height: $size-screen-height;
-  overflow: hidden;
-  background: $color-surface-page;
+  @include layout-page-shell();
 }
 
 .payment__header {
   position: relative;
   flex: 0 0 auto;
-  padding-right: $space-24;
-  padding-left: $space-24;
+  padding-right: $layout-page-inline;
+  padding-left: $layout-page-inline;
   background: $color-surface-page-soft;
 }
 
@@ -45,12 +39,7 @@ page {
 }
 
 .payment__nav {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-18;
+  @include layout-capsule-row();
 }
 
 .payment__nav-left {
@@ -75,37 +64,26 @@ page {
 }
 
 .payment__scroll {
-  flex: 1 1 auto;
-  min-height: 0;
+  @include layout-scroll-region();
 }
 
 .payment__content {
-  display: flex;
-  flex-direction: column;
-  gap: $space-22;
-  min-height: 100%;
-  padding: $space-18 $space-24 220rpx;
-  box-sizing: border-box;
+  @include layout-content-stack($space-18, $space-24);
 }
 
 .payment__panel {
-  overflow: hidden;
-  border-radius: $radius-card-lg;
-  background: $color-surface-card;
-  padding: $space-24;
+  @include surface-card();
 }
 
 .payment__panel--top {
-  display: flex;
-  flex-direction: column;
-  gap: $space-16;
+  @include layout-stack($space-16);
 }
 
 .payment__row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: $space-18;
+  column-gap: $space-10;
   min-height: 96rpx;
 }
 
@@ -114,32 +92,21 @@ page {
 }
 
 .payment__row-label {
-  flex: 0 0 auto;
   color: $color-text-primary;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
   line-height: $line-height-regular;
 }
 
-.payment__row-side {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: $space-10;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
 .payment__row-arrow {
+  grid-column: 3;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 24rpx;
-  flex: 0 0 24rpx;
 }
 
 .payment__row-value {
-  flex: 1 1 auto;
+  grid-column: 2;
   min-width: 0;
   color: $color-text-secondary;
   font-size: $font-size-xl;

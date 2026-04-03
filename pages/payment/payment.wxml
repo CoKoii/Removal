@@ -55,11 +55,9 @@
               bindtap="onFieldTap"
             >
               <text class="payment__row-label">{{row.label}}</text>
-              <view class="payment__row-side">
-                <text wx:if="{{row.value || row.placeholder}}" class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}">{{row.value || row.placeholder}}</text>
-                <view class="payment__row-arrow">
-                  <van-icon name="arrow" size="16px" color="#b4baaa" />
-                </view>
+              <text wx:if="{{row.value || row.placeholder}}" class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}">{{row.value || row.placeholder}}</text>
+              <view class="payment__row-arrow">
+                <van-icon name="arrow" size="16px" color="#b4baaa" />
               </view>
             </view>
           </block>

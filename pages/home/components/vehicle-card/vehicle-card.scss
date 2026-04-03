@@ -1,13 +1,8 @@
 @import "../../../../styles/variables/index";
 
 .vehicle-card {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: $space-16;
-  border-radius: $radius-card-lg;
-  background: $color-surface-card;
-  padding: $space-24 $space-22 $space-26;
+  @include layout-stack($space-16);
+  @include surface-card($radius-card-lg, $space-24 $space-22 $space-26);
 }
 
 .vehicle-card--embedded {
@@ -16,20 +11,9 @@
   padding: 0;
 }
 
-.vehicle-card--payment {
-  gap: $space-16;
-}
-
-.vehicle-card__payment-sections {
-  display: flex;
-  flex-direction: column;
-  gap: $space-16;
-}
-
+.vehicle-card__payment-sections,
 .vehicle-card__payment-expand-content {
-  display: flex;
-  flex-direction: column;
-  gap: $space-16;
+  @include layout-stack($space-16);
 }
 
 .vehicle-card__payment-row {
@@ -408,9 +392,7 @@
 }
 
 .vehicle-card__section {
-  display: flex;
-  flex-direction: column;
-  gap: $space-10;
+  @include layout-stack($space-10);
 }
 
 .vehicle-card__section--models {

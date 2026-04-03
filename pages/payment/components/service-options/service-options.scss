@@ -1,10 +1,8 @@
 @import "../../../../styles/variables/index";
 
 .service-options {
-  overflow: hidden;
-  border-radius: $radius-card-lg;
-  background: $color-surface-card;
-  padding: $space-24;
+  @include layout-stack($space-10);
+  @include surface-card();
 }
 
 .service-options__item {
@@ -14,10 +12,6 @@
   min-height: 140rpx;
   border-radius: $radius-card-md;
   padding: $space-18 $space-20;
-}
-
-.service-options__item + .service-options__item {
-  margin-top: $space-10;
 }
 
 .service-options__item--active {
@@ -43,10 +37,8 @@
 }
 
 .service-options__main {
-  display: flex;
+  @include layout-stack($space-10);
   flex: 1 1 auto;
-  flex-direction: column;
-  gap: $space-10;
   min-width: 0;
 }
 
@@ -85,11 +77,9 @@
 }
 
 .service-options__aside {
-  display: flex;
+  @include layout-stack($space-10);
   flex: 0 0 auto;
-  flex-direction: column;
   align-items: flex-end;
-  gap: $space-10;
 }
 
 .service-options__price-row {
@@ -142,7 +132,6 @@
   align-items: center;
   justify-content: space-between;
   gap: $space-18;
-  margin-top: $space-18;
   padding-top: $space-18;
   border-top: $border-thin solid rgba(31, 31, 31, 0.06);
 }

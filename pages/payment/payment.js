@@ -1,11 +1,5 @@
 var serviceData = require('../../mock/service-config')
-
-function showToast(title) {
-  wx.showToast({
-    title: title,
-    icon: 'none',
-  })
-}
+var app = getApp()
 
 function normalizeIndex(index, fallback) {
   var parsedIndex = parseInt(index, 10)
@@ -47,40 +41,9 @@ function getSelectedOption(options, selectedKey) {
   return matchedOption || optionList[0] || { price: '0.00', deferredPrice: '0.00' }
 }
 
-var defaultPageLayout = {
-  headerSafeTop: 56,
-  capsuleHeight: 32,
-  capsuleSpaceWidth: 116,
-  safeBottom: 18,
-}
-
-function getPageLayout() {
-  var systemInfo = wx.getSystemInfoSync()
-  var menuButtonRect =
-    typeof wx.getMenuButtonBoundingClientRect === 'function'
-      ? wx.getMenuButtonBoundingClientRect()
-      : {}
-  var statusBarHeight =
-    systemInfo.statusBarHeight !== undefined && systemInfo.statusBarHeight !== null
-      ? systemInfo.statusBarHeight
-      : 20
-  var headerSafeTop = menuButtonRect.top || statusBarHeight + 12
-  var capsuleHeight = menuButtonRect.height || defaultPageLayout.capsuleHeight
-  var menuButtonLeft = menuButtonRect.left || systemInfo.windowWidth - defaultPageLayout.capsuleSpaceWidth
-  var capsuleSpaceWidth = Math.max(systemInfo.windowWidth - menuButtonLeft, 108)
-  var safeArea = systemInfo.safeArea || {}
-  var safeBottom = safeArea.bottom ? Math.max(systemInfo.screenHeight - safeArea.bottom, 18) : 18
-
-  return {
-    headerSafeTop: headerSafeTop,
-    capsuleHeight: capsuleHeight,
-    capsuleSpaceWidth: capsuleSpaceWidth,
-    safeBottom: safeBottom,
-  }
-}
-
 Page({
-  data: Object.assign({}, defaultPageLayout, {
+  data: Object.assign({}, app.globalData.defaultCapsuleLayout, {
+    safeBottom: app.globalData.defaultSafeBottom,
     service: {},
     paymentOptions: [],
     toggleItems: [],
@@ -104,7 +67,7 @@ Page({
     var dropoffLabel = options.dropoffLabel ? decodeURIComponent(options.dropoffLabel) : ''
 
     this.setData(
-      Object.assign({}, getPageLayout(), {
+      Object.assign({}, app.getPageChromeLayout(), {
         service: mockData.service,
         paymentOptions: paymentData.options || [],
         toggleItems: paymentData.toggles || [],
@@ -185,15 +148,15 @@ Page({
     var label = event.currentTarget.dataset.label
 
     if (label) {
-      showToast(label)
+      app.showToast(label)
     }
   },
 
   onScheduleTap: function () {
-    showToast('预约下单')
+    app.showToast('预约下单')
   },
 
   onPayTap: function (event) {
-    showToast(event.detail.mode === 'deferred' ? '到付' : '现付')
+    app.showToast(event.detail.mode === 'deferred' ? '到付' : '现付')
   },
 })

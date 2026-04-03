@@ -1,0 +1,55 @@
+$layout-page-gap: $space-22;
+$layout-page-inline: $space-24;
+$layout-card-padding: $space-24;
+
+@mixin layout-stack($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin layout-page-frame($background: $color-surface-page) {
+  height: $size-screen-height;
+  overflow: hidden;
+  background: $background;
+}
+
+@mixin layout-page-shell($background: $color-surface-page) {
+  @include layout-page-frame($background);
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin layout-scroll-region($background: $color-surface-page) {
+  flex: 1 1 auto;
+  min-height: 0;
+  background: $background;
+}
+
+@mixin layout-capsule-row($gap: $space-18) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap;
+}
+
+@mixin layout-content-stack(
+  $padding-top,
+  $padding-bottom,
+  $gap: $layout-page-gap,
+  $padding-inline: $layout-page-inline
+) {
+  min-height: 100%;
+  @include layout-stack($gap);
+  padding: $padding-top $padding-inline $padding-bottom;
+  box-sizing: border-box;
+}
+
+@mixin surface-card($radius: $radius-card-lg, $padding: $layout-card-padding) {
+  overflow: hidden;
+  border-radius: $radius;
+  background: $color-surface-card;
+  padding: $padding;
+}

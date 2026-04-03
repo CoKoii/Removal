@@ -39,12 +39,7 @@
 }
 
 .top-banner__head {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-18;
+  @include layout-capsule-row();
 }
 
 .top-banner__city {

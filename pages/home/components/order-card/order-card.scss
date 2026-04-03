@@ -1,9 +1,7 @@
 @import "../../../../styles/variables/index";
 
 .order-card {
-  border-radius: $radius-card-md;
-  background: $color-surface-card;
-  padding: $space-24;
+  @include surface-card($radius-card-md);
 }
 
 .order-card--embedded {
