@@ -21,7 +21,11 @@
       </view>
 
       <view class="home__section">
-        <home-order-card order="{{service.orderCard}}" bind:dropoffchange="onDropoffChange" />
+        <home-order-card
+          order="{{service.orderCard}}"
+          selectedDropoffLabel="{{selectedDropoffLabel}}"
+          bind:dropoffchange="onDropoffChange"
+        />
       </view>
 
       <view class="home__section">

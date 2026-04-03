@@ -1,7 +1,7 @@
 var serviceData = require('../../mock/service-config')
 var app = getApp()
 
-var initialPageData = Object.assign({}, app.globalData.defaultCapsuleLayout, {
+var initialPageData = Object.assign({
   safeBottom: app.globalData.defaultSafeBottom,
 }, serviceData.createPaymentPageState())
 
@@ -9,27 +9,9 @@ Page({
   data: initialPageData,
 
   onLoad: function (options) {
-    this.setData(Object.assign({}, app.getPageChromeLayout(), serviceData.createPaymentPageState(options)))
-  },
-
-  onBackTap: function () {
-    if (getCurrentPages().length > 1) {
-      wx.navigateBack({
-        delta: 1,
-      })
-
-      return
-    }
-
-    wx.switchTab({
-      url: '/pages/home/home',
-    })
-  },
-
-  onHomeTap: function () {
-    wx.switchTab({
-      url: '/pages/home/home',
-    })
+    this.setData(Object.assign({
+      safeBottom: app.getSafeBottom(),
+    }, serviceData.createPaymentPageState(options)))
   },
 
   onDropoffChange: function (event) {

@@ -375,6 +375,7 @@ function createHomePageState() {
     {
       city: pickValue(source.city, ''),
       service: service,
+      selectedDropoffLabel: '',
     },
     buildVehicleSelectionState(service, 0, -1, -1)
   )

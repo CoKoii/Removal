@@ -32,16 +32,13 @@ App({
     }
   },
 
-  getPageChromeLayout: function () {
-    var systemInfo = wx.getSystemInfoSync()
-    var safeArea = systemInfo.safeArea || {}
-    var safeBottom = safeArea.bottom
-      ? Math.max(systemInfo.screenHeight - safeArea.bottom, defaultSafeBottom)
-      : defaultSafeBottom
+  getSafeBottom: function (systemInfo) {
+    var info = systemInfo || wx.getSystemInfoSync()
+    var safeArea = info.safeArea || {}
 
-    return Object.assign({}, this.getCapsuleLayout(systemInfo), {
-      safeBottom: safeBottom,
-    })
+    return safeArea.bottom
+      ? Math.max(info.screenHeight - safeArea.bottom, defaultSafeBottom)
+      : defaultSafeBottom
   },
 
   showToast: function (title) {

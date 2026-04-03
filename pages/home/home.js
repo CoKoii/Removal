@@ -10,6 +10,15 @@ Page({
     this.setData(app.getCapsuleLayout())
   },
 
+  onShow: function () {
+    if (!this.shouldRefreshOnShow) {
+      return
+    }
+
+    this.shouldRefreshOnShow = false
+    this.setData(serviceData.createHomePageState())
+  },
+
   onShortcutTap: function (event) {
     app.showToast(event.detail.label)
   },
@@ -23,6 +32,9 @@ Page({
   },
 
   onDropoffChange: function (event) {
+    this.setData(serviceData.buildDropoffPatch(event.detail))
+    this.shouldRefreshOnShow = true
+
     wx.navigateTo({
       url: serviceData.buildPaymentUrl(this.data, event.detail),
     })

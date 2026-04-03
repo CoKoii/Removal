@@ -8,71 +8,20 @@ page {
   @include layout-page-shell();
 }
 
-.payment__header {
-  position: relative;
-  flex: 0 0 auto;
-  padding-right: $layout-page-inline;
-  padding-left: $layout-page-inline;
-  background: $color-surface-page-soft;
-}
-
-.payment__header-glow {
-  position: absolute;
-  border-radius: $radius-pill;
-  opacity: 0.72;
-}
-
-.payment__header-glow--left {
-  top: 18rpx;
-  left: -20rpx;
-  width: 260rpx;
-  height: 160rpx;
-  background: rgba(255, 255, 255, 0.68);
-}
-
-.payment__header-glow--right {
-  top: 36rpx;
-  right: -34rpx;
-  width: 220rpx;
-  height: 140rpx;
-  background: rgba(237, 247, 221, 0.88);
-}
-
-.payment__nav {
-  @include layout-capsule-row();
-}
-
-.payment__nav-left {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-12;
-}
-
-.payment__nav-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 72rpx;
-  height: 72rpx;
-  border-radius: $radius-pill;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10rpx 24rpx rgba(31, 31, 31, 0.06);
-}
-
-.payment__nav-space {
-  flex-shrink: 0;
-}
-
 .payment__scroll {
   @include layout-scroll-region();
 }
 
 .payment__content {
-  @include layout-content-stack($space-18, $space-24);
+  @include layout-content-stack($space-24, $space-24);
 }
 
 .payment__panel {
   @include surface-card();
+}
+
+.payment__panel--fields {
+  padding: 0 $space-30;
 }
 
 .payment__panel--top {
@@ -84,7 +33,7 @@ page {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   column-gap: $space-10;
-  min-height: 96rpx;
+  padding: $space-30 0;
 }
 
 .payment__row--border {
@@ -92,6 +41,7 @@ page {
 }
 
 .payment__row-label {
+  display: block;
   color: $color-text-primary;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
@@ -107,6 +57,7 @@ page {
 
 .payment__row-value {
   grid-column: 2;
+  display: block;
   min-width: 0;
   color: $color-text-secondary;
   font-size: $font-size-xl;

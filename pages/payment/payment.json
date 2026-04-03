@@ -1,6 +1,8 @@
 {
-  "navigationStyle": "custom",
   "disableScroll": true,
+  "navigationBarTitleText": "支付",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
     "home-order-card": "../home/components/order-card/order-card",
