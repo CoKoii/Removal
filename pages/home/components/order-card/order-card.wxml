@@ -37,7 +37,7 @@
                   {{currentDropoffLabel || '选择卸货地址'}}
                 </view>
               </view>
-              <van-icon class="order-card__drop-arrow" name="arrow-down" size="14px" color="#7cc84a" />
+              <van-icon class="order-card__drop-arrow" name="arrow-down" size="14px" color="currentColor" />
             </view>
           </view>
         </picker>

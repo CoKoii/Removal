@@ -7,7 +7,7 @@
     <view class="top-banner__city">
       <text class="top-banner__city-text">{{city}}</text>
       <view class="top-banner__city-arrow">
-        <van-icon name="arrow-down" size="20rpx" color="#666666" />
+        <van-icon class="top-banner__city-arrow-icon" name="arrow-down" size="20rpx" color="currentColor" />
       </view>
     </view>
     <view

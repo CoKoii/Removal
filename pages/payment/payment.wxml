@@ -31,13 +31,19 @@
           <block wx:for="{{group.items}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowKey">
             <view
               class="payment__row {{rowIndex !== group.items.length - 1 ? 'payment__row--border' : ''}}"
+              data-key="{{row.key}}"
               data-label="{{row.label}}"
               bindtap="onFieldTap"
             >
               <text class="payment__row-label">{{row.label}}</text>
-              <text wx:if="{{row.value || row.placeholder}}" class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}">{{row.value || row.placeholder}}</text>
+              <text
+                wx:if="{{row.value || row.placeholder}}"
+                class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}"
+              >
+                {{row.value || row.placeholder}}
+              </text>
               <view class="payment__row-arrow">
-                <van-icon name="arrow" size="16px" color="#b4baaa" />
+                <van-icon name="arrow" size="16px" color="currentColor" />
               </view>
             </view>
           </block>

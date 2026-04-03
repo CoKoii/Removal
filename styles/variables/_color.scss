@@ -6,9 +6,13 @@ $color-accent: #98d94f;
 $color-text-primary: #1f1f1f;
 $color-text-secondary: #666666;
 $color-text-muted: #999999;
+$color-text-tertiary: #8d9483;
+$color-text-disabled: #b4baaa;
 $color-text-inverse: #ffffff;
 $color-text-banner: $color-text-primary;
 $color-text-accent: $color-primary-hover;
+$color-text-info: #4d76c9;
+$color-text-danger: #d85a4c;
 $color-text-warning: #9b7d22;
 $color-text-on-accent: $color-text-inverse;
 
@@ -23,10 +27,23 @@ $color-surface-page-warm: #eef2e8;
 $color-surface-card: $color-bg-card;
 $color-surface-card-soft: $color-bg-accent;
 $color-surface-muted: $color-bg-block;
+$color-surface-info-soft: #eef4ff;
+$color-surface-danger-soft: #fff3ef;
 $color-surface-dot: #d5dccb;
 $color-surface-dark: #1f1f1f;
 $color-surface-accent: $color-primary;
 $color-surface-accent-soft: #d7ebbf;
+$color-surface-accent-faint: rgba(237, 247, 221, 0.56);
+$color-surface-accent-tint: rgba(124, 200, 74, 0.12);
+$color-surface-danger: #ef6f60;
+$color-surface-warning-soft: #fff4e7;
+$color-surface-warning: #ffbf66;
+$color-surface-warning-strong: #ffc12d;
+$color-surface-warning-accent: #ff7a00;
+
+$color-border-subtle: rgba(31, 31, 31, 0.06);
+$color-border-default: rgba(31, 31, 31, 0.14);
+$color-border-accent: rgba(124, 200, 74, 0.42);
 
 $color-illustration-line: #2a2a2a;
 $color-illustration-metal: #6f746b;

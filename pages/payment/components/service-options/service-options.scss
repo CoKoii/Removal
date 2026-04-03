@@ -15,8 +15,8 @@
 }
 
 .service-options__item--active {
-  border: $border-thin solid rgba(124, 200, 74, 0.42);
-  background: rgba(237, 247, 221, 0.56);
+  border: $border-thin solid $color-border-accent;
+  background: $color-surface-accent-faint;
 }
 
 .service-options__radio {
@@ -25,7 +25,7 @@
   justify-content: center;
   width: 40rpx;
   height: 40rpx;
-  border: $border-thin solid rgba(31, 31, 31, 0.14);
+  border: $border-thin solid $color-border-default;
   border-radius: $radius-round;
   background: $color-surface-card;
   flex-shrink: 0;
@@ -34,6 +34,10 @@
 .service-options__radio--active {
   border-color: $color-surface-accent;
   background: $color-surface-accent;
+}
+
+.service-options__radio-icon {
+  color: $color-text-inverse;
 }
 
 .service-options__main {
@@ -120,7 +124,7 @@
   min-height: 40rpx;
   padding: 0 $space-10;
   border-radius: $radius-pill;
-  background: rgba(124, 200, 74, 0.12);
+  background: $color-surface-accent-tint;
   color: $color-text-accent;
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
@@ -133,7 +137,7 @@
   justify-content: space-between;
   gap: $space-18;
   padding-top: $space-18;
-  border-top: $border-thin solid rgba(31, 31, 31, 0.06);
+  border-top: $border-thin solid $color-border-subtle;
 }
 
 .service-options__toggle {
@@ -151,7 +155,7 @@
   justify-content: center;
   width: 34rpx;
   height: 34rpx;
-  border: $border-thin solid rgba(31, 31, 31, 0.14);
+  border: $border-thin solid $color-border-default;
   border-radius: 10rpx;
   background: $color-surface-card;
 }
@@ -159,6 +163,10 @@
 .service-options__checkbox--active {
   border-color: $color-surface-accent;
   background: $color-surface-accent;
+}
+
+.service-options__checkbox-icon {
+  color: $color-text-inverse;
 }
 
 .service-options__toggle-label {

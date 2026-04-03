@@ -6,7 +6,13 @@
       bindtap="onOptionTap"
     >
       <view class="service-options__radio {{item.key === selectedKey ? 'service-options__radio--active' : ''}}">
-        <van-icon wx:if="{{item.key === selectedKey}}" name="success" size="14px" color="#ffffff" />
+        <van-icon
+          wx:if="{{item.key === selectedKey}}"
+          class="service-options__radio-icon"
+          name="success"
+          size="14px"
+          color="currentColor"
+        />
       </view>
 
       <view class="service-options__main">
@@ -34,7 +40,13 @@
     <block wx:for="{{toggles}}" wx:key="key">
       <view class="service-options__toggle" data-key="{{item.key}}" bindtap="onToggleTap">
         <view class="service-options__checkbox {{item.checked ? 'service-options__checkbox--active' : ''}}">
-          <van-icon wx:if="{{item.checked}}" name="success" size="12px" color="#ffffff" />
+          <van-icon
+            wx:if="{{item.checked}}"
+            class="service-options__checkbox-icon"
+            name="success"
+            size="12px"
+            color="currentColor"
+          />
         </view>
         <text class="service-options__toggle-label">{{item.label}}</text>
       </view>

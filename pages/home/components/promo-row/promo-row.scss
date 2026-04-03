@@ -17,11 +17,11 @@
 }
 
 .promo-row__card--blue {
-  background: #eef4ff;
+  background: $color-surface-info-soft;
 }
 
 .promo-row__card--red {
-  background: #fff3ef;
+  background: $color-surface-danger-soft;
 }
 
 .promo-row__mint-decor {
@@ -47,7 +47,7 @@
   position: relative;
   z-index: 1;
   margin-top: $space-10;
-  color: #4d76c9;
+  color: $color-text-info;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
@@ -66,7 +66,7 @@
   position: relative;
   z-index: 1;
   margin-top: $space-10;
-  color: #d85a4c;
+  color: $color-text-danger;
   font-size: $font-size-xs;
   line-height: $line-height-display;
 }
@@ -74,7 +74,7 @@
 .promo-row__gift {
   position: absolute;
   border-radius: 14rpx;
-  background: #ef6f60;
+  background: $color-surface-danger;
 }
 
 .promo-row__gift--large {
@@ -94,7 +94,7 @@
 .promo-row__coin {
   position: absolute;
   border-radius: $radius-round;
-  background: #ffbf66;
+  background: $color-surface-warning;
 }
 
 .promo-row__coin--one {

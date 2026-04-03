@@ -37,7 +37,7 @@ page {
 }
 
 .payment__row--border {
-  border-bottom: $border-thin solid rgba(31, 31, 31, 0.06);
+  border-bottom: $border-thin solid $color-border-subtle;
 }
 
 .payment__row-label {
@@ -48,15 +48,7 @@ page {
   line-height: $line-height-regular;
 }
 
-.payment__row-arrow {
-  grid-column: 3;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
 .payment__row-value {
-  grid-column: 2;
   display: block;
   min-width: 0;
   color: $color-text-secondary;
@@ -70,4 +62,11 @@ page {
 
 .payment__row-value--placeholder {
   color: $color-text-muted;
+}
+
+.payment__row-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: $color-text-disabled;
 }

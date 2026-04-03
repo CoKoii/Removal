@@ -2,10 +2,10 @@
   <view class="payment-bar__shell">
     <view class="payment-bar__schedule" bindtap="onScheduleTap">
       <view class="payment-bar__schedule-icon">
-        <van-icon name="clock-o" size="16px" color="#f08a1c" />
+        <van-icon class="payment-bar__schedule-icon-mark" name="clock-o" size="16px" color="currentColor" />
       </view>
       <text class="payment-bar__schedule-label">{{scheduleLabel}}</text>
-      <van-icon name="arrow" size="14px" color="#8d9483" />
+      <van-icon class="payment-bar__schedule-arrow" name="arrow" size="14px" color="currentColor" />
     </view>
 
     <view class="payment-bar__actions">

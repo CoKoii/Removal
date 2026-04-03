@@ -1,14 +1,10 @@
 @import "../../../../styles/variables/index";
 
-$payment-accent-soft: #fff4e7;
-$payment-deferred-solid: #ffc12d;
-$payment-instant-solid: #ff7a00;
-
 .payment-bar {
   position: relative;
   z-index: 2;
   flex: 0 0 auto;
-  padding: $space-24 $space-24 28rpx;
+  padding: $space-24 $space-24 $space-28;
   background: $color-surface-card;
   box-shadow: 0 -4rpx 12rpx rgba(31, 31, 31, 0.04), 0 -12rpx 28rpx rgba(31, 31, 31, 0.08);
 }
@@ -36,7 +32,7 @@ $payment-instant-solid: #ff7a00;
   width: 36rpx;
   height: 36rpx;
   border-radius: $radius-round;
-  background: $payment-accent-soft;
+  background: $color-surface-warning-soft;
 }
 
 .payment-bar__schedule-label {
@@ -44,6 +40,14 @@ $payment-instant-solid: #ff7a00;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
+}
+
+.payment-bar__schedule-icon-mark {
+  color: $color-surface-warning-accent;
+}
+
+.payment-bar__schedule-arrow {
+  color: $color-text-tertiary;
 }
 
 .payment-bar__actions {
@@ -64,11 +68,11 @@ $payment-instant-solid: #ff7a00;
 }
 
 .payment-bar__action--deferred {
-  background: $payment-deferred-solid;
+  background: $color-surface-warning-strong;
 }
 
 .payment-bar__action--instant {
-  background: $payment-instant-solid;
+  background: $color-surface-warning-accent;
 }
 
 .payment-bar__action-price,

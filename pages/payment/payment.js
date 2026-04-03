@@ -31,7 +31,7 @@ Page({
   },
 
   onFieldTap: function (event) {
-    var label = event.currentTarget.dataset.label
+    var label = (event.detail && event.detail.label) || event.currentTarget.dataset.label
 
     if (label) {
       app.showToast(label)
