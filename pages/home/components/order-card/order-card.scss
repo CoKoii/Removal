@@ -6,6 +6,12 @@
   padding: $space-24;
 }
 
+.order-card--embedded {
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
 .order-card__layout {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

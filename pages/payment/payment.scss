@@ -1,0 +1,155 @@
+@import "../../styles/variables/index";
+
+page {
+  height: $size-screen-height;
+  overflow: hidden;
+  background: $color-surface-page;
+}
+
+.payment-page {
+  display: flex;
+  flex-direction: column;
+  height: $size-screen-height;
+  overflow: hidden;
+  background: $color-surface-page;
+}
+
+.payment__header {
+  position: relative;
+  flex: 0 0 auto;
+  padding-right: $space-24;
+  padding-left: $space-24;
+  background: $color-surface-page-soft;
+}
+
+.payment__header-glow {
+  position: absolute;
+  border-radius: $radius-pill;
+  opacity: 0.72;
+}
+
+.payment__header-glow--left {
+  top: 18rpx;
+  left: -20rpx;
+  width: 260rpx;
+  height: 160rpx;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.payment__header-glow--right {
+  top: 36rpx;
+  right: -34rpx;
+  width: 220rpx;
+  height: 140rpx;
+  background: rgba(237, 247, 221, 0.88);
+}
+
+.payment__nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-18;
+}
+
+.payment__nav-left {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-12;
+}
+
+.payment__nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10rpx 24rpx rgba(31, 31, 31, 0.06);
+}
+
+.payment__nav-space {
+  flex-shrink: 0;
+}
+
+.payment__scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.payment__content {
+  display: flex;
+  flex-direction: column;
+  gap: $space-22;
+  min-height: 100%;
+  padding: $space-18 $space-24 220rpx;
+  box-sizing: border-box;
+}
+
+.payment__panel {
+  overflow: hidden;
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.payment__panel--top {
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+}
+
+.payment__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-18;
+  min-height: 96rpx;
+}
+
+.payment__row--border {
+  border-bottom: $border-thin solid rgba(31, 31, 31, 0.06);
+}
+
+.payment__row-label {
+  flex: 0 0 auto;
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-regular;
+}
+
+.payment__row-side {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-10;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.payment__row-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 24rpx;
+  flex: 0 0 24rpx;
+}
+
+.payment__row-value {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: $color-text-secondary;
+  font-size: $font-size-xl;
+  line-height: $line-height-regular;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.payment__row-value--placeholder {
+  color: $color-text-muted;
+}

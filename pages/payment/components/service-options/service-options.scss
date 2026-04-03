@@ -1,0 +1,179 @@
+@import "../../../../styles/variables/index";
+
+.service-options {
+  overflow: hidden;
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.service-options__item {
+  display: flex;
+  align-items: center;
+  gap: $space-18;
+  min-height: 140rpx;
+  border-radius: $radius-card-md;
+  padding: $space-18 $space-20;
+}
+
+.service-options__item + .service-options__item {
+  margin-top: $space-10;
+}
+
+.service-options__item--active {
+  border: $border-thin solid rgba(124, 200, 74, 0.42);
+  background: rgba(237, 247, 221, 0.56);
+}
+
+.service-options__radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40rpx;
+  height: 40rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.14);
+  border-radius: $radius-round;
+  background: $color-surface-card;
+  flex-shrink: 0;
+}
+
+.service-options__radio--active {
+  border-color: $color-surface-accent;
+  background: $color-surface-accent;
+}
+
+.service-options__main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: $space-10;
+  min-width: 0;
+}
+
+.service-options__title-row {
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+  min-width: 0;
+}
+
+.service-options__title {
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-regular;
+}
+
+.service-options__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36rpx;
+  padding: 0 $space-10;
+  border-radius: $radius-pill;
+  background: $color-bg-accent;
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.service-options__desc {
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+  line-height: $line-height-regular;
+}
+
+.service-options__aside {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $space-10;
+}
+
+.service-options__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: $space-8;
+}
+
+.service-options__price-label {
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  line-height: $line-height-display;
+}
+
+.service-options__price-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: $space-4;
+}
+
+.service-options__price-number {
+  color: $color-text-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-compact;
+}
+
+.service-options__price-unit {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  line-height: $line-height-display;
+}
+
+.service-options__promo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40rpx;
+  padding: 0 $space-10;
+  border-radius: $radius-pill;
+  background: rgba(124, 200, 74, 0.12);
+  color: $color-text-accent;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.service-options__toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-18;
+  margin-top: $space-18;
+  padding-top: $space-18;
+  border-top: $border-thin solid rgba(31, 31, 31, 0.06);
+}
+
+.service-options__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-10;
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  line-height: $line-height-regular;
+}
+
+.service-options__checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34rpx;
+  height: 34rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.14);
+  border-radius: 10rpx;
+  background: $color-surface-card;
+}
+
+.service-options__checkbox--active {
+  border-color: $color-surface-accent;
+  background: $color-surface-accent;
+}
+
+.service-options__toggle-label {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}

@@ -1,0 +1,90 @@
+@import "../../../../styles/variables/index";
+
+$payment-accent-soft: #fff4e7;
+
+.payment-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  padding: $space-18 $space-24 18rpx;
+  background: linear-gradient(180deg, rgba(247, 248, 245, 0) 0%, rgba(247, 248, 245, 0.96) 32%, rgba(247, 248, 245, 1) 100%);
+}
+
+.payment-bar__shell {
+  display: flex;
+  align-items: stretch;
+  gap: $space-18;
+}
+
+.payment-bar__schedule {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  min-width: 180rpx;
+  padding: 0 $space-18;
+  border-radius: $radius-card-md;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12rpx 30rpx rgba(31, 31, 31, 0.06);
+}
+
+.payment-bar__schedule-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: $radius-round;
+  background: $payment-accent-soft;
+}
+
+.payment-bar__schedule-label {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.payment-bar__actions {
+  overflow: hidden;
+  display: flex;
+  flex: 1 1 auto;
+  border-radius: $radius-card-md;
+  box-shadow: 0 12rpx 30rpx rgba(255, 145, 31, 0.18);
+}
+
+.payment-bar__action {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 106rpx;
+  gap: $space-8;
+}
+
+.payment-bar__action--deferred {
+  background: $gradient-coin;
+}
+
+.payment-bar__action--instant {
+  background: $gradient-gift;
+}
+
+.payment-bar__action-price,
+.payment-bar__action-label {
+  color: $color-text-on-accent;
+}
+
+.payment-bar__action-price {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.payment-bar__action-label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-display;
+}

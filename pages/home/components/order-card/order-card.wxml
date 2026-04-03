@@ -1,4 +1,4 @@
-<view class="order-card">
+<view class="order-card {{embedded ? 'order-card--embedded' : ''}}">
   <view class="order-card__layout">
     <view class="order-card__marker-track">
       <view class="order-card__marker order-card__marker--pickup order-card__marker--top">
@@ -32,9 +32,9 @@
             <view class="order-card__address-core order-card__address-core--drop">
               <view class="order-card__drop-value">
                 <view
-                  class="order-card__drop-label {{selectedDropoffLabel ? 'order-card__drop-label--selected' : 'order-card__drop-label--placeholder'}}"
+                  class="order-card__drop-label {{currentDropoffLabel ? 'order-card__drop-label--selected' : 'order-card__drop-label--placeholder'}}"
                 >
-                  {{selectedDropoffLabel || '选择卸货地址'}}
+                  {{currentDropoffLabel || '选择卸货地址'}}
                 </view>
               </view>
               <van-icon class="order-card__drop-arrow" name="arrow-down" size="14px" color="#7cc84a" />

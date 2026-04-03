@@ -19,7 +19,7 @@ function buildEmptySelection() {
   }
 }
 
-function buildSelection(vehicleTypes, typeIndex, modelIndex) {
+function buildSelection(vehicleTypes, typeIndex, modelIndex, mode) {
   var types = Array.isArray(vehicleTypes) ? vehicleTypes : []
 
   if (!types.length) {
@@ -29,7 +29,9 @@ function buildSelection(vehicleTypes, typeIndex, modelIndex) {
   var nextTypeIndex = normalizeIndex(typeIndex, types.length, 0)
   var selectedType = types[nextTypeIndex]
   var selectedModels = Array.isArray(selectedType.models) ? selectedType.models : []
-  var nextModelIndex = normalizeIndex(modelIndex, selectedModels.length, -1)
+  var nextModelIndex = selectedModels.length
+    ? normalizeIndex(modelIndex, selectedModels.length, mode === 'payment' ? 0 : -1)
+    : -1
   var selectedModel = nextModelIndex > -1 ? selectedModels[nextModelIndex] : null
 
   return {
@@ -48,19 +50,53 @@ Component({
       type: Array,
       value: [],
     },
+    selectedTypeIndex: {
+      type: Number,
+      value: 0,
+    },
+    selectedModelIndex: {
+      type: Number,
+      value: -1,
+    },
+    mode: {
+      type: String,
+      value: 'home',
+    },
+    embedded: {
+      type: Boolean,
+      value: false,
+    },
   },
 
-  data: buildEmptySelection(),
+  data: Object.assign(
+    {
+      paymentExpanded: false,
+    },
+    buildEmptySelection()
+  ),
 
   observers: {
-    vehicleTypes: function (vehicleTypes) {
-      this.setData(buildSelection(vehicleTypes, 0, -1))
+    'vehicleTypes, selectedTypeIndex, selectedModelIndex, mode': function (
+      vehicleTypes,
+      selectedTypeIndex,
+      selectedModelIndex,
+      mode
+    ) {
+      this.setData(buildSelection(vehicleTypes, selectedTypeIndex, selectedModelIndex, mode))
     },
   },
 
   methods: {
     applySelection: function (typeIndex, modelIndex) {
-      this.setData(buildSelection(this.properties.vehicleTypes, typeIndex, modelIndex))
+      var selection = buildSelection(this.properties.vehicleTypes, typeIndex, modelIndex, this.properties.mode)
+
+      this.setData(selection)
+      this.triggerEvent('selectionchange', {
+        typeIndex: selection.activeTypeIndex,
+        modelIndex: selection.activeModelIndex,
+        typeName: selection.selectedType ? selection.selectedType.name : '',
+        modelName: selection.selectedModel ? selection.selectedModel.name : '',
+      })
     },
 
     onTypeTap: function (event) {
@@ -73,6 +109,12 @@ Component({
       var modelIndex = event.currentTarget.dataset.index
 
       this.applySelection(this.data.activeTypeIndex, modelIndex)
+    },
+
+    onPaymentExpandToggle: function () {
+      this.setData({
+        paymentExpanded: !this.data.paymentExpanded,
+      })
     },
   },
 })

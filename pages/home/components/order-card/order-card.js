@@ -24,32 +24,68 @@ Component({
       type: Object,
       value: null,
     },
+    selectedDropoffLabel: {
+      type: String,
+      value: '',
+    },
+    embedded: {
+      type: Boolean,
+      value: false,
+    },
   },
 
   data: {
     orderData: normalizeOrder(),
     pickerValue: 0,
-    selectedDropoffLabel: '',
+    currentDropoffLabel: '',
   },
 
   observers: {
     order: function (order) {
+      var orderData = normalizeOrder(order)
+      var dropoffState = this.buildDropoffState(orderData, this.properties.selectedDropoffLabel)
+
       this.setData({
-        orderData: normalizeOrder(order),
-        pickerValue: 0,
-        selectedDropoffLabel: '',
+        orderData: orderData,
+        pickerValue: dropoffState.pickerValue,
+        currentDropoffLabel: dropoffState.currentDropoffLabel,
+      })
+    },
+    selectedDropoffLabel: function (selectedDropoffLabel) {
+      var dropoffState = this.buildDropoffState(this.data.orderData, selectedDropoffLabel)
+
+      this.setData({
+        pickerValue: dropoffState.pickerValue,
+        currentDropoffLabel: dropoffState.currentDropoffLabel,
       })
     },
   },
 
   methods: {
+    buildDropoffState: function (orderData, selectedDropoffLabel) {
+      var dropoffOptions = (orderData && orderData.dropoffOptions) || []
+      var label = selectedDropoffLabel || ''
+      var pickerValue = dropoffOptions.indexOf(label)
+
+      return {
+        pickerValue: pickerValue > -1 ? pickerValue : 0,
+        currentDropoffLabel: label,
+      }
+    },
+
     onDropoffChange: function (event) {
       var index = Number(event.detail.value || 0)
       var dropoffOptions = this.data.orderData.dropoffOptions || []
+      var selectedLabel = dropoffOptions[index] || ''
 
       this.setData({
         pickerValue: index,
-        selectedDropoffLabel: dropoffOptions[index] || '',
+        currentDropoffLabel: selectedLabel,
+      })
+
+      this.triggerEvent('dropoffchange', {
+        index: index,
+        label: selectedLabel,
       })
     },
   },

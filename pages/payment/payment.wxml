@@ -1,0 +1,79 @@
+<view class="payment-page">
+  <view class="payment__header" style="padding-top: {{headerSafeTop}}px;">
+    <view class="payment__header-glow payment__header-glow--left"></view>
+    <view class="payment__header-glow payment__header-glow--right"></view>
+
+    <view class="payment__nav" style="min-height: {{capsuleHeight}}px;">
+      <view class="payment__nav-left">
+        <view class="payment__nav-button" bindtap="onBackTap">
+          <van-icon name="arrow-left" size="22px" color="#1f1f1f" />
+        </view>
+        <view class="payment__nav-button" bindtap="onHomeTap">
+          <van-icon name="home-o" size="20px" color="#1f1f1f" />
+        </view>
+      </view>
+      <view
+        class="payment__nav-space"
+        style="width: {{capsuleSpaceWidth}}px; height: {{capsuleHeight}}px;"
+      ></view>
+    </view>
+  </view>
+
+  <scroll-view class="payment__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
+    <view class="payment__content">
+      <view class="payment__panel payment__panel--top">
+        <home-order-card
+          order="{{service.orderCard}}"
+          selectedDropoffLabel="{{selectedDropoffLabel}}"
+          embedded="{{true}}"
+          bind:dropoffchange="onDropoffChange"
+        />
+        <home-vehicle-card
+          vehicleTypes="{{service.vehicleTypes}}"
+          selectedTypeIndex="{{activeVehicleTypeIndex}}"
+          selectedModelIndex="{{activeVehicleModelIndex}}"
+          mode="payment"
+          embedded="{{true}}"
+          bind:selectionchange="onVehicleChange"
+        />
+      </view>
+
+      <payment-service-options
+        options="{{paymentOptions}}"
+        toggles="{{toggleItems}}"
+        selectedKey="{{selectedOptionKey}}"
+        bind:optionchange="onOptionChange"
+        bind:togglechange="onToggleChange"
+      />
+
+      <block wx:for="{{fieldGroups}}" wx:for-item="group" wx:key="groupKey">
+        <view class="payment__panel">
+          <block wx:for="{{group.items}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowKey">
+            <view
+              class="payment__row {{rowIndex !== group.items.length - 1 ? 'payment__row--border' : ''}}"
+              data-label="{{row.label}}"
+              bindtap="onFieldTap"
+            >
+              <text class="payment__row-label">{{row.label}}</text>
+              <view class="payment__row-side">
+                <text wx:if="{{row.value || row.placeholder}}" class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}">{{row.value || row.placeholder}}</text>
+                <view class="payment__row-arrow">
+                  <van-icon name="arrow" size="16px" color="#b4baaa" />
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <payment-bar
+    scheduleLabel="{{scheduleLabel}}"
+    deferredPrice="{{deferredPrice}}"
+    instantPrice="{{instantPrice}}"
+    safeBottom="{{safeBottom}}"
+    bind:scheduletap="onScheduleTap"
+    bind:paytap="onPayTap"
+  />
+</view>

@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "home-order-card": "../home/components/order-card/order-card",
+    "home-vehicle-card": "../home/components/vehicle-card/vehicle-card",
+    "payment-service-options": "./components/service-options/service-options",
+    "payment-bar": "./components/payment-bar/payment-bar"
+  }
+}

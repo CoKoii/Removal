@@ -12,11 +12,16 @@
   <scroll-view class="home__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
     <view class="home__content">
       <view class="home__section">
-        <home-vehicle-card vehicleTypes="{{service.vehicleTypes}}" />
+        <home-vehicle-card
+          vehicleTypes="{{service.vehicleTypes}}"
+          selectedTypeIndex="{{activeVehicleTypeIndex}}"
+          selectedModelIndex="{{activeVehicleModelIndex}}"
+          bind:selectionchange="onVehicleChange"
+        />
       </view>
 
       <view class="home__section">
-        <home-order-card order="{{service.orderCard}}" />
+        <home-order-card order="{{service.orderCard}}" bind:dropoffchange="onDropoffChange" />
       </view>
 
       <view class="home__section">

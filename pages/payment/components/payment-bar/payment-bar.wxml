@@ -1,0 +1,22 @@
+<view class="payment-bar" style="padding-bottom: {{safeBottom}}px;">
+  <view class="payment-bar__shell">
+    <view class="payment-bar__schedule" bindtap="onScheduleTap">
+      <view class="payment-bar__schedule-icon">
+        <van-icon name="clock-o" size="16px" color="#f08a1c" />
+      </view>
+      <text class="payment-bar__schedule-label">{{scheduleLabel}}</text>
+      <van-icon name="arrow" size="14px" color="#8d9483" />
+    </view>
+
+    <view class="payment-bar__actions">
+      <view class="payment-bar__action payment-bar__action--deferred" data-mode="deferred" bindtap="onPayTap">
+        <text class="payment-bar__action-price">{{deferredPrice}}元</text>
+        <text class="payment-bar__action-label">到付</text>
+      </view>
+      <view class="payment-bar__action payment-bar__action--instant" data-mode="instant" bindtap="onPayTap">
+        <text class="payment-bar__action-price">{{instantPrice}}元</text>
+        <text class="payment-bar__action-label">现付</text>
+      </view>
+    </view>
+  </view>
+</view>
