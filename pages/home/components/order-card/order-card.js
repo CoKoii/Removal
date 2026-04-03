@@ -18,6 +18,19 @@ function normalizeOrder(order) {
   }
 }
 
+function buildOrderState(order, selectedDropoffLabel) {
+  var orderData = normalizeOrder(order)
+  var dropoffOptions = orderData.dropoffOptions || []
+  var label = selectedDropoffLabel || ''
+  var pickerValue = dropoffOptions.indexOf(label)
+
+  return {
+    orderData: orderData,
+    pickerValue: pickerValue > -1 ? pickerValue : 0,
+    currentDropoffLabel: label,
+  }
+}
+
 Component({
   properties: {
     order: {
@@ -34,45 +47,15 @@ Component({
     },
   },
 
-  data: {
-    orderData: normalizeOrder(),
-    pickerValue: 0,
-    currentDropoffLabel: '',
-  },
+  data: buildOrderState(),
 
   observers: {
-    order: function (order) {
-      var orderData = normalizeOrder(order)
-      var dropoffState = this.buildDropoffState(orderData, this.properties.selectedDropoffLabel)
-
-      this.setData({
-        orderData: orderData,
-        pickerValue: dropoffState.pickerValue,
-        currentDropoffLabel: dropoffState.currentDropoffLabel,
-      })
-    },
-    selectedDropoffLabel: function (selectedDropoffLabel) {
-      var dropoffState = this.buildDropoffState(this.data.orderData, selectedDropoffLabel)
-
-      this.setData({
-        pickerValue: dropoffState.pickerValue,
-        currentDropoffLabel: dropoffState.currentDropoffLabel,
-      })
+    'order, selectedDropoffLabel': function (order, selectedDropoffLabel) {
+      this.setData(buildOrderState(order, selectedDropoffLabel))
     },
   },
 
   methods: {
-    buildDropoffState: function (orderData, selectedDropoffLabel) {
-      var dropoffOptions = (orderData && orderData.dropoffOptions) || []
-      var label = selectedDropoffLabel || ''
-      var pickerValue = dropoffOptions.indexOf(label)
-
-      return {
-        pickerValue: pickerValue > -1 ? pickerValue : 0,
-        currentDropoffLabel: label,
-      }
-    },
-
     onDropoffChange: function (event) {
       var index = Number(event.detail.value || 0)
       var dropoffOptions = this.data.orderData.dropoffOptions || []

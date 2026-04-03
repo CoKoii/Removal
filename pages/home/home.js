@@ -1,13 +1,7 @@
 var serviceData = require('../../mock/service-config')
 var app = getApp()
-var homeMock = serviceData.cloneData()
 
-var pageData = Object.assign({}, app.globalData.defaultCapsuleLayout, {
-  city: homeMock.city,
-  service: homeMock.service,
-  activeVehicleTypeIndex: 0,
-  activeVehicleModelIndex: -1,
-})
+var pageData = Object.assign({}, app.globalData.defaultCapsuleLayout, serviceData.createHomePageState())
 
 Page({
   data: pageData,
@@ -25,26 +19,12 @@ Page({
   },
 
   onVehicleChange: function (event) {
-    this.setData({
-      activeVehicleTypeIndex: event.detail.typeIndex,
-      activeVehicleModelIndex: event.detail.modelIndex,
-    })
+    this.setData(serviceData.buildVehicleSelectionPatch(event.detail))
   },
 
   onDropoffChange: function (event) {
-    var detail = event.detail || {}
-    var typeIndex = this.data.activeVehicleTypeIndex
-    var modelIndex = this.data.activeVehicleModelIndex
-    var url =
-      '/pages/payment/payment?dropoffLabel=' +
-      encodeURIComponent(detail.label || '') +
-      '&typeIndex=' +
-      typeIndex +
-      '&modelIndex=' +
-      modelIndex
-
     wx.navigateTo({
-      url: url,
+      url: serviceData.buildPaymentUrl(this.data, event.detail),
     })
   },
 })

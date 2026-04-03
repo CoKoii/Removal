@@ -1,4 +1,4 @@
-var serviceConfig = {
+var rawServiceConfig = {
   city: '苏州',
   service: {
     label: '装修垃圾清运',
@@ -127,11 +127,333 @@ var serviceConfig = {
   },
 }
 
+var defaultOrderCard = {
+  pickupBadge: '装',
+  dropoffBadge: '卸',
+  pickupTitle: '',
+  discountText: '',
+  dropoffOptions: [],
+}
+
+var defaultPaymentOption = {
+  key: '',
+  title: '',
+  desc: '',
+  price: '0.00',
+  deferredPrice: '0.00',
+  badge: '',
+  promoText: '',
+}
+
+function cloneValue(value) {
+  return JSON.parse(JSON.stringify(value))
+}
+
+function pickValue(value, fallback) {
+  return value === undefined || value === null || value === '' ? fallback : value
+}
+
+function normalizeIndex(index, length, fallback) {
+  var parsedIndex = parseInt(index, 10)
+
+  if (!length) {
+    return fallback
+  }
+
+  if (isNaN(parsedIndex) || parsedIndex < 0 || parsedIndex >= length) {
+    return fallback
+  }
+
+  return parsedIndex
+}
+
+function parseSelectionIndex(index, fallback) {
+  var parsedIndex = parseInt(index, 10)
+
+  if (isNaN(parsedIndex)) {
+    return fallback
+  }
+
+  return parsedIndex
+}
+
+function normalizeVehicleModel(model) {
+  var data = model || {}
+
+  return {
+    name: pickValue(data.name, ''),
+    volume: pickValue(data.volume, ''),
+    size: pickValue(data.size, ''),
+    capacity: pickValue(data.capacity, ''),
+    price: pickValue(data.price, 0),
+    unit: pickValue(data.unit, '元/车'),
+  }
+}
+
+function normalizeVehicleType(type, typeIndex) {
+  var data = type || {}
+
+  return {
+    key: pickValue(data.key, 'vehicle-type-' + typeIndex),
+    variant: pickValue(data.variant, 'dump'),
+    name: pickValue(data.name, ''),
+    desc: pickValue(data.desc, ''),
+    models: (Array.isArray(data.models) ? data.models : []).map(normalizeVehicleModel),
+  }
+}
+
+function normalizeOrderCard(orderCard) {
+  var data = orderCard || {}
+
+  return {
+    pickupBadge: pickValue(data.pickupBadge, defaultOrderCard.pickupBadge),
+    dropoffBadge: pickValue(data.dropoffBadge, defaultOrderCard.dropoffBadge),
+    pickupTitle: pickValue(data.pickupTitle, defaultOrderCard.pickupTitle),
+    discountText: pickValue(data.discountText, defaultOrderCard.discountText),
+    dropoffOptions: (Array.isArray(data.dropoffOptions) ? data.dropoffOptions : []).map(function (item) {
+      return pickValue(item, '')
+    }),
+  }
+}
+
+function normalizeQuickAction(item, itemIndex) {
+  var data = item || {}
+
+  return {
+    key: pickValue(data.key, 'quick-action-' + itemIndex),
+    label: pickValue(data.label, ''),
+    icon: pickValue(data.icon, ''),
+  }
+}
+
+function normalizePromoCard(item, itemIndex) {
+  var data = item || {}
+
+  return {
+    key: pickValue(data.key, 'promo-card-' + itemIndex),
+    title: pickValue(data.title, ''),
+    highlight: pickValue(data.highlight, ''),
+    theme: pickValue(data.theme, 'blue'),
+  }
+}
+
+function normalizeServiceConfig(service) {
+  var data = service || {}
+
+  return {
+    label: pickValue(data.label, ''),
+    vehicleTypes: (Array.isArray(data.vehicleTypes) ? data.vehicleTypes : []).map(normalizeVehicleType),
+    orderCard: normalizeOrderCard(data.orderCard),
+    quickActions: (Array.isArray(data.quickActions) ? data.quickActions : []).map(normalizeQuickAction),
+    promoCards: (Array.isArray(data.promoCards) ? data.promoCards : []).map(normalizePromoCard),
+  }
+}
+
+function normalizePaymentOption(item, itemIndex) {
+  var data = item || {}
+  var price = pickValue(data.price, defaultPaymentOption.price)
+
+  return {
+    key: pickValue(data.key, 'payment-option-' + itemIndex),
+    title: pickValue(data.title, defaultPaymentOption.title),
+    desc: pickValue(data.desc, defaultPaymentOption.desc),
+    price: price,
+    deferredPrice: pickValue(data.deferredPrice, price),
+    badge: pickValue(data.badge, defaultPaymentOption.badge),
+    promoText: pickValue(data.promoText, defaultPaymentOption.promoText),
+  }
+}
+
+function normalizeToggleItem(item, itemIndex) {
+  var data = item || {}
+
+  return {
+    key: pickValue(data.key, 'toggle-' + itemIndex),
+    label: pickValue(data.label, ''),
+    checked: !!data.checked,
+  }
+}
+
+function normalizeFieldRow(item, groupIndex, itemIndex) {
+  var data = item || {}
+  var key = pickValue(data.key, 'row-' + groupIndex + '-' + itemIndex)
+
+  return {
+    key: key,
+    rowKey: key,
+    label: pickValue(data.label, ''),
+    value: pickValue(data.value, ''),
+    placeholder: pickValue(data.placeholder, ''),
+  }
+}
+
+function normalizeFieldGroup(group, groupIndex) {
+  return {
+    groupKey: 'group-' + groupIndex,
+    items: (Array.isArray(group) ? group : []).map(function (item, itemIndex) {
+      return normalizeFieldRow(item, groupIndex, itemIndex)
+    }),
+  }
+}
+
+function normalizePaymentConfig(payment) {
+  var data = payment || {}
+  var options = (Array.isArray(data.options) ? data.options : []).map(normalizePaymentOption)
+  var defaultOptionKey = pickValue(data.defaultOptionKey, '')
+
+  return {
+    defaultOptionKey: defaultOptionKey,
+    options: options,
+    toggles: (Array.isArray(data.toggles) ? data.toggles : []).map(normalizeToggleItem),
+    fieldGroups: (Array.isArray(data.fieldGroups) ? data.fieldGroups : []).map(normalizeFieldGroup),
+    scheduleLabel: pickValue(data.scheduleLabel, '选预约'),
+  }
+}
+
+function buildVehicleSelectionState(service, typeIndex, modelIndex, fallbackModelIndex) {
+  var vehicleTypes = (service && service.vehicleTypes) || []
+
+  if (!vehicleTypes.length) {
+    return {
+      activeVehicleTypeIndex: -1,
+      activeVehicleModelIndex: -1,
+    }
+  }
+
+  var nextTypeIndex = normalizeIndex(typeIndex, vehicleTypes.length, 0)
+  var selectedModels = vehicleTypes[nextTypeIndex].models || []
+  var nextModelFallback = selectedModels.length ? fallbackModelIndex : -1
+
+  return {
+    activeVehicleTypeIndex: nextTypeIndex,
+    activeVehicleModelIndex: selectedModels.length
+      ? normalizeIndex(modelIndex, selectedModels.length, nextModelFallback)
+      : -1,
+  }
+}
+
+function getSelectedPaymentOption(options, selectedKey) {
+  var optionList = Array.isArray(options) ? options : []
+  var matchedOption = null
+
+  optionList.some(function (item) {
+    if (item.key === selectedKey) {
+      matchedOption = item
+
+      return true
+    }
+
+    return false
+  })
+
+  return matchedOption || optionList[0] || cloneValue(defaultPaymentOption)
+}
+
+function buildPaymentOptionState(options, selectedKey) {
+  var selectedOption = getSelectedPaymentOption(options, selectedKey)
+
+  return {
+    selectedOptionKey: selectedOption.key,
+    instantPrice: selectedOption.price,
+    deferredPrice: selectedOption.deferredPrice,
+  }
+}
+
+function decodeRouteLabel(encodedLabel) {
+  return encodedLabel ? decodeURIComponent(encodedLabel) : ''
+}
+
 function cloneData() {
-  return JSON.parse(JSON.stringify(serviceConfig))
+  return cloneValue(rawServiceConfig)
+}
+
+function createHomePageState() {
+  var source = cloneData()
+  var service = normalizeServiceConfig(source.service)
+
+  return Object.assign(
+    {
+      city: pickValue(source.city, ''),
+      service: service,
+    },
+    buildVehicleSelectionState(service, 0, -1, -1)
+  )
+}
+
+function createPaymentPageState(routeOptions) {
+  var source = cloneData()
+  var service = normalizeServiceConfig(source.service)
+  var payment = normalizePaymentConfig(source.payment)
+  var options = routeOptions || {}
+
+  return Object.assign(
+    {
+      service: service,
+      paymentOptions: payment.options,
+      toggleItems: payment.toggles,
+      fieldGroups: payment.fieldGroups,
+      selectedDropoffLabel: decodeRouteLabel(options.dropoffLabel),
+      scheduleLabel: payment.scheduleLabel,
+    },
+    buildVehicleSelectionState(service, options.typeIndex, options.modelIndex, 0),
+    buildPaymentOptionState(payment.options, payment.defaultOptionKey)
+  )
+}
+
+function buildVehicleSelectionPatch(detail) {
+  var selection = detail || {}
+
+  return {
+    activeVehicleTypeIndex: parseSelectionIndex(selection.typeIndex, 0),
+    activeVehicleModelIndex: parseSelectionIndex(selection.modelIndex, -1),
+  }
+}
+
+function buildDropoffPatch(detail) {
+  return {
+    selectedDropoffLabel: (detail && detail.label) || '',
+  }
+}
+
+function buildPaymentOptionPatch(options, selectedKey) {
+  return buildPaymentOptionState(options, selectedKey)
+}
+
+function buildToggleItemsPatch(toggleItems, changedKey) {
+  return {
+    toggleItems: (Array.isArray(toggleItems) ? toggleItems : []).map(function (item) {
+      if (item.key !== changedKey) {
+        return item
+      }
+
+      return Object.assign({}, item, {
+        checked: !item.checked,
+      })
+    }),
+  }
+}
+
+function buildPaymentUrl(pageState, dropoffDetail) {
+  var detail = dropoffDetail || {}
+
+  return (
+    '/pages/payment/payment?dropoffLabel=' +
+    encodeURIComponent(detail.label || '') +
+    '&typeIndex=' +
+    parseSelectionIndex(pageState && pageState.activeVehicleTypeIndex, 0) +
+    '&modelIndex=' +
+    parseSelectionIndex(pageState && pageState.activeVehicleModelIndex, -1)
+  )
 }
 
 module.exports = {
-  serviceConfig: serviceConfig,
+  serviceConfig: rawServiceConfig,
   cloneData: cloneData,
+  createHomePageState: createHomePageState,
+  createPaymentPageState: createPaymentPageState,
+  buildVehicleSelectionPatch: buildVehicleSelectionPatch,
+  buildDropoffPatch: buildDropoffPatch,
+  buildPaymentOptionPatch: buildPaymentOptionPatch,
+  buildToggleItemsPatch: buildToggleItemsPatch,
+  buildPaymentUrl: buildPaymentUrl,
 }
