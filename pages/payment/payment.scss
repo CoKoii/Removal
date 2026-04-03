@@ -29,11 +29,11 @@ page {
 }
 
 .payment__row {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  display: flex;
   align-items: center;
-  column-gap: $space-10;
+  gap: $space-10;
   padding: $space-30 0;
+  box-sizing: border-box;
 }
 
 .payment__row--border {
@@ -42,14 +42,26 @@ page {
 
 .payment__row-label {
   display: block;
+  flex: 0 1 auto;
+  min-width: 0;
   color: $color-text-primary;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
   line-height: $line-height-regular;
 }
 
+.payment__row-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-10;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .payment__row-value {
   display: block;
+  flex: 1 1 auto;
   min-width: 0;
   color: $color-text-secondary;
   font-size: $font-size-xl;
@@ -67,6 +79,9 @@ page {
 .payment__row-arrow {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  width: $space-32;
+  flex-shrink: 0;
+  box-sizing: border-box;
   color: $color-text-disabled;
 }

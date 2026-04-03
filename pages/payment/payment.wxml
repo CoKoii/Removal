@@ -18,14 +18,6 @@
         />
       </view>
 
-      <payment-service-options
-        options="{{paymentOptions}}"
-        toggles="{{toggleItems}}"
-        selectedKey="{{selectedOptionKey}}"
-        bind:optionchange="onOptionChange"
-        bind:togglechange="onToggleChange"
-      />
-
       <block wx:for="{{fieldGroups}}" wx:for-item="group" wx:key="groupKey">
         <view class="payment__panel payment__panel--fields">
           <block wx:for="{{group.items}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowKey">
@@ -36,14 +28,11 @@
               bindtap="onFieldTap"
             >
               <text class="payment__row-label">{{row.label}}</text>
-              <text
-                wx:if="{{row.value || row.placeholder}}"
-                class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}"
-              >
-                {{row.value || row.placeholder}}
-              </text>
-              <view class="payment__row-arrow">
-                <van-icon name="arrow" size="16px" color="currentColor" />
+              <view class="payment__row-content">
+                <text wx:if="{{row.value || row.placeholder}}" class="payment__row-value {{row.value ? '' : 'payment__row-value--placeholder'}}">{{row.value || row.placeholder}}</text>
+                <view class="payment__row-arrow">
+                  <van-icon name="arrow" size="16px" color="currentColor" />
+                </view>
               </view>
             </view>
           </block>

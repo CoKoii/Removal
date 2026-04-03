@@ -78,40 +78,6 @@ var rawServiceConfig = {
     ],
   },
   payment: {
-    defaultOptionKey: 'direct',
-    options: [
-      {
-        key: 'carpool',
-        title: '拼送',
-        desc: '/件小拼送更划算',
-        price: '6.23',
-        deferredPrice: '8.31',
-        badge: '',
-        promoText: '',
-      },
-      {
-        key: 'direct',
-        title: '1对1直送',
-        desc: '专人直送 更快更安全',
-        price: '6.22',
-        deferredPrice: '8.30',
-        badge: '',
-        promoText: '限时 -2.08元',
-      },
-      {
-        key: 'express',
-        title: '特快',
-        desc: '急用车 更快接单',
-        price: '9.55',
-        deferredPrice: '11.63',
-        badge: '1对1直送',
-        promoText: '',
-      },
-    ],
-    toggles: [
-      { key: 'invoice', label: '开票', checked: false },
-      { key: 'receipt', label: '回单', checked: false },
-    ],
     fieldGroups: [
       [
         { key: 'remark', label: '订单备注', value: '', placeholder: '' },
@@ -133,16 +99,6 @@ var defaultOrderCard = {
   pickupTitle: '',
   discountText: '',
   dropoffOptions: [],
-}
-
-var defaultPaymentOption = {
-  key: '',
-  title: '',
-  desc: '',
-  price: '0.00',
-  deferredPrice: '0.00',
-  badge: '',
-  promoText: '',
 }
 
 function cloneValue(value) {
@@ -249,31 +205,6 @@ function normalizeServiceConfig(service) {
   }
 }
 
-function normalizePaymentOption(item, itemIndex) {
-  var data = item || {}
-  var price = pickValue(data.price, defaultPaymentOption.price)
-
-  return {
-    key: pickValue(data.key, 'payment-option-' + itemIndex),
-    title: pickValue(data.title, defaultPaymentOption.title),
-    desc: pickValue(data.desc, defaultPaymentOption.desc),
-    price: price,
-    deferredPrice: pickValue(data.deferredPrice, price),
-    badge: pickValue(data.badge, defaultPaymentOption.badge),
-    promoText: pickValue(data.promoText, defaultPaymentOption.promoText),
-  }
-}
-
-function normalizeToggleItem(item, itemIndex) {
-  var data = item || {}
-
-  return {
-    key: pickValue(data.key, 'toggle-' + itemIndex),
-    label: pickValue(data.label, ''),
-    checked: !!data.checked,
-  }
-}
-
 function normalizeFieldRow(item, groupIndex, itemIndex) {
   var data = item || {}
   var key = pickValue(data.key, 'row-' + groupIndex + '-' + itemIndex)
@@ -298,13 +229,8 @@ function normalizeFieldGroup(group, groupIndex) {
 
 function normalizePaymentConfig(payment) {
   var data = payment || {}
-  var options = (Array.isArray(data.options) ? data.options : []).map(normalizePaymentOption)
-  var defaultOptionKey = pickValue(data.defaultOptionKey, '')
 
   return {
-    defaultOptionKey: defaultOptionKey,
-    options: options,
-    toggles: (Array.isArray(data.toggles) ? data.toggles : []).map(normalizeToggleItem),
     fieldGroups: (Array.isArray(data.fieldGroups) ? data.fieldGroups : []).map(normalizeFieldGroup),
     scheduleLabel: pickValue(data.scheduleLabel, '选预约'),
   }
@@ -332,31 +258,18 @@ function buildVehicleSelectionState(service, typeIndex, modelIndex, fallbackMode
   }
 }
 
-function getSelectedPaymentOption(options, selectedKey) {
-  var optionList = Array.isArray(options) ? options : []
-  var matchedOption = null
+function buildPaymentPriceState(service, typeIndex, modelIndex, fallbackModelIndex) {
+  var vehicleTypes = (service && service.vehicleTypes) || []
+  var selection = buildVehicleSelectionState(service, typeIndex, modelIndex, fallbackModelIndex)
+  var selectedType = vehicleTypes[selection.activeVehicleTypeIndex] || {}
+  var selectedModels = selectedType.models || []
+  var selectedModel = selection.activeVehicleModelIndex > -1 ? selectedModels[selection.activeVehicleModelIndex] : null
+  var price = selectedModel ? String(selectedModel.price) : '0.00'
 
-  optionList.some(function (item) {
-    if (item.key === selectedKey) {
-      matchedOption = item
-
-      return true
-    }
-
-    return false
+  return Object.assign({}, selection, {
+    instantPrice: price,
+    deferredPrice: price,
   })
-
-  return matchedOption || optionList[0] || cloneValue(defaultPaymentOption)
-}
-
-function buildPaymentOptionState(options, selectedKey) {
-  var selectedOption = getSelectedPaymentOption(options, selectedKey)
-
-  return {
-    selectedOptionKey: selectedOption.key,
-    instantPrice: selectedOption.price,
-    deferredPrice: selectedOption.deferredPrice,
-  }
 }
 
 function decodeRouteLabel(encodedLabel) {
@@ -390,14 +303,11 @@ function createPaymentPageState(routeOptions) {
   return Object.assign(
     {
       service: service,
-      paymentOptions: payment.options,
-      toggleItems: payment.toggles,
       fieldGroups: payment.fieldGroups,
       selectedDropoffLabel: decodeRouteLabel(options.dropoffLabel),
       scheduleLabel: payment.scheduleLabel,
     },
-    buildVehicleSelectionState(service, options.typeIndex, options.modelIndex, 0),
-    buildPaymentOptionState(payment.options, payment.defaultOptionKey)
+    buildPaymentPriceState(service, options.typeIndex, options.modelIndex, 0)
   )
 }
 
@@ -416,22 +326,10 @@ function buildDropoffPatch(detail) {
   }
 }
 
-function buildPaymentOptionPatch(options, selectedKey) {
-  return buildPaymentOptionState(options, selectedKey)
-}
+function buildPaymentVehiclePatch(service, detail) {
+  var selection = detail || {}
 
-function buildToggleItemsPatch(toggleItems, changedKey) {
-  return {
-    toggleItems: (Array.isArray(toggleItems) ? toggleItems : []).map(function (item) {
-      if (item.key !== changedKey) {
-        return item
-      }
-
-      return Object.assign({}, item, {
-        checked: !item.checked,
-      })
-    }),
-  }
+  return buildPaymentPriceState(service, selection.typeIndex, selection.modelIndex, 0)
 }
 
 function buildPaymentUrl(pageState, dropoffDetail) {
@@ -454,7 +352,6 @@ module.exports = {
   createPaymentPageState: createPaymentPageState,
   buildVehicleSelectionPatch: buildVehicleSelectionPatch,
   buildDropoffPatch: buildDropoffPatch,
-  buildPaymentOptionPatch: buildPaymentOptionPatch,
-  buildToggleItemsPatch: buildToggleItemsPatch,
+  buildPaymentVehiclePatch: buildPaymentVehiclePatch,
   buildPaymentUrl: buildPaymentUrl,
 }

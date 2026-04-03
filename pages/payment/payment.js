@@ -19,15 +19,7 @@ Page({
   },
 
   onVehicleChange: function (event) {
-    this.setData(serviceData.buildVehicleSelectionPatch(event.detail))
-  },
-
-  onOptionChange: function (event) {
-    this.setData(serviceData.buildPaymentOptionPatch(this.data.paymentOptions, event.detail.key))
-  },
-
-  onToggleChange: function (event) {
-    this.setData(serviceData.buildToggleItemsPatch(this.data.toggleItems, event.detail.key))
+    this.setData(serviceData.buildPaymentVehiclePatch(this.data.service, event.detail))
   },
 
   onFieldTap: function (event) {
