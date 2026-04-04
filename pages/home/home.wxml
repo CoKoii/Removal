@@ -32,12 +32,6 @@
       </view>
 
       <view class="home__section">
-        <view class="home__assurance">
-          <text class="home__assurance-summary">{{service.complianceSummary}}</text>
-        </view>
-      </view>
-
-      <view class="home__section">
         <home-shortcut-grid items="{{service.quickActions}}" bind:itemtap="onShortcutTap" />
       </view>
 

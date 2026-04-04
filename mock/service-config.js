@@ -71,9 +71,8 @@ var rawServiceConfig = {
       title: "清运流程",
       steps: ["在线预约", "派单接单", "上门装卸", "交付确认", "合规处置"],
       feedbackText: "问题反馈",
+      highlights: ["城管局认证合规", "全程电子联单", "合规清运率100%", "信用A+"],
     },
-    complianceSummary:
-      "城管局认证合规，全程电子联单，合规清运率100%，信用A+",
   },
   payment: {
     fieldGroups: [
@@ -205,6 +204,9 @@ function normalizeProcessFlow(flow) {
       return pickValue(item, "");
     }),
     feedbackText: pickValue(data.feedbackText, ""),
+    highlights: (Array.isArray(data.highlights) ? data.highlights : []).map(function (item) {
+      return pickValue(item, "");
+    }),
   };
 }
 
@@ -223,7 +225,6 @@ function normalizeServiceConfig(service) {
       : []
     ).map(normalizeQuickAction),
     processFlow: normalizeProcessFlow(data.processFlow),
-    complianceSummary: pickValue(data.complianceSummary, ""),
   };
 }
 

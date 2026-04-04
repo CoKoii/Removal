@@ -1,13 +1,24 @@
 <view class="process-flow">
   <view class="process-flow__card">
-    <view class="process-flow__title">{{flow.title}}</view>
-    <view class="process-flow__track">
-      <block wx:for="{{flow.steps}}" wx:key="index">
-        <view class="process-flow__step">
-          <view class="process-flow__step-badge">{{index + 1}}</view>
-          <text class="process-flow__step-label">{{item}}</text>
+    <view class="process-flow__header">
+      <view class="process-flow__header-copy">
+        <view class="process-flow__title">{{flow.title}}</view>
+        <view wx:if="{{flow.highlights.length}}" class="process-flow__highlights">
+          <block wx:for="{{flow.highlights}}" wx:key="index">
+            <text class="process-flow__highlight">{{item}}</text>
+            <view wx:if="{{index !== flow.highlights.length - 1}}" class="process-flow__highlight-dot"></view>
+          </block>
         </view>
-        <view wx:if="{{index !== flow.steps.length - 1}}" class="process-flow__connector"></view>
+      </view>
+      <view class="process-flow__badge">合规</view>
+    </view>
+
+    <view class="process-flow__steps">
+      <block wx:for="{{routeSteps}}" wx:for-item="step" wx:key="order">
+        <view class="process-flow__step">
+          <view class="process-flow__step-badge">{{step.order}}</view>
+          <text class="process-flow__step-label">{{step.label}}</text>
+        </view>
       </block>
     </view>
   </view>

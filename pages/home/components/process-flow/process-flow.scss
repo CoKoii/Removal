@@ -1,74 +1,114 @@
 @import "../../../../styles/variables/index";
 
 .process-flow {
-  @include layout-stack($space-22);
+  @include layout-stack($space-16);
 }
 
 .process-flow__card {
-  @include layout-stack($space-22);
-  padding: $space-28 $space-24;
-  border: $border-thin solid $color-surface-accent-soft;
+  @include layout-stack($space-18);
+  padding: $space-22 $space-24;
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
   border-radius: $radius-card-lg;
   box-sizing: border-box;
-  background: $color-bg-accent;
+  background: $color-surface-card;
+}
+
+.process-flow__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-16;
+}
+
+.process-flow__header-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
 }
 
 .process-flow__title {
-  color: $color-primary-hover;
-  font-size: $font-size-2xl;
+  color: $color-text-accent;
+  font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
 }
 
-.process-flow__track {
+.process-flow__highlights {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 100%;
-  min-width: 0;
   gap: $space-4;
+  min-width: 0;
+}
+
+.process-flow__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36rpx;
+  padding: 0 $space-12;
+  border-radius: $radius-pill;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.88);
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+  flex: 0 0 auto;
+}
+
+.process-flow__highlight {
+  color: $color-text-tertiary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-regular;
+}
+
+.process-flow__highlight-dot {
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: $radius-round;
+  background: rgba(124, 200, 74, 0.4);
+  flex: 0 0 6rpx;
+}
+
+.process-flow__steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: $space-8;
+  box-sizing: border-box;
+  padding-top: $space-8;
 }
 
 .process-flow__step {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: $space-4;
-  flex: 1 1 0;
+  justify-content: flex-start;
+  gap: $space-8;
   min-width: 0;
+  text-align: center;
 }
 
 .process-flow__step-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24rpx;
-  height: 24rpx;
+  width: 20rpx;
+  height: 20rpx;
   border-radius: $radius-round;
-  background: $color-surface-accent-soft;
+  background: rgba(124, 200, 74, 0.16);
   color: $color-text-accent;
   font-size: $font-size-2xs;
   font-weight: $font-weight-semibold;
   line-height: $line-height-display;
+  flex: 0 0 20rpx;
 }
 
 .process-flow__step-label {
+  min-width: 0;
   color: $color-text-secondary;
   font-size: $font-size-2xs;
   font-weight: $font-weight-medium;
-  line-height: $line-height-display;
+  line-height: $line-height-regular;
   white-space: nowrap;
-  min-width: 0;
-}
-
-.process-flow__connector {
-  width: 8rpx;
-  height: 4rpx;
-  border-radius: $radius-pill;
-  background: linear-gradient(
-    90deg,
-    rgba(124, 200, 74, 0.16) 0%,
-    rgba(124, 200, 74, 0.44) 100%
-  );
-  flex: 0 0 auto;
 }
