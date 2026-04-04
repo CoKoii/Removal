@@ -17,6 +17,54 @@
         />
       </view>
 
+      <view class="payment__panel payment__panel--service" bindtap="onServiceToggle">
+        <view class="payment__service-card">
+          <view class="payment__service-mark">
+            <text class="payment__service-mark-text">装</text>
+          </view>
+          <view class="payment__service-copy">
+            <text class="payment__service-title">{{serviceAddon.title}}</text>
+            <text class="payment__service-desc">{{serviceAddon.desc}}</text>
+          </view>
+          <view class="payment__service-action">
+            <view class="payment__service-check {{needsLoadingService ? 'payment__service-check--checked' : ''}}">
+              <van-icon wx:if="{{needsLoadingService}}" name="success" size="12px" color="currentColor" />
+            </view>
+            <text class="payment__service-action-label {{needsLoadingService ? 'payment__service-action-label--active' : ''}}">{{serviceAddon.actionLabel}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="payment__panel payment__panel--photos">
+        <view class="payment__section-head">
+          <view class="payment__section-title-group">
+            <text class="payment__section-title">{{garbagePhotoConfig.title}}</text>
+            <text class="payment__section-badge">{{garbagePhotoConfig.requiredTag}}</text>
+          </view>
+          <text class="payment__section-count">{{garbagePhotos.length}}/{{garbagePhotoConfig.maxCount}}</text>
+        </view>
+
+        <view class="payment__photo-grid">
+          <block wx:for="{{garbagePhotos}}" wx:for-item="photo" wx:key="key">
+            <view class="payment__photo-item" data-url="{{photo.url}}" bindtap="onPreviewGarbagePhoto">
+              <image class="payment__photo-image" src="{{photo.url}}" mode="aspectFill" />
+              <view class="payment__photo-delete" data-key="{{photo.key}}" catchtap="onRemoveGarbagePhoto">
+                <van-icon name="cross" size="10px" color="currentColor" />
+              </view>
+            </view>
+          </block>
+
+          <view wx:if="{{garbagePhotos.length < garbagePhotoConfig.maxCount}}" class="payment__photo-add" bindtap="onAddGarbagePhoto">
+            <view class="payment__photo-add-icon">
+              <van-icon name="plus" size="20px" color="currentColor" />
+            </view>
+            <text class="payment__photo-add-label">{{garbagePhotoConfig.addLabel}}</text>
+          </view>
+        </view>
+
+        <text class="payment__photo-helper">{{garbagePhotoConfig.helperText}}</text>
+      </view>
+
       <block wx:for="{{fieldGroups}}" wx:for-item="group" wx:key="groupKey">
         <view class="payment__panel payment__panel--fields">
           <block wx:for="{{group.items}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowKey">
@@ -42,8 +90,8 @@
 
   <payment-bar
     scheduleLabel="{{scheduleLabel}}"
-    deferredPrice="{{deferredPrice}}"
-    instantPrice="{{instantPrice}}"
+    payPrice="{{payPrice}}"
+    payLabel="{{confirmButtonLabel}}"
     safeBottom="{{safeBottom}}"
     bind:scheduletap="onScheduleTap"
     bind:paytap="onPayTap"

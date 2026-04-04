@@ -4,13 +4,13 @@ Component({
       type: String,
       value: '选预约',
     },
-    deferredPrice: {
+    payPrice: {
       type: String,
       value: '0.00',
     },
-    instantPrice: {
+    payLabel: {
       type: String,
-      value: '0.00',
+      value: '确认预约并支付',
     },
     safeBottom: {
       type: Number,
@@ -23,10 +23,8 @@ Component({
       this.triggerEvent('scheduletap')
     },
 
-    onPayTap: function (event) {
-      this.triggerEvent('paytap', {
-        mode: event.currentTarget.dataset.mode,
-      })
+    onPayTap: function () {
+      this.triggerEvent('paytap')
     },
   },
 })

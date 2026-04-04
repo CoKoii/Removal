@@ -75,6 +75,18 @@ var rawServiceConfig = {
     },
   },
   payment: {
+    serviceAddon: {
+      title: "装车服务",
+      desc: "司机协助装运，搬运更省事",
+      actionLabel: "需要",
+    },
+    garbagePhoto: {
+      title: "垃圾照片",
+      requiredTag: "必填",
+      addLabel: "添加",
+      helperText: "最多上传6张，支持 JPG、PNG 格式",
+      maxCount: 6,
+    },
     fieldGroups: [
       [
         { key: "remark", label: "订单备注", value: "", placeholder: "" },
@@ -97,6 +109,7 @@ var rawServiceConfig = {
       [{ key: "favoriteRider", label: "收藏骑手", value: "", placeholder: "" }],
     ],
     scheduleLabel: "选预约",
+    confirmButtonLabel: "确认预约并支付",
   },
 };
 
@@ -250,14 +263,39 @@ function normalizeFieldGroup(group, groupIndex) {
   };
 }
 
+function normalizeServiceAddonConfig(serviceAddon) {
+  var data = serviceAddon || {};
+
+  return {
+    title: pickValue(data.title, ""),
+    desc: pickValue(data.desc, ""),
+    actionLabel: pickValue(data.actionLabel, "需要"),
+  };
+}
+
+function normalizeGarbagePhotoConfig(garbagePhoto) {
+  var data = garbagePhoto || {};
+
+  return {
+    title: pickValue(data.title, ""),
+    requiredTag: pickValue(data.requiredTag, "必填"),
+    addLabel: pickValue(data.addLabel, "添加"),
+    helperText: pickValue(data.helperText, ""),
+    maxCount: pickValue(data.maxCount, 6),
+  };
+}
+
 function normalizePaymentConfig(payment) {
   var data = payment || {};
 
   return {
+    serviceAddon: normalizeServiceAddonConfig(data.serviceAddon),
+    garbagePhoto: normalizeGarbagePhotoConfig(data.garbagePhoto),
     fieldGroups: (Array.isArray(data.fieldGroups) ? data.fieldGroups : []).map(
       normalizeFieldGroup,
     ),
     scheduleLabel: pickValue(data.scheduleLabel, "选预约"),
+    confirmButtonLabel: pickValue(data.confirmButtonLabel, "确认预约并支付"),
   };
 }
 
@@ -292,8 +330,7 @@ function buildPaymentPriceState(service, typeIndex) {
   var price = selectedModel ? String(selectedModel.price) : "0.00";
 
   return Object.assign({}, selection, {
-    instantPrice: price,
-    deferredPrice: price,
+    payPrice: price,
   });
 }
 
@@ -328,9 +365,14 @@ function createPaymentPageState(routeOptions) {
   return Object.assign(
     {
       service: service,
+      serviceAddon: payment.serviceAddon,
+      needsLoadingService: false,
+      garbagePhotoConfig: payment.garbagePhoto,
+      garbagePhotos: [],
       fieldGroups: payment.fieldGroups,
       selectedDropoffLabel: decodeRouteLabel(options.dropoffLabel),
       scheduleLabel: payment.scheduleLabel,
+      confirmButtonLabel: payment.confirmButtonLabel,
     },
     buildPaymentPriceState(service, options.typeIndex),
   );

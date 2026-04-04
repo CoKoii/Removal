@@ -8,15 +8,9 @@
       <van-icon class="payment-bar__schedule-arrow" name="arrow" size="14px" color="currentColor" />
     </view>
 
-    <view class="payment-bar__actions">
-      <view class="payment-bar__action payment-bar__action--deferred" data-mode="deferred" bindtap="onPayTap">
-        <text class="payment-bar__action-price">{{deferredPrice}}元</text>
-        <text class="payment-bar__action-label">到付</text>
-      </view>
-      <view class="payment-bar__action payment-bar__action--instant" data-mode="instant" bindtap="onPayTap">
-        <text class="payment-bar__action-price">{{instantPrice}}元</text>
-        <text class="payment-bar__action-label">现付</text>
-      </view>
+    <view class="payment-bar__action" bindtap="onPayTap">
+      <text class="payment-bar__action-price">{{payPrice}}元</text>
+      <text class="payment-bar__action-label">{{payLabel}}</text>
     </view>
   </view>
 </view>

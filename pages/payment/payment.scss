@@ -28,6 +28,11 @@ page {
   @include layout-stack($space-16);
 }
 
+.payment__panel--service,
+.payment__panel--photos {
+  @include layout-stack($space-24);
+}
+
 .payment__row {
   display: flex;
   align-items: center;
@@ -84,4 +89,199 @@ page {
   flex-shrink: 0;
   box-sizing: border-box;
   color: $color-text-disabled;
+}
+
+.payment__service-card {
+  display: flex;
+  align-items: center;
+  gap: $space-18;
+}
+
+.payment__service-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92rpx;
+  height: 92rpx;
+  flex: 0 0 auto;
+  border-radius: $radius-card-sm;
+  background: $gradient-accent-soft;
+}
+
+.payment__service-mark-text {
+  color: $color-text-accent;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.payment__service-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: $space-8;
+  min-width: 0;
+}
+
+.payment__service-title {
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-regular;
+}
+
+.payment__service-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  line-height: $line-height-regular;
+}
+
+.payment__service-action {
+  display: flex;
+  align-items: center;
+  gap: $space-12;
+  flex: 0 0 auto;
+}
+
+.payment__service-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42rpx;
+  height: 42rpx;
+  border: $border-thin solid $color-border-default;
+  border-radius: $radius-md;
+  box-sizing: border-box;
+  background: $color-surface-card;
+  color: transparent;
+}
+
+.payment__service-check--checked {
+  border-color: $color-surface-accent;
+  background: $color-surface-accent;
+  color: $color-text-on-accent;
+}
+
+.payment__service-action-label {
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-regular;
+}
+
+.payment__service-action-label--active {
+  color: $color-text-accent;
+}
+
+.payment__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-16;
+}
+
+.payment__section-title-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-12;
+  min-width: 0;
+}
+
+.payment__section-title {
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-regular;
+}
+
+.payment__section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4 $space-12;
+  border-radius: $radius-pill;
+  box-sizing: border-box;
+  background: $color-surface-danger-soft;
+  color: $color-text-danger;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.payment__section-count {
+  color: $color-text-tertiary;
+  font-size: $font-size-md;
+  line-height: $line-height-regular;
+}
+
+.payment__photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $space-16;
+}
+
+.payment__photo-item,
+.payment__photo-add {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  min-height: 168rpx;
+  border-radius: $radius-card-sm;
+  overflow: hidden;
+}
+
+.payment__photo-item {
+  background: $color-surface-muted;
+}
+
+.payment__photo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.payment__photo-delete {
+  position: absolute;
+  top: $space-8;
+  right: $space-8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: $radius-round;
+  background: rgba(31, 31, 31, 0.56);
+  color: $color-text-inverse;
+}
+
+.payment__photo-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-12;
+  border: $border-thin dashed $color-border-default;
+  box-sizing: border-box;
+  background: $color-surface-page;
+  color: $color-text-muted;
+}
+
+.payment__photo-add-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-disabled;
+}
+
+.payment__photo-add-label {
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  line-height: $line-height-regular;
+}
+
+.payment__photo-helper {
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+  line-height: $line-height-regular;
 }

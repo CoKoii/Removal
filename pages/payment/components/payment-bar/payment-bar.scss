@@ -50,29 +50,19 @@
   color: $color-text-tertiary;
 }
 
-.payment-bar__actions {
-  overflow: hidden;
-  display: flex;
-  flex: 1 1 auto;
-  border-radius: $radius-lg;
-}
-
 .payment-bar__action {
+  overflow: hidden;
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 102rpx;
+  padding: 0 $space-20;
   gap: $space-8;
-}
-
-.payment-bar__action--deferred {
-  background: $color-surface-warning-strong;
-}
-
-.payment-bar__action--instant {
+  border-radius: $radius-lg;
   background: $color-surface-warning-accent;
+  box-sizing: border-box;
 }
 
 .payment-bar__action-price,
@@ -90,4 +80,5 @@
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
   line-height: $line-height-display;
+  text-align: center;
 }
