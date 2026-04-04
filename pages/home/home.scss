@@ -33,6 +33,23 @@ page {
   padding-top: $space-12;
 }
 
+.home__assurance {
+  padding: $space-16 $space-20;
+  border: $border-thin solid $color-surface-accent-soft;
+  border-radius: $radius-card-lg;
+  box-sizing: border-box;
+  background: $color-surface-card;
+}
+
+.home__assurance-summary {
+  display: block;
+  color: $color-text-primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-regular;
+  text-align: center;
+}
+
 .home__feedback {
   display: inline-flex;
   align-items: center;
