@@ -1,0 +1,74 @@
+@import "../../../../styles/variables/index";
+
+.process-flow {
+  @include layout-stack($space-22);
+}
+
+.process-flow__card {
+  @include layout-stack($space-22);
+  padding: $space-28 $space-24;
+  border: $border-thin solid $color-surface-accent-soft;
+  border-radius: $radius-card-sm;
+  box-sizing: border-box;
+  background: $color-bg-accent;
+}
+
+.process-flow__title {
+  color: $color-primary-hover;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.process-flow__track {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  gap: $space-4;
+  box-sizing: border-box;
+}
+
+.process-flow__step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.process-flow__step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: $radius-round;
+  background: $color-surface-accent-soft;
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.process-flow__step-label {
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-display;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.process-flow__connector {
+  width: 8rpx;
+  height: 4rpx;
+  border-radius: $radius-pill;
+  background: linear-gradient(
+    90deg,
+    rgba(124, 200, 74, 0.16) 0%,
+    rgba(124, 200, 74, 0.44) 100%
+  );
+  flex: 0 0 auto;
+}

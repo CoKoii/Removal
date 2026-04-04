@@ -13,13 +13,12 @@ function buildEmptySelection() {
     activeTypeIndex: -1,
     activeModelIndex: -1,
     selectedType: null,
-    selectedModels: [],
     selectedModel: null,
     heroVariant: 'dump',
   }
 }
 
-function buildSelection(vehicleTypes, typeIndex, modelIndex, mode) {
+function buildSelection(vehicleTypes, typeIndex) {
   var types = Array.isArray(vehicleTypes) ? vehicleTypes : []
 
   if (!types.length) {
@@ -29,16 +28,13 @@ function buildSelection(vehicleTypes, typeIndex, modelIndex, mode) {
   var nextTypeIndex = normalizeIndex(typeIndex, types.length, 0)
   var selectedType = types[nextTypeIndex]
   var selectedModels = Array.isArray(selectedType.models) ? selectedType.models : []
-  var nextModelIndex = selectedModels.length
-    ? normalizeIndex(modelIndex, selectedModels.length, mode === 'payment' ? 0 : -1)
-    : -1
+  var nextModelIndex = selectedModels.length ? 0 : -1
   var selectedModel = nextModelIndex > -1 ? selectedModels[nextModelIndex] : null
 
   return {
     activeTypeIndex: nextTypeIndex,
     activeModelIndex: nextModelIndex,
     selectedType: selectedType,
-    selectedModels: selectedModels,
     selectedModel: selectedModel,
     heroVariant: selectedType.variant || 'dump',
   }
@@ -53,10 +49,6 @@ Component({
     selectedTypeIndex: {
       type: Number,
       value: 0,
-    },
-    selectedModelIndex: {
-      type: Number,
-      value: -1,
     },
     mode: {
       type: String,
@@ -76,19 +68,14 @@ Component({
   ),
 
   observers: {
-    'vehicleTypes, selectedTypeIndex, selectedModelIndex, mode': function (
-      vehicleTypes,
-      selectedTypeIndex,
-      selectedModelIndex,
-      mode
-    ) {
-      this.setData(buildSelection(vehicleTypes, selectedTypeIndex, selectedModelIndex, mode))
+    'vehicleTypes, selectedTypeIndex': function (vehicleTypes, selectedTypeIndex) {
+      this.setData(buildSelection(vehicleTypes, selectedTypeIndex))
     },
   },
 
   methods: {
-    applySelection: function (typeIndex, modelIndex) {
-      var selection = buildSelection(this.properties.vehicleTypes, typeIndex, modelIndex, this.properties.mode)
+    applySelection: function (typeIndex) {
+      var selection = buildSelection(this.properties.vehicleTypes, typeIndex)
 
       this.setData(selection)
       this.triggerEvent('selectionchange', {
@@ -102,13 +89,7 @@ Component({
     onTypeTap: function (event) {
       var typeIndex = event.currentTarget.dataset.index
 
-      this.applySelection(typeIndex, -1)
-    },
-
-    onModelTap: function (event) {
-      var modelIndex = event.currentTarget.dataset.index
-
-      this.applySelection(this.data.activeTypeIndex, modelIndex)
+      this.applySelection(typeIndex)
     },
 
     onPaymentExpandToggle: function () {

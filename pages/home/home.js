@@ -23,8 +23,8 @@ Page({
     app.showToast(event.detail.label)
   },
 
-  onPromoTap: function (event) {
-    app.showToast(event.detail.title)
+  onFeedbackTap: function () {
+    app.showToast('问题反馈')
   },
 
   onVehicleChange: function (event) {

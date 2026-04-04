@@ -30,10 +30,6 @@
   line-height: $line-height-display;
 }
 
-.vehicle-card__payment-row--spec .vehicle-card__payment-row-label {
-  color: $color-text-secondary;
-}
-
 .vehicle-card__payment-row-main {
   display: flex;
   align-items: center;
@@ -61,6 +57,7 @@
   height: 52rpx;
   border-radius: $radius-round;
   background: rgba(237, 247, 221, 0.72);
+  box-sizing: border-box;
   flex: 0 0 52rpx;
 }
 
@@ -69,21 +66,13 @@
   height: 14rpx;
   border-right: $border-base solid $color-primary-hover;
   border-bottom: $border-base solid $color-primary-hover;
+  box-sizing: border-box;
   transform: rotate(45deg) translateY(-2rpx);
   transition: transform $duration-fast $easing-emphasized;
 }
 
 .vehicle-card__payment-expand-icon--open {
   transform: rotate(-135deg) translate(-1rpx, -1rpx);
-}
-
-.vehicle-card__models--payment {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.vehicle-card__models-track--payment {
-  padding-right: 0;
 }
 
 .vehicle-card__hero {
@@ -246,6 +235,7 @@
   border-top: 10rpx solid #2b3a1f;
   border-right: 10rpx solid #2b3a1f;
   border-radius: 0 18rpx 0 0;
+  box-sizing: border-box;
   opacity: 0;
 }
 
@@ -257,6 +247,7 @@
   border: 10rpx solid #25321c;
   border-radius: $radius-round;
   background: $color-surface-card;
+  box-sizing: border-box;
 }
 
 .vehicle-card__wheel--front {
@@ -283,6 +274,7 @@
   border-radius: 18rpx;
   background: linear-gradient(135deg, #ffffff 0%, #dfe8cc 100%);
   border: 4rpx solid rgba(63, 125, 39, 0.16);
+  box-sizing: border-box;
   transform: none;
 }
 
@@ -296,7 +288,8 @@
   bottom: $space-18;
   left: $space-18;
   z-index: 2;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: $space-16;
   min-height: 88rpx;
@@ -317,25 +310,17 @@
 
 .vehicle-card__hero-metric {
   display: flex;
-  flex: 1 1 0;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   min-width: 0;
-}
-
-.vehicle-card__hero-metric--volume {
-  flex: 0.82 1 0;
-}
-
-.vehicle-card__hero-metric--size {
-  flex: 1.36 1 0;
 }
 
 .vehicle-card__hero-metric-label {
   color: $color-text-muted;
   font-size: $font-size-2xs;
   line-height: $line-height-display;
+  text-align: center;
 }
 
 .vehicle-card__hero-metric-value {
@@ -345,24 +330,16 @@
   font-weight: $font-weight-medium;
   line-height: $line-height-snug;
   word-break: break-all;
-}
-
-.vehicle-card__hero-metric-value--size {
-  white-space: nowrap;
-  word-break: normal;
-}
-
-.vehicle-card__hero-metric--price {
-  flex: 0.72 1 0;
-  align-items: flex-start;
-  text-align: left;
+  text-align: center;
 }
 
 .vehicle-card__hero-price {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: $space-4;
   margin-top: $space-8;
+  max-width: 100%;
 }
 
 .vehicle-card__hero-price-value {
@@ -393,10 +370,6 @@
 
 .vehicle-card__section {
   @include layout-stack($space-10);
-}
-
-.vehicle-card__section--models {
-  gap: $space-8;
 }
 
 .vehicle-card__section-head {
@@ -446,58 +419,4 @@
   background: $color-bg-accent;
   color: $color-text-accent;
   font-weight: $font-weight-medium;
-}
-
-.vehicle-card__models {
-  white-space: nowrap;
-}
-
-.vehicle-card__models-track {
-  display: inline-flex;
-  gap: $space-8;
-  padding-right: $space-4;
-}
-
-.vehicle-card__model-tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: $space-8;
-  min-height: 56rpx;
-  padding: $space-8 $space-16;
-  border: $border-thin solid transparent;
-  border-radius: $radius-pill;
-  box-sizing: border-box;
-  background: transparent;
-  flex: 0 0 auto;
-}
-
-.vehicle-card__model-tab--active {
-  border-color: $color-surface-accent-soft;
-  background: $color-bg-accent;
-}
-
-.vehicle-card__model-name {
-  display: block;
-  color: $color-text-primary;
-  font-size: $font-size-md;
-  line-height: $line-height-display;
-  white-space: nowrap;
-}
-
-.vehicle-card__model-tab--active .vehicle-card__model-name {
-  color: $color-text-accent;
-  font-weight: $font-weight-medium;
-}
-
-.vehicle-card__model-meta {
-  display: block;
-  color: $color-text-muted;
-  font-size: $font-size-2xs;
-  line-height: $line-height-display;
-  white-space: nowrap;
-}
-
-.vehicle-card__model-tab--active .vehicle-card__model-meta {
-  color: $color-text-accent;
 }

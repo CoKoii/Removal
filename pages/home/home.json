@@ -6,6 +6,7 @@
     "home-vehicle-card": "./components/vehicle-card/vehicle-card",
     "home-order-card": "./components/order-card/order-card",
     "home-shortcut-grid": "./components/shortcut-grid/shortcut-grid",
-    "home-promo-row": "./components/promo-row/promo-row"
+    "home-process-flow": "./components/process-flow/process-flow",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

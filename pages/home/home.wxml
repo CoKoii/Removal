@@ -15,7 +15,6 @@
         <home-vehicle-card
           vehicleTypes="{{service.vehicleTypes}}"
           selectedTypeIndex="{{activeVehicleTypeIndex}}"
-          selectedModelIndex="{{activeVehicleModelIndex}}"
           bind:selectionchange="onVehicleChange"
         />
       </view>
@@ -28,12 +27,19 @@
         />
       </view>
 
+      <view class="home__section home__section--process">
+        <home-process-flow flow="{{service.processFlow}}" />
+      </view>
+
       <view class="home__section">
         <home-shortcut-grid items="{{service.quickActions}}" bind:itemtap="onShortcutTap" />
       </view>
 
-      <view class="home__section home__section--promo">
-        <home-promo-row cards="{{service.promoCards}}" bind:cardtap="onPromoTap" />
+      <view class="home__section home__section--feedback" bindtap="onFeedbackTap">
+        <view class="home__feedback">
+          <text class="home__feedback-text">{{service.processFlow.feedbackText}}</text>
+          <van-icon class="home__feedback-icon" name="arrow" size="14px" color="currentColor" />
+        </view>
       </view>
     </view>
   </scroll-view>

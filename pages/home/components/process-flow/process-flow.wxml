@@ -1,0 +1,14 @@
+<view class="process-flow">
+  <view class="process-flow__card">
+    <view class="process-flow__title">{{flow.title}}</view>
+    <view class="process-flow__track">
+      <block wx:for="{{flow.steps}}" wx:key="index">
+        <view class="process-flow__step">
+          <view class="process-flow__step-badge">{{index + 1}}</view>
+          <text class="process-flow__step-label">{{item}}</text>
+        </view>
+        <view wx:if="{{index !== flow.steps.length - 1}}" class="process-flow__connector"></view>
+      </block>
+    </view>
+  </view>
+</view>

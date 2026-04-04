@@ -27,15 +27,15 @@
 
     <view class="vehicle-card__hero-panel">
       <block wx:if="{{selectedModel}}">
-        <view class="vehicle-card__hero-metric vehicle-card__hero-metric--volume">
+        <view class="vehicle-card__hero-metric">
           <text class="vehicle-card__hero-metric-label">容积</text>
           <text class="vehicle-card__hero-metric-value">{{selectedModel.volume}}</text>
         </view>
-        <view class="vehicle-card__hero-metric vehicle-card__hero-metric--size">
-          <text class="vehicle-card__hero-metric-label">尺寸</text>
-          <text class="vehicle-card__hero-metric-value vehicle-card__hero-metric-value--size">{{selectedModel.size}}</text>
+        <view class="vehicle-card__hero-metric">
+          <text class="vehicle-card__hero-metric-label">袋数</text>
+          <text class="vehicle-card__hero-metric-value">{{selectedModel.capacity}}</text>
         </view>
-        <view class="vehicle-card__hero-metric vehicle-card__hero-metric--price">
+        <view class="vehicle-card__hero-metric">
           <text class="vehicle-card__hero-metric-label">价格</text>
           <view class="vehicle-card__hero-price">
             <text class="vehicle-card__hero-price-value">{{selectedModel.price}}</text>
@@ -64,23 +64,6 @@
   </view>
 </template>
 
-<template name="vehicle-card-models">
-  <scroll-view class="vehicle-card__models {{modelsClass}}" scroll-x enhanced show-scrollbar="{{false}}">
-    <view class="vehicle-card__models-track {{trackClass}}">
-      <block wx:for="{{selectedModels}}" wx:key="name">
-        <view
-          class="vehicle-card__model-tab {{index === activeModelIndex ? 'vehicle-card__model-tab--active' : ''}}"
-          data-index="{{index}}"
-          bindtap="onModelTap"
-        >
-          <text class="vehicle-card__model-name">{{item.name}}</text>
-          <text wx:if="{{item.capacity}}" class="vehicle-card__model-meta">{{item.capacity}}</text>
-        </view>
-      </block>
-    </view>
-  </scroll-view>
-</template>
-
 <view class="vehicle-card {{embedded ? 'vehicle-card--embedded' : ''}}">
   <block wx:if="{{mode === 'payment'}}">
     <view wx:if="{{vehicleTypes.length}}" class="vehicle-card__payment-sections">
@@ -102,16 +85,6 @@
       </view>
 
       <view wx:if="{{paymentExpanded}}" class="vehicle-card__payment-expand-content">
-        <view class="vehicle-card__payment-row vehicle-card__payment-row--spec">
-          <text class="vehicle-card__payment-row-label">规格</text>
-          <view class="vehicle-card__payment-row-main">
-            <template
-              is="vehicle-card-models"
-              data="{{selectedModels: selectedModels, activeModelIndex: activeModelIndex, modelsClass: 'vehicle-card__models--payment', trackClass: 'vehicle-card__models-track--payment'}}"
-            />
-          </view>
-        </view>
-
         <template
           is="vehicle-card-hero"
           data="{{selectedType: selectedType, selectedModel: selectedModel, heroVariant: heroVariant}}"
@@ -135,17 +108,6 @@
       <template
         is="vehicle-card-types"
         data="{{vehicleTypes: vehicleTypes, activeTypeIndex: activeTypeIndex, typesClass: ''}}"
-      />
-    </view>
-
-    <view class="vehicle-card__section vehicle-card__section--models">
-      <view class="vehicle-card__section-head">
-        <text class="vehicle-card__section-label">规格</text>
-        <text class="vehicle-card__section-tip">{{selectedModels.length}}种</text>
-      </view>
-      <template
-        is="vehicle-card-models"
-        data="{{selectedModels: selectedModels, activeModelIndex: activeModelIndex, modelsClass: '', trackClass: ''}}"
       />
     </view>
   </block>

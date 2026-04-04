@@ -11,15 +11,13 @@ var rawServiceConfig = {
           {
             name: '7吨车',
             volume: '约16m³',
-            size: '5.6m×2.2m×1.3m',
-            capacity: '约80袋',
+            capacity: '约100袋',
             price: 940,
             unit: '元/车',
           },
           {
             name: '8吨车',
             volume: '约18m³',
-            size: '6.0m×2.2m×1.4m',
             capacity: '约90袋',
             price: 1050,
             unit: '元/车',
@@ -27,7 +25,6 @@ var rawServiceConfig = {
           {
             name: '9吨车',
             volume: '约20m³',
-            size: '6.5m×2.3m×1.4m',
             capacity: '约100袋',
             price: 1160,
             unit: '元/车',
@@ -42,15 +39,13 @@ var rawServiceConfig = {
           {
             name: '5吨箱',
             volume: '约12m³',
-            size: '3.8m×1.8m×1.8m',
-            capacity: '约60袋',
+            capacity: '约90袋',
             price: 600,
             unit: '元/车',
           },
           {
             name: '8吨箱',
             volume: '约18m³',
-            size: '4.5m×2.0m×2.0m',
             capacity: '约90袋',
             price: 920,
             unit: '元/车',
@@ -72,10 +67,11 @@ var rawServiceConfig = {
       { key: 'driver', label: '司机加入', icon: 'driver' },
       { key: 'fuel', label: '加油充电', icon: 'fuel' },
     ],
-    promoCards: [
-      { key: 'cross-logistics', title: '跨城货物', highlight: '物流', theme: 'blue' },
-      { key: 'task-center', title: '任务中心', highlight: '领券赚红包', theme: 'red' },
-    ],
+    processFlow: {
+      title: '清运流程',
+      steps: ['在线预约', '派单接单', '上门装卸', '交付确认', '合规处置'],
+      feedbackText: '问题反馈',
+    },
   },
   payment: {
     fieldGroups: [
@@ -139,7 +135,6 @@ function normalizeVehicleModel(model) {
   return {
     name: pickValue(data.name, ''),
     volume: pickValue(data.volume, ''),
-    size: pickValue(data.size, ''),
     capacity: pickValue(data.capacity, ''),
     price: pickValue(data.price, 0),
     unit: pickValue(data.unit, '元/车'),
@@ -182,14 +177,15 @@ function normalizeQuickAction(item, itemIndex) {
   }
 }
 
-function normalizePromoCard(item, itemIndex) {
-  var data = item || {}
+function normalizeProcessFlow(flow) {
+  var data = flow || {}
 
   return {
-    key: pickValue(data.key, 'promo-card-' + itemIndex),
     title: pickValue(data.title, ''),
-    highlight: pickValue(data.highlight, ''),
-    theme: pickValue(data.theme, 'blue'),
+    steps: (Array.isArray(data.steps) ? data.steps : []).map(function (item) {
+      return pickValue(item, '')
+    }),
+    feedbackText: pickValue(data.feedbackText, ''),
   }
 }
 
@@ -201,7 +197,7 @@ function normalizeServiceConfig(service) {
     vehicleTypes: (Array.isArray(data.vehicleTypes) ? data.vehicleTypes : []).map(normalizeVehicleType),
     orderCard: normalizeOrderCard(data.orderCard),
     quickActions: (Array.isArray(data.quickActions) ? data.quickActions : []).map(normalizeQuickAction),
-    promoCards: (Array.isArray(data.promoCards) ? data.promoCards : []).map(normalizePromoCard),
+    processFlow: normalizeProcessFlow(data.processFlow),
   }
 }
 
@@ -236,7 +232,7 @@ function normalizePaymentConfig(payment) {
   }
 }
 
-function buildVehicleSelectionState(service, typeIndex, modelIndex, fallbackModelIndex) {
+function buildVehicleSelectionState(service, typeIndex) {
   var vehicleTypes = (service && service.vehicleTypes) || []
 
   if (!vehicleTypes.length) {
@@ -248,19 +244,16 @@ function buildVehicleSelectionState(service, typeIndex, modelIndex, fallbackMode
 
   var nextTypeIndex = normalizeIndex(typeIndex, vehicleTypes.length, 0)
   var selectedModels = vehicleTypes[nextTypeIndex].models || []
-  var nextModelFallback = selectedModels.length ? fallbackModelIndex : -1
 
   return {
     activeVehicleTypeIndex: nextTypeIndex,
-    activeVehicleModelIndex: selectedModels.length
-      ? normalizeIndex(modelIndex, selectedModels.length, nextModelFallback)
-      : -1,
+    activeVehicleModelIndex: selectedModels.length ? 0 : -1,
   }
 }
 
-function buildPaymentPriceState(service, typeIndex, modelIndex, fallbackModelIndex) {
+function buildPaymentPriceState(service, typeIndex) {
   var vehicleTypes = (service && service.vehicleTypes) || []
-  var selection = buildVehicleSelectionState(service, typeIndex, modelIndex, fallbackModelIndex)
+  var selection = buildVehicleSelectionState(service, typeIndex)
   var selectedType = vehicleTypes[selection.activeVehicleTypeIndex] || {}
   var selectedModels = selectedType.models || []
   var selectedModel = selection.activeVehicleModelIndex > -1 ? selectedModels[selection.activeVehicleModelIndex] : null
@@ -290,7 +283,7 @@ function createHomePageState() {
       service: service,
       selectedDropoffLabel: '',
     },
-    buildVehicleSelectionState(service, 0, -1, -1)
+    buildVehicleSelectionState(service, 0)
   )
 }
 
@@ -307,7 +300,7 @@ function createPaymentPageState(routeOptions) {
       selectedDropoffLabel: decodeRouteLabel(options.dropoffLabel),
       scheduleLabel: payment.scheduleLabel,
     },
-    buildPaymentPriceState(service, options.typeIndex, options.modelIndex, 0)
+    buildPaymentPriceState(service, options.typeIndex)
   )
 }
 
@@ -329,7 +322,7 @@ function buildDropoffPatch(detail) {
 function buildPaymentVehiclePatch(service, detail) {
   var selection = detail || {}
 
-  return buildPaymentPriceState(service, selection.typeIndex, selection.modelIndex, 0)
+  return buildPaymentPriceState(service, selection.typeIndex)
 }
 
 function buildPaymentUrl(pageState, dropoffDetail) {
@@ -339,9 +332,7 @@ function buildPaymentUrl(pageState, dropoffDetail) {
     '/pages/payment/payment?dropoffLabel=' +
     encodeURIComponent(detail.label || '') +
     '&typeIndex=' +
-    parseSelectionIndex(pageState && pageState.activeVehicleTypeIndex, 0) +
-    '&modelIndex=' +
-    parseSelectionIndex(pageState && pageState.activeVehicleModelIndex, -1)
+    parseSelectionIndex(pageState && pageState.activeVehicleTypeIndex, 0)
   )
 }
 

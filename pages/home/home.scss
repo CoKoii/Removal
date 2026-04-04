@@ -25,6 +25,29 @@ page {
   min-width: 0;
 }
 
-.home__section--promo {
-  padding-bottom: $space-32;
+.home__section--process {
+  padding-bottom: $space-8;
+}
+
+.home__section--feedback {
+  padding-top: $space-12;
+}
+
+.home__feedback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  width: 100%;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-display;
+  text-align: center;
+}
+
+.home__feedback-text,
+.home__feedback-icon {
+  display: inline-flex;
+  align-items: center;
 }

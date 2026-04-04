@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/payment/payment",
+    "pages/order/order",
     "pages/mine/mine"
   ],
   "window": {
@@ -22,6 +23,12 @@
         "text": "首页",
         "iconPath": "assets/tabbar/default/home.png",
         "selectedIconPath": "assets/tabbar/selected/home.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "assets/tabbar/default/order.png",
+        "selectedIconPath": "assets/tabbar/selected/order.png"
       },
       {
         "pagePath": "pages/mine/mine",

@@ -1,0 +1,9 @@
+@import "../../styles/variables/index";
+
+page {
+  @include layout-page-frame();
+}
+
+.order-page {
+  @include layout-page-shell();
+}
