@@ -1,0 +1,202 @@
+<view class="report-page">
+  <scroll-view class="report__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
+    <view class="report__content">
+      <view class="report__intro-card">
+        <text class="report__intro-title">提交清运申请</text>
+        <text class="report__intro-desc">{{report.header.desc}}</text>
+      </view>
+
+      <view class="report__section">
+        <view class="report__section-head">
+          <view class="report__section-dot"></view>
+          <text class="report__section-title">工程项目</text>
+        </view>
+        <view class="report__panel">
+          <view class="report__search-shell">
+            <input
+              class="report__input"
+              placeholder="{{report.projectPlaceholder}}"
+              value="{{projectQuery}}"
+              bindinput="onProjectInput"
+            />
+          </view>
+
+          <view class="report__result-list">
+            <block wx:for="{{projectResults}}" wx:key="key">
+              <view
+                class="report__result-item {{selectedProjectKey === item.key ? 'report__result-item--active' : ''}}"
+                data-index="{{index}}"
+                bindtap="onProjectSelect"
+              >
+                <view class="report__result-copy">
+                  <text class="report__result-title">{{item.name}}</text>
+                  <text class="report__result-desc">{{item.address}}</text>
+                </view>
+                <text wx:if="{{selectedProjectKey === item.key}}" class="report__result-mark">已选</text>
+              </view>
+            </block>
+            <text wx:if="{{!projectResults.length}}" class="report__empty">未找到匹配项目</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="report__section">
+        <view class="report__section-head">
+          <view class="report__section-dot"></view>
+          <text class="report__section-title">垃圾类型</text>
+        </view>
+        <view class="report__panel">
+          <view class="report__waste-grid">
+            <block wx:for="{{report.wasteTypes}}" wx:key="key">
+              <view
+                class="report__waste-card {{selectedWasteTypeKey === item.key ? 'report__waste-card--active' : ''}}"
+                data-key="{{item.key}}"
+                bindtap="onWasteTypeTap"
+              >
+                <view class="report__waste-top">
+                  <view class="report__waste-icon">
+                    <text class="report__waste-icon-text">{{item.iconText}}</text>
+                  </view>
+                  <text wx:if="{{selectedWasteTypeKey === item.key}}" class="report__result-mark">已选</text>
+                </view>
+                <text class="report__waste-title">{{item.label}}</text>
+                <text class="report__waste-desc">{{item.desc}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+
+      <view class="report__section">
+        <view class="report__section-head">
+          <view class="report__section-dot"></view>
+          <text class="report__section-title">处置场所</text>
+        </view>
+        <view class="report__panel report__panel--stack">
+          <block wx:for="{{report.disposalSites}}" wx:key="key">
+            <view
+              class="report__choice {{selectedSiteKey === item.key ? 'report__choice--active' : ''}}"
+              data-key="{{item.key}}"
+              bindtap="onSiteTap"
+            >
+              <view class="report__choice-copy">
+                <text class="report__choice-title">{{item.name}}</text>
+                <text class="report__choice-desc">{{item.address}}</text>
+              </view>
+              <text wx:if="{{selectedSiteKey === item.key}}" class="report__result-mark">已选</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <view class="report__section">
+        <view class="report__section-head">
+          <view class="report__section-dot"></view>
+          <text class="report__section-title">车辆</text>
+        </view>
+        <view class="report__panel">
+          <view class="report__search-shell">
+            <input
+              class="report__input"
+              placeholder="{{report.vehiclePlaceholder}}"
+              value="{{vehicleQuery}}"
+              bindinput="onVehicleInput"
+            />
+          </view>
+
+          <view class="report__result-list">
+            <block wx:for="{{vehicleResults}}" wx:key="key">
+              <view
+                class="report__result-item {{selectedVehicleKey === item.key ? 'report__result-item--active' : ''}}"
+                data-index="{{index}}"
+                bindtap="onVehicleSelect"
+              >
+                <view class="report__result-copy">
+                  <text class="report__result-title">{{item.plate}} · {{item.model}}</text>
+                  <text class="report__result-desc">{{item.capacity}}</text>
+                </view>
+                <text wx:if="{{selectedVehicleKey === item.key}}" class="report__result-mark">已选</text>
+              </view>
+            </block>
+            <text wx:if="{{!vehicleResults.length}}" class="report__empty">未找到匹配车辆</text>
+          </view>
+
+          <view class="report__inline-row">
+            <text class="report__inline-label">预估重量</text>
+            <view class="report__inline-main">
+              <view class="report__input-shell report__input-shell--inline">
+                <input
+                  class="report__input"
+                  type="digit"
+                  placeholder="{{report.weightPlaceholder}}"
+                  value="{{weight}}"
+                  bindinput="onWeightInput"
+                />
+              </view>
+              <text class="report__field-unit">吨</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="report__section">
+        <view class="report__section-head">
+          <view class="report__section-dot"></view>
+          <text class="report__section-title">装车图片</text>
+        </view>
+        <view class="report__panel">
+          <view class="report__upload-head">
+            <text class="report__panel-label">装车图片</text>
+            <text class="report__panel-required">必填</text>
+          </view>
+
+          <view wx:if="{{uploadImage}}" class="report__upload-preview">
+            <image class="report__upload-image" src="{{uploadImage}}" mode="aspectFill"></image>
+            <view class="report__upload-remove" bindtap="onRemoveImage">重新上传</view>
+          </view>
+          <view wx:else class="report__upload" bindtap="onChooseImage">
+            <text class="report__upload-title">上传装车图片</text>
+            <text class="report__upload-desc">可拍照或从相册选择</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="report__section">
+        <view class="report__section-head">
+          <view class="report__section-dot"></view>
+          <text class="report__section-title">备注</text>
+        </view>
+        <view class="report__panel">
+          <view class="report__input-shell report__input-shell--textarea">
+            <textarea
+              class="report__textarea"
+              placeholder="{{report.notePlaceholder}}"
+              value="{{note}}"
+              auto-height
+              bindinput="onNoteInput"
+            ></textarea>
+          </view>
+
+          <view class="report__agreement report__agreement--panel" bindtap="onAgreementTap">
+            <view class="report__check {{agreed ? 'report__check--active' : ''}}">
+              <text class="report__check-mark">{{agreed ? '✓' : ''}}</text>
+            </view>
+            <view class="report__agreement-copy">
+              <text class="report__agreement-title">{{report.agreementTitle}}</text>
+              <text class="report__agreement-text">{{report.agreementText}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="report__footer" style="padding-bottom: {{safeBottom}}px;">
+    <view
+      class="report__submit {{canSubmit ? 'report__submit--active' : 'report__submit--disabled'}}"
+      bindtap="onSubmitTap"
+    >
+      {{report.submitLabel}}
+    </view>
+  </view>
+</view>

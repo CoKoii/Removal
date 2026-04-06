@@ -1,0 +1,387 @@
+@import "../../styles/variables/index";
+
+page {
+  @include layout-page-frame();
+}
+
+.mine-page {
+  @include layout-page-shell();
+}
+
+.mine__header {
+  flex: 0 0 auto;
+  background: $color-surface-page-warm;
+  padding-right: $space-24;
+  padding-bottom: $space-20;
+  padding-left: $space-24;
+  border-bottom: $border-thin solid rgba(31, 31, 31, 0.04);
+}
+
+.mine__head-row {
+  @include layout-capsule-row();
+}
+
+.mine__head-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.mine__eyebrow {
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+  letter-spacing: 4rpx;
+}
+
+.mine__title {
+  color: $color-text-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+}
+
+.mine__capsule-space {
+  flex: 0 0 auto;
+}
+
+.mine__scroll {
+  @include layout-scroll-region();
+}
+
+.mine__content {
+  @include layout-content-stack($space-16, $space-120, $space-16);
+}
+
+.mine__profile {
+  @include layout-stack($space-20);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.mine__profile-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-16;
+}
+
+.mine__profile-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.mine__profile-role {
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.mine__profile-name {
+  color: $color-text-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+}
+
+.mine__profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-10;
+}
+
+.mine__profile-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42rpx;
+  max-width: 100%;
+  padding: 0 $space-14;
+  border-radius: $radius-pill;
+  background: $color-surface-page;
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mine__profile-tag--wide {
+  max-width: 100%;
+}
+
+.mine__profile-pill {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44rpx;
+  padding: 0 $space-16;
+  border-radius: $radius-pill;
+  background: rgba(31, 31, 31, 0.92);
+  color: $color-text-inverse;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.mine__score {
+  @include layout-stack($space-8);
+  border-radius: 26rpx;
+  background: $color-surface-page-warm;
+  padding: $space-20;
+}
+
+.mine__score-label {
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
+}
+
+.mine__score-value {
+  color: $color-text-primary;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+}
+
+.mine__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $space-14;
+}
+
+.mine__metric {
+  @include layout-stack($space-8);
+  align-items: center;
+  border-radius: 24rpx;
+  background: $color-surface-page;
+  padding: $space-18 $space-10;
+  text-align: center;
+}
+
+.mine__metric-value {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.mine__metric-label {
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  line-height: $line-height-relaxed;
+}
+
+.mine__vehicle-card {
+  @include layout-stack($space-18);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.mine__vehicle-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-16;
+}
+
+.mine__vehicle-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.mine__vehicle-title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.mine__vehicle-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.mine__vehicle-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44rpx;
+  padding: 0 $space-16;
+  border-radius: $radius-pill;
+  background: $color-surface-accent-faint;
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.mine__vehicle-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-10;
+}
+
+.mine__vehicle-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40rpx;
+  width: 100%;
+  padding: 0 $space-10;
+  border-radius: $radius-pill;
+  background: $color-surface-page;
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mine__vehicle-action {
+  color: $color-text-accent;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.mine__group {
+  @include layout-stack($space-14);
+}
+
+.mine__group-title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.mine__group-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-10;
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-10;
+}
+
+.mine__menu-item {
+  @include layout-stack($space-14);
+  min-width: 0;
+  border-radius: 24rpx;
+  background: $color-surface-page;
+  padding: $space-18;
+  min-height: 188rpx;
+}
+
+.mine__menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 20rpx;
+  font-size: $font-size-md;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-display;
+  flex: 0 0 56rpx;
+}
+
+.mine__menu-icon--accent {
+  background: $color-surface-accent-faint;
+  color: $color-text-accent;
+}
+
+.mine__menu-icon--soft {
+  background: $color-surface-page;
+  color: $color-text-secondary;
+}
+
+.mine__menu-icon--warm {
+  background: $color-surface-warning-soft;
+  color: $color-text-warning;
+}
+
+.mine__menu-icon--dark {
+  background: rgba(31, 31, 31, 0.92);
+  color: $color-text-inverse;
+}
+
+.mine__menu-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.mine__menu-label {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mine__menu-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.mine__support {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $space-16;
+  border-radius: $radius-card-lg;
+  background: rgba(31, 31, 31, 0.92);
+  padding: $space-24;
+}
+
+.mine__support-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.mine__support-title {
+  color: $color-text-inverse;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.mine__support-desc {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mine__support-action {
+  flex: 0 0 auto;
+  padding: $space-14 $space-16;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.14);
+  color: $color-text-inverse;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}

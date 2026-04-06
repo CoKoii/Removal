@@ -1,0 +1,113 @@
+@import "../../../../styles/variables/index";
+
+.shortcut-grid {
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.shortcut-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-16;
+}
+
+.shortcut-grid__item {
+  display: grid;
+  grid-template-columns: 60rpx minmax(0, 1fr);
+  align-items: center;
+  gap: $space-14;
+  min-width: 0;
+  border-radius: 26rpx;
+  padding: $space-20;
+  min-height: 132rpx;
+}
+
+.shortcut-grid__item--accent {
+  background: rgba(237, 247, 221, 0.42);
+}
+
+.shortcut-grid__item--warm {
+  background: #faf3e8;
+}
+
+.shortcut-grid__item--soft {
+  background: #f5f6f2;
+}
+
+.shortcut-grid__item--dark {
+  background: rgba(31, 31, 31, 0.92);
+}
+
+.shortcut-grid__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 22rpx;
+  font-size: $font-size-md;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-display;
+  flex: 0 0 60rpx;
+}
+
+.shortcut-grid__icon--accent {
+  background: rgba(124, 200, 74, 0.18);
+  color: $color-text-accent;
+}
+
+.shortcut-grid__icon--warm {
+  background: rgba(255, 191, 102, 0.2);
+  color: $color-text-warning;
+}
+
+.shortcut-grid__icon--soft {
+  background: $color-surface-card;
+  color: $color-text-secondary;
+}
+
+.shortcut-grid__icon--dark {
+  background: rgba(255, 255, 255, 0.14);
+  color: $color-text-inverse;
+}
+
+.shortcut-grid__copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.shortcut-grid__label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shortcut-grid__desc {
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.shortcut-grid__item--dark .shortcut-grid__label,
+.shortcut-grid__item--dark .shortcut-grid__desc {
+  color: $color-text-inverse;
+}
+
+.shortcut-grid__item--accent .shortcut-grid__label,
+.shortcut-grid__item--warm .shortcut-grid__label,
+.shortcut-grid__item--soft .shortcut-grid__label {
+  color: $color-text-primary;
+}
+
+.shortcut-grid__item--accent .shortcut-grid__desc,
+.shortcut-grid__item--warm .shortcut-grid__desc,
+.shortcut-grid__item--soft .shortcut-grid__desc {
+  color: $color-text-secondary;
+}

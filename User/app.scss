@@ -1,0 +1,12 @@
+@import "./styles/variables/index";
+
+page {
+  background: $color-surface-page;
+  color: $color-text-primary;
+  font-family: $font-family-base;
+}
+
+view,
+text {
+  box-sizing: border-box;
+}

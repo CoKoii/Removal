@@ -1,0 +1,54 @@
+<view class="home-page">
+  <scroll-view class="home__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
+    <view class="home__content">
+      <view class="home__hero">
+        <driver-top-banner
+          city="{{city}}"
+          driver="{{driver}}"
+          safeTop="{{headerSafeTop}}"
+          capsuleHeight="{{capsuleHeight}}"
+          capsuleSpaceWidth="{{capsuleSpaceWidth}}"
+        />
+      </view>
+
+      <view class="home__report-entry" bindtap="onReportTap">
+        <view class="home__report-copy">
+          <text class="home__report-title">{{reportEntry.title}}</text>
+          <text class="home__report-desc">{{reportEntry.subtitle}}</text>
+        </view>
+        <view class="home__report-action">
+          <driver-arrow-icon direction="right" size="18" stroke="4" color="#1f1f1f" />
+        </view>
+      </view>
+
+      <view class="home__section">
+        <view class="home__section-head">
+          <view class="home__section-dot"></view>
+          <text class="home__section-title">{{dashboard.focusMission.eyebrow}}</text>
+        </view>
+        <driver-mission-card mission="{{dashboard.focusMission}}" bind:actiontap="onMissionActionTap" />
+      </view>
+
+      <view class="home__section">
+        <view class="home__section-head">
+          <view class="home__section-dot"></view>
+          <text class="home__section-title">{{dashboard.quickTools.title}}</text>
+        </view>
+        <driver-shortcut-grid tools="{{dashboard.quickTools}}" bind:itemtap="onToolTap" />
+      </view>
+
+      <view class="home__section">
+        <view class="home__section-head">
+          <view class="home__section-dot"></view>
+          <text class="home__section-title">{{dashboard.pendingQueue.title}}</text>
+        </view>
+        <driver-queue-board
+          queue="{{dashboard.pendingQueue}}"
+          bind:itemtap="onQueueTap"
+          bind:primarytap="onQueuePrimaryTap"
+          bind:secondarytap="onQueueSecondaryTap"
+        />
+      </view>
+    </view>
+  </scroll-view>
+</view>

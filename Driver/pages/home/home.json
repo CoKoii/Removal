@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "driver-arrow-icon": "../../components/arrow-icon/arrow-icon",
+    "driver-top-banner": "./components/top-banner/top-banner",
+    "driver-mission-card": "./components/mission-card/mission-card",
+    "driver-queue-board": "./components/queue-board/queue-board",
+    "driver-shortcut-grid": "./components/shortcut-grid/shortcut-grid"
+  }
+}

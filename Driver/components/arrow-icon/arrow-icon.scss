@@ -1,0 +1,23 @@
+.arrow-icon {
+  display: block;
+  box-sizing: border-box;
+  border-top-style: solid;
+  border-right-style: solid;
+  transform-origin: center;
+}
+
+.arrow-icon--right {
+  transform: rotate(45deg);
+}
+
+.arrow-icon--left {
+  transform: rotate(-135deg);
+}
+
+.arrow-icon--down {
+  transform: rotate(135deg);
+}
+
+.arrow-icon--up {
+  transform: rotate(-45deg);
+}

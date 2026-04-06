@@ -1,0 +1,75 @@
+<view class="mission-card">
+  <view class="mission-card__head">
+    <view class="mission-card__copy">
+      <text class="mission-card__title">{{mission.title}}</text>
+      <view class="mission-card__meta-line">
+        <text class="mission-card__order">{{mission.orderNo}}</text>
+      </view>
+    </view>
+
+    <view class="mission-card__status">
+      <view class="mission-card__status-pill">{{mission.statusLabel}}</view>
+      <text class="mission-card__status-note">{{mission.statusHint}}</text>
+    </view>
+  </view>
+
+  <view class="mission-card__detail-list">
+    <view class="mission-card__detail-row">
+      <text class="mission-card__detail-label">装运内容</text>
+      <view class="mission-card__detail-main">
+        <text class="mission-card__detail-value">{{mission.materialLabel}}</text>
+      </view>
+    </view>
+
+    <view class="mission-card__detail-row">
+      <text class="mission-card__detail-label">{{mission.pickup.label}}</text>
+      <view class="mission-card__detail-main">
+        <text class="mission-card__detail-value">{{mission.pickup.name}}</text>
+        <text class="mission-card__detail-extra">{{mission.pickup.detail}}</text>
+      </view>
+    </view>
+
+    <view class="mission-card__detail-row">
+      <text class="mission-card__detail-label">{{mission.dropoff.label}}</text>
+      <view class="mission-card__detail-main">
+        <text class="mission-card__detail-value">{{mission.dropoff.name}}</text>
+        <text class="mission-card__detail-extra">{{mission.dropoff.detail}}</text>
+      </view>
+    </view>
+
+    <block wx:for="{{mission.meta}}" wx:key="key">
+      <view class="mission-card__detail-row">
+        <text class="mission-card__detail-label">{{item.label}}</text>
+        <view class="mission-card__detail-main">
+          <text class="mission-card__detail-value">{{item.value}}</text>
+          <text class="mission-card__detail-extra">{{item.extra}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="mission-card__progress-panel">
+    <view class="mission-card__progress-head">
+      <text class="mission-card__progress-title">运输进度</text>
+      <text class="mission-card__progress-note">{{mission.statusHint}}</text>
+    </view>
+
+    <view class="mission-card__progress">
+      <block wx:for="{{mission.progress}}" wx:key="key">
+        <view class="mission-card__progress-item mission-card__progress-item--{{item.state}}">
+          <view class="mission-card__progress-node mission-card__progress-node--{{item.state}}">{{index + 1}}</view>
+          <text class="mission-card__progress-label mission-card__progress-label--{{item.state}}">{{item.label}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="mission-card__actions">
+    <block wx:for="{{mission.actions}}" wx:key="key">
+      <view class="mission-card__action mission-card__action--{{item.tone}}" data-index="{{index}}" bindtap="onActionTap">
+        <view class="mission-card__action-icon mission-card__action-icon--{{item.tone}}">{{item.short}}</view>
+        <text class="mission-card__action-label mission-card__action-label--{{item.tone}}">{{item.label}}</text>
+      </view>
+    </block>
+  </view>
+</view>

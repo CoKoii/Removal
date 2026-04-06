@@ -1,0 +1,15 @@
+<view class="process-flow">
+  <view class="process-flow__card">
+    <view class="process-flow__list">
+      <block wx:for="{{flow.steps}}" wx:key="key">
+        <view class="process-flow__item">
+          <view class="process-flow__index">{{index + 1}}</view>
+          <view class="process-flow__item-copy">
+            <text class="process-flow__label">{{item.label}}</text>
+            <text class="process-flow__helper">{{item.helper}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

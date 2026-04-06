@@ -1,0 +1,135 @@
+@import "../../../../styles/variables/index";
+
+.top-banner {
+  position: relative;
+  overflow: hidden;
+  background: $color-surface-page;
+}
+
+.top-banner__head {
+  @include layout-capsule-row();
+}
+
+.top-banner__identity {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  color: $color-text-secondary;
+}
+
+.top-banner__city,
+.top-banner__service,
+.top-banner__divider {
+  font-size: $font-size-sm;
+  line-height: $line-height-display;
+}
+
+.top-banner__city,
+.top-banner__service {
+  font-weight: $font-weight-medium;
+}
+
+.top-banner__divider {
+  margin: 0 $space-8;
+  color: $color-text-disabled;
+}
+
+.top-banner__capsule-space {
+  flex: 0 0 auto;
+}
+
+.top-banner__panel {
+  position: relative;
+  z-index: 1;
+  margin-top: $space-14;
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.top-banner__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-16;
+}
+
+.top-banner__copy {
+  @include layout-stack($space-6);
+  min-width: 0;
+}
+
+.top-banner__title {
+  color: $color-text-primary;
+  font-size: 38rpx;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-compact;
+}
+
+.top-banner__meta {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-snug;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-banner__facts {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  min-width: 0;
+}
+
+.top-banner__fact {
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-banner__fact-divider {
+  color: $color-text-disabled;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
+}
+
+.top-banner__status {
+  @include layout-stack($space-10);
+  align-items: flex-end;
+  flex: 0 0 auto;
+}
+
+.top-banner__status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44rpx;
+  padding: 0 $space-16;
+  border-radius: $radius-pill;
+  background: rgba(31, 31, 31, 0.92);
+  color: $color-text-inverse;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.top-banner__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-round;
+  background: $color-surface-card;
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-display;
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
+}

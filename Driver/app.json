@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/report/report",
+    "pages/order/order",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "navigationBarTitleText": "Removal Driver",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#9aa090",
+    "selectedColor": "#151a10",
+    "backgroundColor": "#fbfbf8",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "工作台",
+        "iconPath": "assets/tabbar/default/home.png",
+        "selectedIconPath": "assets/tabbar/selected/home.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "运单",
+        "iconPath": "assets/tabbar/default/order.png",
+        "selectedIconPath": "assets/tabbar/selected/order.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/tabbar/default/mine.png",
+        "selectedIconPath": "assets/tabbar/selected/mine.png"
+      }
+    ]
+  },
+  "style": "v2"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "removal-driver",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@vant/weapp": "^1.11.7"
+  }
+}

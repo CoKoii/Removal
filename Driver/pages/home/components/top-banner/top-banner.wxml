@@ -1,0 +1,32 @@
+<view class="top-banner" style="padding-top: {{safeTop}}px;">
+  <view class="top-banner__head" style="min-height: {{capsuleHeight}}px;">
+    <view class="top-banner__identity">
+      <text class="top-banner__city">{{city}}</text>
+      <text class="top-banner__divider">/</text>
+      <text class="top-banner__service">{{driver.serviceLabel}}</text>
+    </view>
+    <view
+      class="top-banner__capsule-space"
+      style="width: {{capsuleSpaceWidth}}px; height: {{capsuleHeight}}px;"
+    ></view>
+  </view>
+
+  <view class="top-banner__panel">
+    <view class="top-banner__body">
+      <view class="top-banner__copy">
+        <text class="top-banner__title">{{driver.name}}</text>
+        <text class="top-banner__meta">{{driver.team}}</text>
+        <view class="top-banner__facts">
+          <text class="top-banner__fact">{{driver.vehiclePlate}}</text>
+          <text class="top-banner__fact-divider">·</text>
+          <text class="top-banner__fact">{{driver.vehicleName}}</text>
+        </view>
+      </view>
+
+      <view class="top-banner__status">
+        <view class="top-banner__status-pill">{{driver.dutyLabel}}</view>
+        <view class="top-banner__avatar">{{driver.avatarText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

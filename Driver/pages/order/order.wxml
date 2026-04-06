@@ -1,0 +1,105 @@
+<view class="order-page">
+  <view class="order__header" style="padding-top: {{headerSafeTop}}px;">
+    <view class="order__head-row" style="min-height: {{capsuleHeight}}px;">
+      <view class="order__head-copy">
+        <text class="order__eyebrow">运单中心</text>
+        <text class="order__title">线路与联单</text>
+      </view>
+      <view class="order__capsule-space" style="width: {{capsuleSpaceWidth}}px; height: {{capsuleHeight}}px;"></view>
+    </view>
+
+    <view class="order__tabs">
+      <block wx:for="{{orderTabs}}" wx:key="key">
+        <view
+          class="order__tab {{item.key === activeOrderTab ? 'order__tab--active' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="onTabTap"
+        >
+          {{item.label}}
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <scroll-view class="order__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
+    <view class="order__content">
+      <view class="order__overview">
+        <view class="order__overview-copy">
+          <text class="order__overview-eyebrow">当前筛选</text>
+          <text class="order__overview-title">{{activeOrderTabLabel}}</text>
+          <text class="order__overview-desc">{{orderSummary}}</text>
+        </view>
+        <view class="order__overview-badge">{{driver.vehiclePlate}}</view>
+      </view>
+
+      <view wx:if="{{visibleOrders.length}}" class="order__list">
+        <block wx:for="{{visibleOrders}}" wx:key="key">
+          <view class="order-card">
+            <view class="order-card__head">
+              <view class="order-card__copy">
+                <text class="order-card__title">{{item.title}}</text>
+                <text class="order-card__id">{{item.id}} · {{item.routeTag}}</text>
+              </view>
+              <view class="order-card__status order-card__status--{{item.tone}}">{{item.statusLabel}}</view>
+            </view>
+
+            <view class="order-card__route-grid">
+              <view class="order-card__route-card">
+                <view class="order-card__stop">
+                  <view class="order-card__marker order-card__marker--pickup"></view>
+                  <view class="order-card__stop-copy">
+                    <text class="order-card__stop-label">装运点</text>
+                    <text class="order-card__stop-name">{{item.pickup}}</text>
+                  </view>
+                </view>
+              </view>
+
+              <view class="order-card__route-card">
+                <view class="order-card__stop">
+                  <view class="order-card__marker order-card__marker--dropoff"></view>
+                  <view class="order-card__stop-copy">
+                    <text class="order-card__stop-label">交付点</text>
+                    <text class="order-card__stop-name">{{item.dropoff}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <view class="order-card__meta-grid">
+              <view class="order-card__meta-item">
+                <text class="order-card__meta-label">排班</text>
+                <text class="order-card__meta-value">{{item.schedule}}</text>
+              </view>
+              <view class="order-card__meta-item">
+                <text class="order-card__meta-label">车型</text>
+                <text class="order-card__meta-value">{{item.vehicle}}</text>
+              </view>
+              <view class="order-card__meta-item">
+                <text class="order-card__meta-label">装载</text>
+                <text class="order-card__meta-value">{{item.load}}</text>
+              </view>
+            </view>
+
+            <view class="order-card__bottom">
+              <view class="order-card__manifest">{{item.manifest}}</view>
+
+              <view class="order-card__actions">
+                <view class="order-card__action order-card__action--secondary" data-index="{{index}}" bindtap="onSecondaryActionTap">
+                  {{item.secondaryActionLabel}}
+                </view>
+                <view class="order-card__action order-card__action--primary" data-index="{{index}}" bindtap="onPrimaryActionTap">
+                  {{item.primaryActionLabel}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <view wx:else class="order__empty">
+        <text class="order__empty-title">当前筛选下暂无运单</text>
+        <text class="order__empty-desc">稍后可切换筛选或等待调度派单。</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

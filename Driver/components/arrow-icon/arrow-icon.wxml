@@ -1,0 +1,4 @@
+<view
+  class="arrow-icon arrow-icon--{{direction}}"
+  style="width: {{size}}rpx; height: {{size}}rpx; border-top-width: {{stroke}}rpx; border-right-width: {{stroke}}rpx; border-top-color: {{color}}; border-right-color: {{color}};"
+></view>

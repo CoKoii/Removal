@@ -1,0 +1,87 @@
+<view class="mine-page">
+  <view class="mine__header" style="padding-top: {{headerSafeTop}}px;">
+    <view class="mine__head-row" style="min-height: {{capsuleHeight}}px;">
+      <view class="mine__head-copy">
+        <text class="mine__eyebrow">个人中心</text>
+        <text class="mine__title">司机档案</text>
+      </view>
+      <view class="mine__capsule-space" style="width: {{capsuleSpaceWidth}}px; height: {{capsuleHeight}}px;"></view>
+    </view>
+  </view>
+
+  <scroll-view class="mine__scroll" scroll-y enhanced bounces="{{false}}" show-scrollbar="{{false}}">
+    <view class="mine__content">
+      <view class="mine__profile">
+        <view class="mine__profile-head">
+          <view class="mine__profile-copy">
+            <text class="mine__profile-role">{{mine.profile.role}}</text>
+            <text class="mine__profile-name">{{driver.name}}</text>
+            <view class="mine__profile-tags">
+              <text class="mine__profile-tag mine__profile-tag--wide">{{driver.team}}</text>
+              <text class="mine__profile-tag">{{driver.vehiclePlate}}</text>
+              <text class="mine__profile-tag">{{driver.vehicleName}}</text>
+            </view>
+          </view>
+          <view class="mine__profile-pill">{{mine.profile.dutyLabel}}</view>
+        </view>
+
+        <view class="mine__score">
+          <text class="mine__score-label">{{mine.profile.scoreLabel}}</text>
+          <text class="mine__score-value">{{mine.profile.scoreValue}}</text>
+        </view>
+
+        <view class="mine__metrics">
+          <block wx:for="{{mine.profile.metrics}}" wx:key="key">
+            <view class="mine__metric">
+              <text class="mine__metric-value">{{item.value}}</text>
+              <text class="mine__metric-label">{{item.label}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <view class="mine__vehicle-card" bindtap="onVehicleTap">
+        <view class="mine__vehicle-head">
+          <view class="mine__vehicle-copy">
+            <text class="mine__vehicle-title">{{mine.vehicleCard.title}}</text>
+            <text class="mine__vehicle-desc">{{mine.vehicleCard.desc}}</text>
+          </view>
+          <view class="mine__vehicle-badge">{{mine.vehicleCard.badge}}</view>
+        </view>
+
+        <view class="mine__vehicle-meta">
+          <view class="mine__vehicle-chip">{{mine.vehicleCard.plate}}</view>
+          <view class="mine__vehicle-chip">{{mine.vehicleCard.vehicleName}}</view>
+          <view class="mine__vehicle-chip">{{mine.vehicleCard.capacity}}</view>
+        </view>
+
+        <text class="mine__vehicle-action">{{mine.vehicleCard.actionLabel}}</text>
+      </view>
+
+      <block wx:for="{{mine.menuGroups}}" wx:key="key">
+        <view class="mine__group">
+          <text class="mine__group-title">{{item.title}}</text>
+          <view class="mine__group-card">
+            <block wx:for="{{item.items}}" wx:for-item="entry" wx:key="key">
+              <view class="mine__menu-item" data-label="{{entry.label}}" bindtap="onMenuTap">
+                <view class="mine__menu-icon mine__menu-icon--{{entry.tone}}">{{entry.short}}</view>
+                <view class="mine__menu-copy">
+                  <text class="mine__menu-label">{{entry.label}}</text>
+                  <text class="mine__menu-desc">{{entry.desc}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+
+      <view class="mine__support" bindtap="onSupportTap">
+        <view class="mine__support-copy">
+          <text class="mine__support-title">{{mine.supportCard.title}}</text>
+          <text class="mine__support-desc">{{mine.supportCard.desc}}</text>
+        </view>
+        <view class="mine__support-action">{{mine.supportCard.actionLabel}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

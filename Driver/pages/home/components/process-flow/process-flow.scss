@@ -1,0 +1,62 @@
+@import "../../../../styles/variables/index";
+
+.process-flow {
+  @include layout-stack($space-16);
+}
+
+.process-flow__card {
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.process-flow__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-12;
+}
+
+.process-flow__item {
+  @include layout-stack($space-14);
+  min-width: 0;
+  border-radius: 24rpx;
+  background: $color-surface-page;
+  padding: $space-18;
+}
+
+.process-flow__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: $radius-round;
+  background: rgba(124, 200, 74, 0.14);
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+  flex: 0 0 32rpx;
+}
+
+.process-flow__item-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.process-flow__label {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.process-flow__helper {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

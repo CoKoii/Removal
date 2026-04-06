@@ -1,0 +1,403 @@
+@import "../../styles/variables/index";
+
+page {
+  @include layout-page-frame();
+}
+
+.report-page {
+  @include layout-page-shell();
+}
+
+.report__scroll {
+  @include layout-scroll-region();
+}
+
+.report__content {
+  @include layout-content-stack($space-16, $space-120, $space-18);
+}
+
+.report__intro-card {
+  @include layout-stack($space-10);
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.report__intro-title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.report__intro-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+}
+
+.report__section {
+  @include layout-stack($space-16);
+  min-width: 0;
+}
+
+.report__section-head {
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+  min-width: 0;
+  padding: $space-4 0 0;
+}
+
+.report__section-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: $radius-round;
+  background: $color-surface-accent;
+  flex: 0 0 14rpx;
+}
+
+.report__section-title {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.report__panel {
+  @include layout-stack($space-16);
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.report__panel--stack {
+  gap: $space-14;
+}
+
+.report__search-shell,
+.report__input-shell {
+  display: flex;
+  align-items: center;
+  min-height: 88rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.12);
+  border-radius: 24rpx;
+  background: $color-surface-card;
+  padding: 0 $space-18;
+}
+
+.report__input-shell--inline {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.report__input-shell--textarea {
+  align-items: flex-start;
+  min-height: 176rpx;
+  padding-top: $space-16;
+  padding-bottom: $space-16;
+}
+
+.report__input,
+.report__textarea {
+  width: 100%;
+  min-width: 0;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+}
+
+.report__textarea {
+  min-height: 144rpx;
+}
+
+.report__result-list {
+  @include layout-stack($space-12);
+}
+
+.report__result-item,
+.report__choice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $space-12;
+  border: $border-thin solid rgba(31, 31, 31, 0.12);
+  border-radius: 26rpx;
+  background: $color-surface-card;
+  padding: $space-18;
+}
+
+.report__result-item--active,
+.report__choice--active,
+.report__waste-card--active {
+  border-color: rgba(124, 200, 74, 0.42);
+  background: $color-surface-card;
+}
+
+.report__result-copy,
+.report__choice-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.report__result-title,
+.report__choice-title,
+.report__waste-title,
+.report__panel-label {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.report__result-desc,
+.report__choice-desc,
+.report__waste-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+}
+
+.report__result-mark {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42rpx;
+  padding: 0 $space-14;
+  border-radius: $radius-pill;
+  background: rgba(31, 31, 31, 0.92);
+  color: $color-text-inverse;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.report__empty {
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+}
+
+.report__waste-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-14;
+}
+
+.report__waste-card {
+  @include layout-stack($space-12);
+  min-width: 0;
+  min-height: 252rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.12);
+  border-radius: 26rpx;
+  background: $color-surface-card;
+  padding: $space-20;
+  box-sizing: border-box;
+}
+
+.report__waste-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-12;
+}
+
+.report__waste-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.08);
+  border-radius: 22rpx;
+  background: $color-surface-page;
+  flex: 0 0 72rpx;
+}
+
+.report__waste-icon-text {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.report__inline-row {
+  display: grid;
+  grid-template-columns: 120rpx minmax(0, 1fr);
+  align-items: center;
+  gap: $space-12;
+  padding-top: $space-16;
+  border-top: $border-thin solid rgba(31, 31, 31, 0.06);
+}
+
+.report__inline-label {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.report__inline-main {
+  display: flex;
+  align-items: center;
+  gap: $space-12;
+  min-width: 0;
+}
+
+.report__field-unit {
+  flex: 0 0 auto;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+  line-height: $line-height-display;
+}
+
+.report__upload-head {
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+}
+
+.report__panel-required {
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.report__upload {
+  @include layout-stack($space-8);
+  align-items: center;
+  justify-content: center;
+  min-height: 216rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.12);
+  border-radius: 28rpx;
+  background: $color-surface-card;
+  padding: $space-20;
+  text-align: center;
+}
+
+.report__upload-title {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.report__upload-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+}
+
+.report__upload-preview {
+  @include layout-stack($space-12);
+}
+
+.report__upload-image {
+  width: 100%;
+  height: 280rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.08);
+  border-radius: 28rpx;
+  background: $color-surface-page;
+}
+
+.report__upload-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-height: 52rpx;
+  padding: 0 $space-18;
+  border: $border-thin solid rgba(31, 31, 31, 0.12);
+  border-radius: $radius-pill;
+  background: $color-surface-card;
+  color: $color-text-secondary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.report__agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-12;
+}
+
+.report__agreement--panel {
+  padding-top: $space-8;
+  border-top: $border-thin solid rgba(31, 31, 31, 0.06);
+}
+
+.report__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36rpx;
+  height: 36rpx;
+  margin-top: 4rpx;
+  border: $border-thin solid rgba(31, 31, 31, 0.14);
+  border-radius: $radius-round;
+  background: $color-surface-card;
+  flex: 0 0 36rpx;
+}
+
+.report__check--active {
+  border-color: $color-surface-dark;
+  background: $color-surface-dark;
+}
+
+.report__check-mark {
+  color: $color-text-inverse;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.report__agreement-copy {
+  @include layout-stack($space-6);
+  min-width: 0;
+}
+
+.report__agreement-title {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.report__agreement-text {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+}
+
+.report__footer {
+  flex: 0 0 auto;
+  padding: $space-16 $space-24;
+  border-top: $border-thin solid rgba(31, 31, 31, 0.04);
+  background: $color-surface-page;
+}
+
+.report__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88rpx;
+  border-radius: 28rpx;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.report__submit--active {
+  background: $color-surface-dark;
+  color: $color-text-inverse;
+}
+
+.report__submit--disabled {
+  background: $color-surface-muted;
+  color: $color-text-tertiary;
+}

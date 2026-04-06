@@ -1,0 +1,93 @@
+@import "../../styles/variables/index";
+
+page {
+  @include layout-page-frame();
+}
+
+.home-page {
+  @include layout-page-shell();
+}
+
+.home__scroll {
+  @include layout-scroll-region();
+}
+
+.home__content {
+  @include layout-content-stack(0, $space-120, $space-16);
+}
+
+.home__hero {
+  min-width: 0;
+}
+
+.home__report-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: $space-16;
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-20 $space-24;
+}
+
+.home__report-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.home__report-title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.home__report-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.home__report-action {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52rpx;
+  min-width: 52rpx;
+  border-radius: $radius-round;
+  background: $color-surface-page;
+}
+
+.home__section {
+  @include layout-stack($space-18);
+  min-width: 0;
+}
+
+.home__section-head {
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+  min-width: 0;
+  padding: $space-16 0 $space-12;
+}
+
+.home__section-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: $radius-round;
+  background: $color-surface-accent;
+  flex: 0 0 14rpx;
+}
+
+.home__section-title {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}

@@ -1,0 +1,13 @@
+<view class="shortcut-grid">
+  <view class="shortcut-grid__grid">
+    <block wx:for="{{tools.items}}" wx:key="key">
+      <view class="shortcut-grid__item shortcut-grid__item--{{item.tone}}" data-index="{{index}}" bindtap="onItemTap">
+        <view class="shortcut-grid__icon shortcut-grid__icon--{{item.tone}}">{{item.short}}</view>
+        <view class="shortcut-grid__copy">
+          <text class="shortcut-grid__label">{{item.label}}</text>
+          <text class="shortcut-grid__desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+<view class="queue-board">
+  <view class="queue-board__list">
+    <block wx:for="{{queue.items}}" wx:key="key">
+      <view class="queue-board__item" data-index="{{index}}" bindtap="onItemTap">
+        <view class="queue-board__item-head">
+          <view class="queue-board__item-copy">
+            <text class="queue-board__item-title">{{item.title}}</text>
+            <text class="queue-board__item-id">{{item.id}}</text>
+          </view>
+          <view class="queue-board__status queue-board__status--{{item.tone}}">{{item.statusLabel}}</view>
+        </view>
+
+        <view class="queue-board__meta-grid">
+          <view class="queue-board__meta-item">
+            <text class="queue-board__meta-label">区域</text>
+            <text class="queue-board__meta-value">{{item.region}}</text>
+          </view>
+          <view class="queue-board__meta-item">
+            <text class="queue-board__meta-label">车型</text>
+            <text class="queue-board__meta-value">{{item.vehicle}}</text>
+          </view>
+          <view class="queue-board__meta-item">
+            <text class="queue-board__meta-label">装载</text>
+            <text class="queue-board__meta-value">{{item.load}}</text>
+          </view>
+          <view class="queue-board__meta-item">
+            <text class="queue-board__meta-label">时间</text>
+            <text class="queue-board__meta-value queue-board__meta-value--accent">{{item.window}}</text>
+          </view>
+        </view>
+
+        <view class="queue-board__actions">
+          <view class="queue-board__action queue-board__action--secondary" data-index="{{index}}" catchtap="onSecondaryTap">
+            {{item.secondaryLabel}}
+          </view>
+          <view class="queue-board__action queue-board__action--primary" data-index="{{index}}" catchtap="onPrimaryTap">
+            {{item.primaryLabel}}
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

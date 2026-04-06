@@ -1,0 +1,371 @@
+@import "../../styles/variables/index";
+
+page {
+  @include layout-page-frame();
+}
+
+.order-page {
+  @include layout-page-shell();
+}
+
+.order__header {
+  flex: 0 0 auto;
+  background: $color-surface-page-warm;
+  padding-right: $space-24;
+  padding-bottom: $space-20;
+  padding-left: $space-24;
+  border-bottom: $border-thin solid rgba(31, 31, 31, 0.04);
+}
+
+.order__head-row {
+  @include layout-capsule-row();
+}
+
+.order__head-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.order__eyebrow {
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+  letter-spacing: 4rpx;
+}
+
+.order__title {
+  color: $color-text-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+}
+
+.order__capsule-space {
+  flex: 0 0 auto;
+}
+
+.order__tabs {
+  display: flex;
+  gap: $space-12;
+  margin-top: $space-20;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.order__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 116rpx;
+  min-height: 56rpx;
+  padding: 0 $space-20;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.78);
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-display;
+}
+
+.order__tab--active {
+  background: $color-surface-dark;
+  color: $color-text-inverse;
+}
+
+.order__scroll {
+  @include layout-scroll-region();
+}
+
+.order__content {
+  @include layout-content-stack($space-16, $space-120, $space-16);
+}
+
+.order__overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: $space-16;
+  border-radius: $radius-card-lg;
+  border: $border-thin solid rgba(31, 31, 31, 0.06);
+  background: $color-surface-page-warm;
+  padding: $space-24;
+}
+
+.order__overview-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.order__overview-eyebrow {
+  color: $color-text-accent;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.order__overview-title {
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.order__overview-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.order__overview-badge {
+  flex: 0 0 auto;
+  padding: $space-14 $space-16;
+  border-radius: $radius-pill;
+  background: $color-surface-page-soft;
+  color: $color-text-primary;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.order__list {
+  @include layout-stack($space-16);
+}
+
+.order-card {
+  @include layout-stack($space-18);
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-24;
+}
+
+.order-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-16;
+}
+
+.order-card__copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.order-card__title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card__id {
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+  line-height: $line-height-relaxed;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card__status {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44rpx;
+  padding: 0 $space-16;
+  border-radius: $radius-pill;
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.order-card__status--active {
+  background: rgba(31, 31, 31, 0.92);
+  color: $color-text-inverse;
+}
+
+.order-card__status--accent {
+  background: $color-surface-accent-faint;
+  color: $color-text-accent;
+}
+
+.order-card__status--muted {
+  background: $color-surface-muted;
+  color: $color-text-secondary;
+}
+
+.order-card__status--done {
+  background: rgba(111, 207, 151, 0.16);
+  color: #2a8a58;
+}
+
+.order-card__route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-14;
+}
+
+.order-card__route-card {
+  min-width: 0;
+  border-radius: 24rpx;
+  background: $color-surface-page;
+  padding: $space-20;
+}
+
+.order-card__stop {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-14;
+  min-width: 0;
+}
+
+.order-card__marker {
+  width: 18rpx;
+  height: 18rpx;
+  margin-top: 8rpx;
+  border-radius: $radius-round;
+  flex: 0 0 18rpx;
+}
+
+.order-card__marker--pickup {
+  background: $color-surface-accent;
+}
+
+.order-card__marker--dropoff {
+  background: $color-surface-dark;
+}
+
+.order-card__stop-copy {
+  @include layout-stack($space-8);
+  min-width: 0;
+}
+
+.order-card__stop-label {
+  color: $color-text-tertiary;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
+}
+
+.order-card__stop-name {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-relaxed;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.order-card__meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-12;
+}
+
+.order-card__meta-item {
+  @include layout-stack($space-8);
+  min-width: 0;
+  border-radius: 22rpx;
+  background: $color-surface-page;
+  padding: $space-16;
+}
+
+.order-card__meta-label {
+  color: $color-text-tertiary;
+  font-size: $font-size-2xs;
+  line-height: $line-height-display;
+}
+
+.order-card__meta-value {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card__bottom {
+  @include layout-stack($space-14);
+}
+
+.order-card__manifest {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44rpx;
+  padding: 0 $space-16;
+  border-radius: $radius-pill;
+  background: $color-surface-accent-faint;
+  color: $color-text-accent;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+}
+
+.order-card__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-12;
+}
+
+.order-card__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60rpx;
+  width: 100%;
+  padding: 0 $space-16;
+  border-radius: 20rpx;
+  border: $border-thin solid transparent;
+  box-sizing: border-box;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-display;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card__action--primary {
+  background: $color-surface-dark;
+  color: $color-text-inverse;
+}
+
+.order-card__action--secondary {
+  border-color: rgba(31, 31, 31, 0.08);
+  background: $color-surface-card;
+  color: $color-text-secondary;
+}
+
+.order__empty {
+  @include layout-stack($space-12);
+  align-items: center;
+  border-radius: $radius-card-lg;
+  background: $color-surface-card;
+  padding: $space-32 $space-24;
+  text-align: center;
+}
+
+.order__empty-title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+}
+
+.order__empty-desc {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+}
